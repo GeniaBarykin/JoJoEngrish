@@ -1,9 +1,13 @@
 package com.evgeny.app.jojoengrish;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.models.DataManager;
+import com.evgeny.app.jojoengrish.models.SoundModel;
+import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
     }
@@ -51,5 +56,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View view){
+        try {
+            Player.getInstance().enable();
+            ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
+            Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
