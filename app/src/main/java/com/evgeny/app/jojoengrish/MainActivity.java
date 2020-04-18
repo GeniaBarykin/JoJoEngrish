@@ -1,10 +1,8 @@
 package com.evgeny.app.jojoengrish;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.audio.Player;
-import com.evgeny.app.jojoengrish.models.DataManager;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

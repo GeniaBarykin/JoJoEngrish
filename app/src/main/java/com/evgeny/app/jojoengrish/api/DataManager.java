@@ -1,11 +1,10 @@
-package com.evgeny.app.jojoengrish.models;
+package com.evgeny.app.jojoengrish.api;
 import com.evgeny.app.jojoengrish.R;
+import com.evgeny.app.jojoengrish.models.SoundModel;
 
 import java.util.ArrayList;
 
 public class DataManager {
-
-
     private ArrayList<SoundModel> sounds;
     private static DataManager dataManager;
 

@@ -1,11 +1,11 @@
 package com.evgeny.app.jojoengrish.search_engine;
 
-import com.evgeny.app.jojoengrish.models.DataManager;
+import com.evgeny.app.jojoengrish.api.DataManager;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 
 import java.util.ArrayList;
 
-public class SearchEngine {
+public abstract class SearchEngine {
 
     public static ArrayList<SoundModel> findSoundFiles(String searchBarText) {
         ArrayList<SoundModel> sounds = DataManager.request().getSounds();
@@ -40,28 +40,31 @@ public class SearchEngine {
             value = 0;
             index++;
         }
-        sortedSounds.add(sounds.get(maxIndex));
-        maxValue = Integer.MIN_VALUE;
-        maxIndex = Integer.MIN_VALUE;
-
-        for (int i = 0; i < sounds.size(); i++) {
-            for (SoundModel sound :
-                    sounds) {
-                if (!sortedSounds.contains(sound)) {
-                    int soundValue = matches[sounds.indexOf(sound)];
-                    if (soundValue != 0 && soundValue > maxValue) {
-                        maxValue = soundValue;
-                        maxIndex = sounds.indexOf(sound);
-                    }
-
-                }
-            }
-            if (maxValue <= 0) {
-                break;
-            }
+        if(maxValue>0) {
             sortedSounds.add(sounds.get(maxIndex));
+            sounds.remove(sortedSounds);
             maxValue = Integer.MIN_VALUE;
             maxIndex = Integer.MIN_VALUE;
+
+            for (int i = 0; i < sounds.size(); i++) {
+                for (SoundModel sound :
+                        sounds) {
+                    if (!sortedSounds.contains(sound)) {
+                        int soundValue = matches[sounds.indexOf(sound)];
+                        if (soundValue != 0 && soundValue > maxValue) {
+                            maxValue = soundValue;
+                            maxIndex = sounds.indexOf(sound);
+                        }
+
+                    }
+                }
+                if (maxValue <= 0) {
+                    break;
+                }
+                sortedSounds.add(sounds.get(maxIndex));
+                maxValue = Integer.MIN_VALUE;
+                maxIndex = Integer.MIN_VALUE;
+            }
         }
         return sortedSounds;
     }
