@@ -2,8 +2,9 @@ package com.evgeny.app.jojoengrish;
 
 import android.os.Bundle;
 
-import com.evgeny.app.jojoengrish.sqlite.soundsTable.SoundsTableDbHelper;
-import com.evgeny.app.jojoengrish.models.SoundModel;
+import com.evgeny.app.jojoengrish.sqlite.DbHelper;
+import com.evgeny.app.jojoengrish.sqlite.SoundsTableFeeder;
+import com.evgeny.app.jojoengrish.sqlite.TagsTableFeeder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,11 +60,10 @@ public class MainActivity extends AppCompatActivity {
             //ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
             //Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
 
-            SoundsTableDbHelper sh= new SoundsTableDbHelper(this);
-
-            //sh.post("test",1,2,"desc");
-            sh.get("test");
-
+            DbHelper db= new DbHelper(this);
+            SoundsTableFeeder.feed(db);
+            TagsTableFeeder.feed(db);
+            System.out.println(db.getIdByTag("yare"));
         } catch (Exception e) {
             e.printStackTrace();
         }
