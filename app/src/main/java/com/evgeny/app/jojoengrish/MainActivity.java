@@ -2,9 +2,8 @@ package com.evgeny.app.jojoengrish;
 
 import android.os.Bundle;
 
-import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.sqlite.soundsTable.SoundsTableDbHelper;
 import com.evgeny.app.jojoengrish.models.SoundModel;
-import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,9 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view){
         try {
-            Player.getInstance().enable();
-            ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
-            Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
+            //Player.getInstance().enable();
+            //ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
+            //Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
+
+            SoundsTableDbHelper sh= new SoundsTableDbHelper(this);
+
+            //sh.post("test",1,2,"desc");
+            sh.get("test");
 
         } catch (Exception e) {
             e.printStackTrace();

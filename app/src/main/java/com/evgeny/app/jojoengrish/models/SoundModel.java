@@ -5,12 +5,12 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 
 public class SoundModel {
+    private int ID;
     private ArrayList<String> tags;
     private int sound_adress;
     private int picture_adress;
     private String name;
     private String description = "Content will be available in the next update";
-
     public ArrayList<String> getTags() {
         return tags;
     }
@@ -31,16 +31,18 @@ public class SoundModel {
         return name;
     }
 
+    public int getID() {
+        return ID;
+    }
 
 
 
 
-    public SoundModel( String name, ArrayList<String> tags, int ID, int pictureID) {
-        this.tags = tags;
-        this.sound_adress = ID;
+    public SoundModel(int ID, String name, int soundID, int pictureID, String description) {
+        this.ID=ID;
+        this.sound_adress = soundID;
         this.picture_adress = pictureID;
         this.name = name;
-
     }
 
     @NonNull

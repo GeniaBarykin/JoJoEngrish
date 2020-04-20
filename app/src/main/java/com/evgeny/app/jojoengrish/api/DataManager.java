@@ -29,24 +29,26 @@ public class DataManager {
         tagsToAdd.add("grief");
         tagsToAdd.add("stardust");
         tagsToAdd.add("crusaders");
-        SoundModel toAdd = new SoundModel("2mesto", tagsToAdd, R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
-        sounds.add(toAdd);
-        tagsToAdd = new ArrayList<>();
-        tagsToAdd.add("jotaro");
-        tagsToAdd.add("kujo");
-        tagsToAdd.add("yare");
-        tagsToAdd.add("yare");
-        tagsToAdd.add("daze");
-        tagsToAdd.add("good");
-        tagsToAdd.add("grief");
-        tagsToAdd.add("stardust");
-        tagsToAdd.add("crusaders");
-        tagsToAdd.add("m");
-        toAdd = new SoundModel("jotaro_yare_daze", tagsToAdd, R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
-        sounds.add(toAdd);
-        toAdd = new SoundModel("0mesto", new ArrayList<String>(), R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
-        sounds.add(toAdd);
+//        SoundModel toAdd = new SoundModel("2mesto", tagsToAdd, R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
+//        sounds.add(toAdd);
+//        tagsToAdd = new ArrayList<>();
+//        tagsToAdd.add("jotaro");
+//        tagsToAdd.add("kujo");
+//        tagsToAdd.add("yare");
+//        tagsToAdd.add("yare");
+//        tagsToAdd.add("daze");
+//        tagsToAdd.add("good");
+//        tagsToAdd.add("grief");
+//        tagsToAdd.add("stardust");
+//        tagsToAdd.add("crusaders");
+//        tagsToAdd.add("m");
+//        toAdd = new SoundModel("jotaro_yare_daze", tagsToAdd, R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
+//        sounds.add(toAdd);
+//        toAdd = new SoundModel("0mesto", new ArrayList<String>(), R.raw.jotaroyareyaredaze,R.drawable.yare_yare_daze);
+//        sounds.add(toAdd);
     }
+
+
 
 
 
