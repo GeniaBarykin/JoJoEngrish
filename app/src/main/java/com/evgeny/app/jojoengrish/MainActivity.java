@@ -2,27 +2,40 @@ package com.evgeny.app.jojoengrish;
 
 import android.os.Bundle;
 
+import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.api.TagsTableFeeder;
+import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private DbHelper db;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeDb();
-
+        initialiseRecyclerView();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -45,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
         if(db.countTags()==0){
             TagsTableFeeder.feed(db);
         }
+    }
+
+    private void initialiseRecyclerView(){
+        recyclerView = (RecyclerView) findViewById(R.id.soundsRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new RecyclerViewAdapter(this,db.getSounds());
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -71,11 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view){
         try {
-            //Player.getInstance().enable();
-            //ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
-            //Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
-
-            System.out.println(db.getIdByTag("yare"));
+            Player.getInstance().enable();
+            Player.getInstance().play(this,db.getSoundAddress(1));
         } catch (Exception e) {
             e.printStackTrace();
         }
