@@ -2,9 +2,9 @@ package com.evgeny.app.jojoengrish;
 
 import android.os.Bundle;
 
-import com.evgeny.app.jojoengrish.sqlite.DbHelper;
-import com.evgeny.app.jojoengrish.sqlite.SoundsTableFeeder;
-import com.evgeny.app.jojoengrish.sqlite.TagsTableFeeder;
+import com.evgeny.app.jojoengrish.api.DbHelper;
+import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
+import com.evgeny.app.jojoengrish.api.TagsTableFeeder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +15,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private DbHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeDb();
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -30,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void initializeDb(){
+        db= new DbHelper(this);
+        if(db.countSounds()==0){
+            SoundsTableFeeder.feed(db);
+        }
+        if(db.countTags()==0){
+            TagsTableFeeder.feed(db);
+        }
     }
 
     @Override
@@ -60,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
             //ArrayList<SoundModel> searchResult= SearchEngine.findSoundFiles("yare daze");
             //Player.getInstance().play(this,R.raw.jotaroyareyaredaze);
 
-            DbHelper db= new DbHelper(this);
-            SoundsTableFeeder.feed(db);
-            TagsTableFeeder.feed(db);
             System.out.println(db.getIdByTag("yare"));
         } catch (Exception e) {
             e.printStackTrace();

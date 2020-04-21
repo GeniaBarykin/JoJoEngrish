@@ -1,6 +1,5 @@
 package com.evgeny.app.jojoengrish.search_engine;
 
-import com.evgeny.app.jojoengrish.api.DataManager;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import java.util.ArrayList;
 public abstract class SearchEngine {
 
     public static ArrayList<SoundModel> findSoundFiles(String searchBarText) {
-        ArrayList<SoundModel> sounds = DataManager.request().getSounds();
+        ArrayList<SoundModel> sounds = new ArrayList<>();
         ArrayList<SoundModel> sortedSounds = new ArrayList<>();
 
         searchBarText = searchBarText.toLowerCase();

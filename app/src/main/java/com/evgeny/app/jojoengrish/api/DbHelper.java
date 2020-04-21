@@ -1,15 +1,16 @@
-package com.evgeny.app.jojoengrish.sqlite;
+package com.evgeny.app.jojoengrish.api;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.evgeny.app.jojoengrish.models.SoundModel;
-import com.evgeny.app.jojoengrish.sqlite.exceptions.NotFoundException;
+import com.evgeny.app.jojoengrish.api.exceptions.NotFoundException;
 
 import java.util.ArrayList;
 
@@ -27,8 +28,6 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SoundsTableFeeder.makeContract());
         db.execSQL(TagsTableFeeder.makeContract());
-
-
     }
 
     @Override
@@ -44,14 +43,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public boolean postSound(String name, int sound_address, int picture_address, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
-// Create a new map of values, where column names are the keys
+
         ContentValues values = new ContentValues();
         values.put(SoundsTableFeeder.KEY_NAME, name);
         values.put(SoundsTableFeeder.KEY_SOUND_ADDRESS, sound_address);
         values.put(SoundsTableFeeder.KEY_PICTURE_ADDRESS, picture_address);
         values.put(SoundsTableFeeder.KEY_DESCRIPTION, description);
 
-// Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(SoundsTableFeeder.TABLE_NAME, null, values);
         db.close();
         if (newRowId == -1) {
@@ -91,12 +89,12 @@ public class DbHelper extends SQLiteOpenHelper {
             return new SoundModel(id, name, sound_adress, picture_adress, description);
         }
         data.close();
+        db.close();
         throw new NotFoundException(nameToFind + " was not found");
     }
 
     public boolean postTag(int id, String tag){
         SQLiteDatabase db = this.getWritableDatabase();
-// Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(TagsTableFeeder.KEY_TAG, tag);
         values.put(TagsTableFeeder.KEY_ID, id);
@@ -118,6 +116,23 @@ public class DbHelper extends SQLiteOpenHelper {
             listID.add(data.getInt(data.getColumnIndex(TagsTableFeeder.KEY_ID)));
         }
         data.close();
+        db.close();
         return  listID;
     }
+
+    public long countTags(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, TagsTableFeeder.TABLE_NAME);
+        db.close();
+        return count;
+    }
+
+    public long countSounds(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, SoundsTableFeeder.TABLE_NAME);
+        db.close();
+        return count;
+    }
+
+
 }

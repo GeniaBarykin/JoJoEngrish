@@ -1,6 +1,6 @@
-package com.evgeny.app.jojoengrish.sqlite;
+package com.evgeny.app.jojoengrish.api;
 
-import com.evgeny.app.jojoengrish.sqlite.exceptions.NotFoundException;
+import com.evgeny.app.jojoengrish.api.exceptions.NotFoundException;
 
 public abstract class TagsTableFeeder {
     public static final String TABLE_NAME = "tags";

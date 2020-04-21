@@ -1,7 +1,6 @@
-package com.evgeny.app.jojoengrish.sqlite;
+package com.evgeny.app.jojoengrish.api;
 
 import com.evgeny.app.jojoengrish.R;
-import com.evgeny.app.jojoengrish.sqlite.DbHelper;
 
 public abstract class SoundsTableFeeder {
     public static final String TABLE_NAME= "sounds";
