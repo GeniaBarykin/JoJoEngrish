@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private boolean showSearch;
+    private FloatingActionButton fab;
+    private ConstraintLayout searchBar;
+    private  ImageView searchImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +44,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initializeDb();
         initialiseRecyclerView();
-
-
+        searchBar = findViewById(R.id.searchConst);
+        searchImage = findViewById(R.id.searchImage);
+        showSearch=false;
+        searchBar.setVisibility(View.GONE);
+        searchImage.setVisibility(View.GONE);
+        fab=findViewById(R.id.fab);
+        fab.bringToFront();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!showSearch){
+                    showSearch=true;
+                    searchBar.setVisibility(View.VISIBLE);
+                    searchImage.setVisibility(View.VISIBLE);
+                    searchBar.bringToFront();
+                } else {
+                    showSearch=false;
+                    searchBar.setVisibility(View.GONE);
+                    searchImage.setVisibility(View.GONE);
+                }
+            }
+        });
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
         setSupportActionBar(toolbar);
-
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     private void initializeDb(){
