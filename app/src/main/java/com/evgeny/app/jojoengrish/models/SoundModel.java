@@ -11,6 +11,11 @@ public class SoundModel {
     private int picture_adress;
     private String name;
     private String description = "Content will be available in the next update";
+
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+
     public ArrayList<String> getTags() {
         return tags;
     }

@@ -17,8 +17,7 @@ public abstract class TagsTableFeeder {
     }
 
     public static void feed(DbHelper db){
-        try {
-            int id = db.getSoundId("jotaro_yare_daze");
+            int id = 1;
             db.postTag(id,"jotaro");
             db.postTag(id,"kujo");
             db.postTag(id,"yare");
@@ -27,9 +26,6 @@ public abstract class TagsTableFeeder {
             db.postTag(id,"grief");
             db.postTag(id,"stardust");
             db.postTag(id,"crusaders");
-        } catch (NotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
 }

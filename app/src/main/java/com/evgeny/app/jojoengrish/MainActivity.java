@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
         if(db.countSounds()==0){
             SoundsTableFeeder.feed(db);
         }
-        if(db.countTags()==0){
-            TagsTableFeeder.feed(db);
-        }
     }
 
     private void initialiseRecyclerView(){
@@ -91,12 +88,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View view){
-        try {
-            Player.getInstance().enable();
-            Player.getInstance().play(this,db.getSoundAddress(1));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

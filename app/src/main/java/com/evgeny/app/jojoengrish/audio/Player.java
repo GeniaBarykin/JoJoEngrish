@@ -12,14 +12,9 @@ public class Player {
     private static MediaPlayer mp;
     private static Player music;
 
-    private boolean enabled;
-
     private static final int MAX_VOLUME = 100;
     private static float volume = 0.6f;
-
-    private Player() {
-    }
-
+    private boolean playing;
     /**
      * Get volume without the instance
      *
@@ -42,10 +37,6 @@ public class Player {
         return music;
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
     /**
      * Play music
      *
@@ -54,37 +45,30 @@ public class Player {
      * @return int value of volume
      */
     public void play(Context context, int id) throws Exception {
-        if (enabled) {
             if (mp != null) {
                 mp = null;
             }
             mp = MediaPlayer.create(context, id);
+            playing=true;
             mp.setLooping(false);
             mp.setVolume(volume, volume);
             mp.start();
-        }
     }
 
     /**
      * Off the music player
      */
-    public void disable() {
-        enabled = false;
-        mp.stop();
-    }
-
-    /**
-     * On the music player
-     */
-    public void enable() {
-        enabled = true;
-    }
-
-    /**
-     * Temporally stop the player
-     */
     public void stop() {
         mp.stop();
+        playing=false;
+    }
+
+    public boolean isPlaying(){
+        if(playing) {
+            return mp.isPlaying();
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -93,7 +77,6 @@ public class Player {
      * @param vol int
      */
     public static void setVolume(int vol) {
-
         volume = (float) vol / 100f;
         mp.setVolume(volume, volume);
     }
