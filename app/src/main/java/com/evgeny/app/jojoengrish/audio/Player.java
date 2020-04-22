@@ -78,6 +78,8 @@ public class Player {
      */
     public static void setVolume(int vol) {
         volume = (float) vol / 100f;
-        mp.setVolume(volume, volume);
+        if(mp!=null) {
+            mp.setVolume(volume, volume);
+        }
     }
 }

@@ -60,6 +60,15 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
+    public void reset(){
+        SQLiteDatabase db = super.getWritableDatabase();
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
+        TagsTableFeeder.feed(this);
+        SoundsTableFeeder.feed(this);
+        db.close();
+    }
+
     public int getSoundId(String nameToFind) throws NotFoundException {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + SoundsTableFeeder.KEY_ID + " FROM " + SoundsTableFeeder.TABLE_NAME

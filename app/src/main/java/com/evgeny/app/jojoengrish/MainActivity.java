@@ -1,7 +1,11 @@
 package com.evgeny.app.jojoengrish;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import com.evgeny.app.jojoengrish.activities.InfoActivity;
+import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
@@ -104,7 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Toast.makeText(MainActivity.this, "Settings clicked", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            return true;
+        }
+        if (id == R.id.action_info) {
+            startActivity(new Intent(MainActivity.this, InfoActivity.class));
             return true;
         }
 
