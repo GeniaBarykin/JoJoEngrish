@@ -21,7 +21,7 @@ public abstract class SoundsTableFeeder {
     }
 
     public static boolean feed(DbHelper db){
-        return db.postSound("jotaro_yare_daze", R.raw.jotaroyareyaredaze, R.drawable.yare_yare_daze,"Content will be available in the next update");
+        return db.postSound("Jotaro yare daze", R.raw.jotaroyareyaredaze, R.drawable.jotaro_yare_daze,"Content will be available in the next update");
     }
 
 }
