@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/background">
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/av_bottom_banner"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_Unit_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/av_bottom_banner"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/background">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:background="#A5C3CCCA">
-
 
 
                 <SeekBar
@@ -118,7 +132,9 @@
                     app:srcCompat="@drawable/reset" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         </LinearLayout>
+
     </ScrollView>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -138,9 +154,9 @@
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_margin="8dp"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_margin="8dp"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
 
             <ImageView
@@ -173,4 +189,5 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

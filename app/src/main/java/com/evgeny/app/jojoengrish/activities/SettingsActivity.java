@@ -12,17 +12,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class SettingsActivity extends AppCompatActivity {
     private SeekBar soundBar;
     private Context context;
     private DbHelper db;
+    private AdView adView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context=this;
         db = new DbHelper(context);
+        initializeViews();
+        initializeAds();
+    }
+    private void initializeAds(){
+        adView = findViewById(R.id.av_bottom_banner);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+    private void initializeViews(){
         setContentView(R.layout.activity_settings);
         soundBar = findViewById(R.id.seekBarSound);
         soundBar.setMax(100);
