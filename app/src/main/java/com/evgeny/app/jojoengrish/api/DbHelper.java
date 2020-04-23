@@ -105,10 +105,10 @@ public class DbHelper extends SQLiteOpenHelper {
         throw new NotFoundException("Sound '" + nameToFind + "' was not found");
     }
 
-    public SoundModel getSound(String nameToFind) throws NotFoundException {
+    public SoundModel getSound(int idToFind) throws NotFoundException {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME
-                + " WHERE " + SoundsTableFeeder.KEY_NAME + " = '" + nameToFind + "'";
+                + " WHERE " + SoundsTableFeeder.KEY_ID + " = '" + idToFind + "'";
         Cursor data = db.rawQuery(query, null);
         if (data.moveToNext()) {
             int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_ID));
@@ -121,7 +121,7 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         data.close();
         db.close();
-        throw new NotFoundException(nameToFind + " was not found");
+        throw new NotFoundException(idToFind + " was not found");
     }
 
     public ArrayList<SoundModel> getSounds() {
@@ -205,9 +205,22 @@ public class DbHelper extends SQLiteOpenHelper {
         return tags;
     }
 
+    public ArrayList<String> getAllTags() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT "+ TagsTableFeeder.KEY_TAG + " FROM " + TagsTableFeeder.TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        ArrayList<String> tags = new ArrayList<>();
+        while (data.moveToNext()) {
+            tags.add(data.getString(data.getColumnIndex(TagsTableFeeder.KEY_TAG)));
+        }
+        data.close();
+        db.close();
+        return tags;
+    }
+
     public ArrayList<Integer> getIdByTag(String tagToFind) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + TagsTableFeeder.KEY_ID + " FROM " + TagsTableFeeder.TABLE_NAME
+        String query = "SELECT DISTINCT " + TagsTableFeeder.KEY_ID + " FROM " + TagsTableFeeder.TABLE_NAME
                 + " WHERE " + TagsTableFeeder.KEY_TAG + " = '" + tagToFind + "'";
         Cursor data = db.rawQuery(query, null);
         ArrayList<Integer> listID = new ArrayList<>();
@@ -225,6 +238,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.close();
         return count;
     }
+
+
 
 
 }

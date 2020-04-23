@@ -1,5 +1,6 @@
 package com.evgeny.app.jojoengrish;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.api.TagsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.models.SoundModel;
+import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
     private boolean showSearch;
     private FloatingActionButton fab;
     private ConstraintLayout searchBar;
+    private EditText searchText;
     private  ImageView searchImage;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         setContentView(R.layout.activity_main);
         initializeDb();
         initialiseRecyclerView();
@@ -62,11 +70,34 @@ public class MainActivity extends AppCompatActivity {
                     showSearch=true;
                     searchBar.setVisibility(View.VISIBLE);
                     searchImage.setVisibility(View.VISIBLE);
+                    searchImage.bringToFront();
                     searchBar.bringToFront();
+                    searchText = findViewById(R.id.searchEditText);
+                    searchText.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            String text = searchText.getText().toString();
+                            mAdapter = new RecyclerViewAdapter(context,
+                                    SearchEngine.findSoundFiles(text,db));
+                            recyclerView.setAdapter(mAdapter);
+                        }
+                    });
                 } else {
                     showSearch=false;
                     searchBar.setVisibility(View.GONE);
                     searchImage.setVisibility(View.GONE);
+                    mAdapter = new RecyclerViewAdapter(context,db.getSounds());
+                    recyclerView.setAdapter(mAdapter);
                 }
             }
         });
