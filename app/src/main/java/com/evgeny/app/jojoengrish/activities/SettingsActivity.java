@@ -44,7 +44,10 @@ public class SettingsActivity extends AppCompatActivity {
                                           boolean fromUser) {
                 Player.getInstance().setVolume(Integer.parseInt(soundBar.getProgress() + ""));
                 try {
-                    Player.getInstance().play(context,db.getSoundAddress(1));
+                    if(Player.getInstance().isPlaying()){
+                        Player.getInstance().stop();
+                    }
+                    Player.getInstance().play(context,db.getSoundAddress("Dio wryyy (quiet)"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -58,6 +61,14 @@ public class SettingsActivity extends AppCompatActivity {
     public void reset(View view){
         db.reset();
         if(db.countSounds()!=0 && db.countTags()!=0){
+            if(Player.getInstance().isPlaying()){
+                Player.getInstance().stop();
+            }
+            try {
+                Player.getInstance().play(context,db.getSoundAddress("Bite the dust"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Toast.makeText(this,"Database has been rebuilt",Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this,"Failed to rebuild the database. Reinstall the app, pls.",Toast.LENGTH_SHORT).show();

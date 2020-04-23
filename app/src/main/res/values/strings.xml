@@ -15,4 +15,5 @@
     <string name="action_settings">Settings</string>
     <string name="volume">Volume</string>
     <string name="reset">Hard reset database</string>
+    <string name="reset_description">First aid when smth is bugged. Restart the app after.</string>
 </resources>

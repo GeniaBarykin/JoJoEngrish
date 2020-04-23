@@ -20,8 +20,15 @@ public abstract class SoundsTableFeeder {
                 +");";
     }
 
-    public static boolean feed(DbHelper db){
-        return db.postSound("Jotaro yare daze", R.raw.jotaroyareyaredaze, R.drawable.jotaro_yare_daze,"Content will be available in the next update");
+    public static void feed(DbHelper db){
+        db.postSound("Jotaro yare daze", R.raw.jotaro_yare_daze, R.drawable.jotaro_yare_daze,
+                "When you are too tired of someone's stupidity and want a break.");
+        db.postSound("Dio WRYYY", R.raw.dio_wry, R.drawable.dio_wry,
+                "Intense vampire noise.");
+        db.postSound("Dio wryyy (quiet)", R.raw.dio_wry_quiet, R.drawable.dio_wry_quiet,
+                "Menacing voice from a coffin.");
+        db.postSound("Bite the dust", R.raw.kira_bite_the_dust, R.drawable.kira_bite_the_dust,
+                "When you are going to reset the timeline.");
     }
 
 }

@@ -17,8 +17,10 @@ import java.util.ArrayList;
 public class DbHelper extends SQLiteOpenHelper {
 
 
-    private final String SQL_DELETE_ENTRIES =
+    private final String SQL_DELETE_SOUNDS =
             "DROP TABLE IF EXISTS " + SoundsTableFeeder.TABLE_NAME;
+    private final String SQL_DELETE_TAGS =
+            "DROP TABLE IF EXISTS " + TagsTableFeeder.TABLE_NAME;
 
     public DbHelper(@Nullable Context context) {
         super(context, SoundsTableFeeder.TABLE_NAME, null, 1);
@@ -32,7 +34,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DELETE_SOUNDS);
+        db.execSQL(SQL_DELETE_TAGS);
         onCreate(db);
     }
 
@@ -62,11 +65,30 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void reset(){
         SQLiteDatabase db = super.getWritableDatabase();
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DELETE_SOUNDS);
+        db.execSQL(SQL_DELETE_TAGS);
         onCreate(db);
-        TagsTableFeeder.feed(this);
         SoundsTableFeeder.feed(this);
+        try {
+            TagsTableFeeder.feed(this);
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
         db.close();
+    }
+
+    public int getSoundAddress(String nameToFind) throws NotFoundException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + SoundsTableFeeder.KEY_SOUND_ADDRESS + " FROM " + SoundsTableFeeder.TABLE_NAME
+                + " WHERE " + SoundsTableFeeder.KEY_NAME + " = '" + nameToFind + "'";
+        Cursor data = db.rawQuery(query, null);
+        if (data.moveToNext()) {
+            int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
+            data.close();
+            return id;
+        }
+        data.close();
+        throw new NotFoundException("Sound '" + nameToFind + "' was not found");
     }
 
     public int getSoundId(String nameToFind) throws NotFoundException {
@@ -118,7 +140,11 @@ public class DbHelper extends SQLiteOpenHelper {
         data.close();
         db.close();
         if(countTags()==0){
-            TagsTableFeeder.feed(this);
+            try {
+                TagsTableFeeder.feed(this);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
         }
         for (SoundModel sound :
                 sounds) {
@@ -127,22 +153,23 @@ public class DbHelper extends SQLiteOpenHelper {
         return sounds;
     }
 
-    public int getSoundAddress(int id) throws NotFoundException {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + SoundsTableFeeder.KEY_SOUND_ADDRESS + " FROM "
-                + SoundsTableFeeder.TABLE_NAME
-                + " WHERE " + SoundsTableFeeder.KEY_ID + " = '" + id + "'";
-        Cursor data = db.rawQuery(query, null);
-        if (data.moveToNext()) {
-            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
+//    public int getSoundAddress(int id) throws NotFoundException {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String query = "SELECT " + SoundsTableFeeder.KEY_SOUND_ADDRESS + " FROM "
+//                + SoundsTableFeeder.TABLE_NAME
+//                + " WHERE " + SoundsTableFeeder.KEY_ID + " = '" + id + "'";
+//        Cursor data = db.rawQuery(query, null);
+//        if (data.moveToNext()) {
+//            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
+//
+//            data.close();
+//            return sound_adress;
+//        }
+//        data.close();
+//        db.close();
+//        throw new NotFoundException("Sound '" + id + "' was not found");
+//    }
 
-            data.close();
-            return sound_adress;
-        }
-        data.close();
-        db.close();
-        throw new NotFoundException("Sound '" + id + "' was not found");
-    }
 
     public long countSounds() {
         SQLiteDatabase db = this.getReadableDatabase();

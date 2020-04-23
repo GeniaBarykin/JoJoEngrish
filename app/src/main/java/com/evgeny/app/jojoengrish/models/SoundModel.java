@@ -10,7 +10,7 @@ public class SoundModel {
     private int sound_adress;
     private int picture_adress;
     private String name;
-    private String description = "Content will be available in the next update";
+    private String description = "If u see this message, than smth is wrong. Pls, reset the database and restart the program.";
 
     public void setTags(ArrayList<String> tags) {
         this.tags = tags;
@@ -48,6 +48,7 @@ public class SoundModel {
         this.sound_adress = soundID;
         this.picture_adress = pictureID;
         this.name = name;
+        this.description = description;
     }
 
     @NonNull
