@@ -56,6 +56,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initializeDb();
         initialiseRecyclerView();
+        initializeViews();
+    }
+
+    private void initializeDb(){
+        db= new DbHelper(this);
+        if(db.countSounds()==0 && db.countSounds()<4){
+            SoundsTableFeeder.feed(db);
+        }
+
+    }
+
+    private void initialiseRecyclerView(){
+        recyclerView = findViewById(R.id.soundsRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new RecyclerViewAdapter(this,db.getSounds());
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    private void initializeViews(){
         searchBar = findViewById(R.id.searchConst);
         searchImage = findViewById(R.id.searchImage);
         showSearch=false;
@@ -105,22 +126,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
         setSupportActionBar(toolbar);
-    }
-
-    private void initializeDb(){
-        db= new DbHelper(this);
-        if(db.countSounds()==0){
-            SoundsTableFeeder.feed(db);
-        }
-    }
-
-    private void initialiseRecyclerView(){
-        recyclerView = (RecyclerView) findViewById(R.id.soundsRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclerViewAdapter(this,db.getSounds());
-        recyclerView.setAdapter(mAdapter);
     }
 
     @Override

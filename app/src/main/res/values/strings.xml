@@ -16,4 +16,6 @@
     <string name="volume">Volume</string>
     <string name="reset">Hard reset database</string>
     <string name="reset_description">First aid when smth is bugged. Restart the app after.</string>
+    <string name="banner_ad_Unit_Id">ca-app-pub-9425383241584535~2611321204</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-9425383241584535/9108199377</string>
 </resources>
