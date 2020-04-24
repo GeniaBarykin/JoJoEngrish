@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
@@ -24,7 +23,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeDb();
-        initialiseRecyclerView();
+
         initializeViews();
         initializeAdv();
     }
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Player.getInstance().loadVolume(this);
-
+        initialiseRecyclerView();
     }
 
     private void initializeAdv(){

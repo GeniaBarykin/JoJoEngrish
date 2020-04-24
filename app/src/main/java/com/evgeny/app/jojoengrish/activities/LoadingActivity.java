@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -18,7 +17,7 @@ public class LoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_loading);
 
         final ImageView imageView = findViewById(R.id.logoImage);
         final int angle = 0;
