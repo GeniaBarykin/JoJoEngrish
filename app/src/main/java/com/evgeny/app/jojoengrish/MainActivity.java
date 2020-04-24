@@ -2,46 +2,36 @@ package com.evgeny.app.jojoengrish;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
+import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
-import com.evgeny.app.jojoengrish.api.TagsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
-import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private DbHelper db;
@@ -61,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context=this;
         setContentView(R.layout.activity_main);
+
         initializeDb();
         initialiseRecyclerView();
         initializeViews();
