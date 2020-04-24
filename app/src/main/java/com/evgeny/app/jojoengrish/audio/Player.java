@@ -1,7 +1,9 @@
 package com.evgeny.app.jojoengrish.audio;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.preference.PreferenceManager;
 
 /**
  * Background music player
@@ -13,7 +15,7 @@ public class Player {
     private static Player music;
 
     private static final int MAX_VOLUME = 100;
-    private static float volume = 0.6f;
+    private static float volume;
     private boolean playing;
     /**
      * Get volume without the instance
@@ -35,6 +37,13 @@ public class Player {
             music = new Player();
         }
         return music;
+    }
+
+    public void loadVolume(Context context){
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        String jsonString = settings.getString("volume", "50");
+        Integer vol = Integer.parseInt(jsonString);
+        volume = (float) vol / 100f;
     }
 
     /**
@@ -76,10 +85,14 @@ public class Player {
      *
      * @param vol int
      */
-    public static void setVolume(int vol) {
+    public static void setVolume(int vol, Context context) {
         volume = (float) vol / 100f;
         if(mp!=null) {
             mp.setVolume(volume, volume);
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("volume", vol + "");
+            editor.apply();
         }
     }
 }

@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                Player.getInstance().setVolume(Integer.parseInt(soundBar.getProgress() + ""));
+                Player.getInstance().setVolume(Integer.parseInt(soundBar.getProgress() + ""),context);
                 try {
                     if(Player.getInstance().isPlaying()){
                         Player.getInstance().stop();

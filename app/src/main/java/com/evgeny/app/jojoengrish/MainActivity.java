@@ -66,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
         initializeViews();
         initializeAdv();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Player.getInstance().loadVolume(this);
+
+    }
+
     private void initializeAdv(){
         MobileAds.initialize(this,getString(R.string.addmob_app_id));
         adView = new InterstitialAd(this);
