@@ -3,7 +3,6 @@ package com.evgeny.app.jojoengrish;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
@@ -13,9 +12,6 @@ import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchText;
     private  ImageView searchImage;
     private Context context;
-    private InterstitialAd adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,23 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeAdv(){
         MobileAds.initialize(this,getString(R.string.addmob_app_id));
-        adView = new InterstitialAd(this);
-        adView.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-        adView.setAdListener(new AdListener(){
-            @Override
-            public void onAdLoaded() {
-                displayInterstitial();
-            }
-        });
     }
 
-    private void displayInterstitial() {
-        if(adView.isLoaded()){
-            adView.show();
-        }
-    }
 
     private void initializeDb(){
         db= new DbHelper(this);

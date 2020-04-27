@@ -11,10 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.evgeny.app.jojoengrish.R;
 
 public class InfoActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
     }
 
     public void goBack(View view){
@@ -26,4 +29,10 @@ public class InfoActivity extends AppCompatActivity {
         i.setData(Uri.parse("http://davidproduction.jp/english/"));
         startActivity(i);
     }
+
+    public void viewAdv(View view){
+        startActivity(new Intent(InfoActivity.this, AdvActivity.class));
+    }
+
+
 }
