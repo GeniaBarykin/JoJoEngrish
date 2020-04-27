@@ -60,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(Player.getInstance().isPlaying()){
                         Player.getInstance().stop();
                     }
-                    Player.getInstance().play(context,db.getSoundAddress("Dio wryyy (quiet)"));
+                    Player.getInstance().play(context,db.getSoundAddress("Dio wry (quiet)"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

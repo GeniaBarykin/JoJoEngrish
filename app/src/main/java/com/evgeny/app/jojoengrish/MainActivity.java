@@ -1,7 +1,9 @@
 package com.evgeny.app.jojoengrish;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
@@ -25,11 +27,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private DbHelper db;
@@ -118,6 +124,17 @@ public class MainActivity extends AppCompatActivity {
                     searchImage.bringToFront();
                     searchBar.bringToFront();
                     searchText = findViewById(R.id.searchEditText);
+                    searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+                        @Override
+                        public boolean onEditorAction(TextView v, int keyCode, KeyEvent event) {
+                            if (event!=null && event.getAction() == EditorInfo.IME_ACTION_SEARCH) {
+                                hideKeyboard();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
                     searchText.addTextChangedListener(new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -141,11 +158,12 @@ public class MainActivity extends AppCompatActivity {
                     showSearch=false;
                     searchBar.setVisibility(View.GONE);
                     searchImage.setVisibility(View.GONE);
-                    mAdapter = new RecyclerViewAdapter(context,db.getSounds());
+                    hideKeyboard();
                     recyclerView.setAdapter(mAdapter);
                 }
             }
         });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
@@ -177,6 +195,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void hideKeyboard() {
+        Activity activity = this;
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

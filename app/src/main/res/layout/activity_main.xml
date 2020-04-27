@@ -32,8 +32,6 @@
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="bottom"
                 android:includeFontPadding="false"
-                android:outlineAmbientShadowColor="#151515"
-                android:outlineSpotShadowColor="#807878"
                 android:shadowColor="#302D2D"
                 android:shadowDx="1"
                 android:shadowDy="2"
