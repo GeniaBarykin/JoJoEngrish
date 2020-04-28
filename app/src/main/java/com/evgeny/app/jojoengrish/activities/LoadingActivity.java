@@ -12,7 +12,7 @@ import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
 
 public class LoadingActivity extends AppCompatActivity {
-    private static int STATIC_TIME_OUT = 2500;
+    private static int STATIC_TIME_OUT = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,6 +16,7 @@ import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.models.SoundModel;
+import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
@@ -140,6 +141,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             adView.getAdvertiserView().setVisibility(View.VISIBLE);
             ((TextView)adView.getAdvertiserView()).setText(unifiedNativeAd.getAdvertiser());
         }
+        MediaView mediaView = (MediaView) adView.findViewById(R.id.ad_media);
+        adView.setMediaView(mediaView);
         adView.setNativeAd(unifiedNativeAd);
     }
 
@@ -161,7 +164,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class UnifiedNativeAdViewHolder extends MyViewHolder{
         private UnifiedNativeAdView adView;
-
         public UnifiedNativeAdView getAdView(){
             return adView;
         }
@@ -177,7 +179,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             adView.setStarRatingView(adView.findViewById(R.id.ad_stars));
             adView.setStoreView(adView.findViewById(R.id.ad_store));
             adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
-            //adView.setMediaView(adView.findViewById(R.id.ad_media));
         }
     }
 

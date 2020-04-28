@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
+import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
@@ -61,16 +62,17 @@ public class MainActivity extends AppCompatActivity {
         context=this;
         setContentView(R.layout.activity_main);
 
-        initializeDb();
-
-        initializeViews();
         initializeAdv();
+        initializeDb();
+        initializeViews();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Player.getInstance().loadVolume(this);
+
+
         initialiseRecyclerView();
     }
 
@@ -143,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                             String text = searchText.getText().toString();
                             recyclerItems = new ArrayList<>();
                             recyclerItems.addAll(SearchEngine.findSoundFiles(text,db));
-                            loadNativeAds();
+                            recyclerItems.addAll(nativeAdList);
                             mAdapter = new RecyclerViewAdapter(context,recyclerItems
                                     );
                             recyclerView.setAdapter(mAdapter);
