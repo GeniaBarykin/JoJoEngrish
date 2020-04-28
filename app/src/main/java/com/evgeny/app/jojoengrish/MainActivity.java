@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private  ImageView searchImage;
     private Context context;
     public static  int NUMBER_OF_ADS = 1;
-    private int minAdPosition = 2;
+    private int minAdPosition = 4;
     AdLoader adLoader;
     private List<Object> recyclerItems = new ArrayList<>();
     private List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
                                 for (int i = 0; i < minAdPosition; i++) {
                                     recyclerItems.add(sounds.get(i));
                                 }
+                            } else {
+                                recyclerItems.addAll(sounds);
                             }
                             recyclerItems.addAll(nativeAdList);
                             if(sounds.size()>minAdPosition){
