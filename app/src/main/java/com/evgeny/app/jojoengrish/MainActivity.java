@@ -12,7 +12,11 @@ import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +37,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private DbHelper db;
     private RecyclerView recyclerView;
@@ -44,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchText;
     private  ImageView searchImage;
     private Context context;
+    public static  int NUMBER_OF_ADS = 1;
+    AdLoader adLoader;
+    private List<Object> recyclerItems = new ArrayList<>();
+    private List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclerViewAdapter(this,db.getSounds());
+        loadNativeAds();
+        recyclerItems.addAll(db.getSounds());
+        mAdapter = new RecyclerViewAdapter(this,recyclerItems);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -129,8 +141,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String text = searchText.getText().toString();
-                            mAdapter = new RecyclerViewAdapter(context,
-                                    SearchEngine.findSoundFiles(text,db));
+                            recyclerItems = new ArrayList<>();
+                            recyclerItems.addAll(SearchEngine.findSoundFiles(text,db));
+                            loadNativeAds();
+                            mAdapter = new RecyclerViewAdapter(context,recyclerItems
+                                    );
                             recyclerView.setAdapter(mAdapter);
                         }
                     });
@@ -189,4 +204,36 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    private void loadNativeAds(){
+        AdLoader.Builder builder = new AdLoader.Builder(this, getString(R.string.native_ad_Unit_Id));
+        adLoader = builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
+            @Override
+            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
+                nativeAdList.add(unifiedNativeAd);
+                if(!adLoader.isLoading()){
+                    insertAds();
+                }
+            }
+        }).withAdListener(new AdListener(){
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                if(!adLoader.isLoading()){
+                    insertAds();
+                }
+            }
+        }).build();
+        adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
+    }
+
+    private void insertAds(){
+        if(nativeAdList.size()<0){
+            return;
+        }
+        int offset = (recyclerItems.size() / nativeAdList.size()+1);
+        int index = 0;
+        for(UnifiedNativeAd ad:nativeAdList){
+            recyclerItems.add(ad);
+        }
+    }
 }
