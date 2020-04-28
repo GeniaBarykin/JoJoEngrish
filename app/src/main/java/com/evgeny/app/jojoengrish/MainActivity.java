@@ -12,6 +12,7 @@ import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private  ImageView searchImage;
     private Context context;
     public static  int NUMBER_OF_ADS = 1;
+    private int minAdPosition = 2;
     AdLoader adLoader;
     private List<Object> recyclerItems = new ArrayList<>();
     private List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
@@ -144,8 +146,18 @@ public class MainActivity extends AppCompatActivity {
                         public void afterTextChanged(Editable s) {
                             String text = searchText.getText().toString();
                             recyclerItems = new ArrayList<>();
-                            recyclerItems.addAll(SearchEngine.findSoundFiles(text,db));
+                            List<SoundModel> sounds = SearchEngine.findSoundFiles(text,db);
+                            if(sounds.size()>minAdPosition){
+                                for (int i = 0; i < minAdPosition; i++) {
+                                    recyclerItems.add(sounds.get(i));
+                                }
+                            }
                             recyclerItems.addAll(nativeAdList);
+                            if(sounds.size()>minAdPosition){
+                                for (int i = minAdPosition; i < sounds.size(); i++) {
+                                    recyclerItems.add(sounds.get(i));
+                                }
+                            }
                             mAdapter = new RecyclerViewAdapter(context,recyclerItems
                                     );
                             recyclerView.setAdapter(mAdapter);
