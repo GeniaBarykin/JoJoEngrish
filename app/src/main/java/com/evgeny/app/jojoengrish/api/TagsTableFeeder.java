@@ -212,6 +212,21 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "be");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
+        id = db.getSoundId(Files.HEY_BABY);
+        db.postTag(id, "zeppeli");
+        db.postTag(id, "will");
+        db.postTag(id, "antonio");
+        db.postTag(id, "phantom");
+        db.postTag(id, "blood");
+        id = db.getSoundId(Files.YOU_FOOL);
+        db.postTag(id, "Braka");
+        db.postTag(id, "Monoga");
+        db.postTag(id, "you");
+        db.postTag(id, "fool");
+        db.postTag(id, "german");
+        db.postTag(id, "rudol");
+        db.postTag(id, "von");
+        db.postTag(id, "stroheim");
 
 
 

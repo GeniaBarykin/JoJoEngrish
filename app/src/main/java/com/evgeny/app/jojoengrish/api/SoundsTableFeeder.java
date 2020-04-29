@@ -61,6 +61,10 @@ public abstract class SoundsTableFeeder {
                 "The problem just got bigger.");
         db.postSound(Files.SON_OF_A_BITCH, R.raw.joseph_son_of_a_bitch, R.drawable.joseph_son_of_a_bitch,
                 "The disappointment is immeasurable and the day is ruined.");
+        db.postSound(Files.HEY_BABY, R.raw.zeppeli_hey_baby, R.drawable.zeppeli_hey_baby,
+                "Baron Zeppeli nails it.");
+        db.postSound(Files.YOU_FOOL, R.raw.you_fool, R.drawable.you_fool,
+                "German science is the best in the world!.");
 
 
 

@@ -21,5 +21,7 @@ public abstract class Files {
     public static String OH_NO = "Oh no";
     public static String HOLY_SHIT = "Holy shit";
     public static String SON_OF_A_BITCH = "Son of a bitch";
+    public static String HEY_BABY = "Hey baby";
+    public static String YOU_FOOL = "You utter fool!";
 
 }
