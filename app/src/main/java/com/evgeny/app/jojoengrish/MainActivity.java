@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
-import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;

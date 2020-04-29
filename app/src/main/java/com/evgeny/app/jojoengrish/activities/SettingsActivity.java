@@ -14,7 +14,6 @@ import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 
 public class SettingsActivity extends AppCompatActivity {
     private SeekBar soundBar;

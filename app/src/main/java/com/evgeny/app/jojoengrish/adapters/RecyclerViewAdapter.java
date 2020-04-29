@@ -107,9 +107,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private void populateNativeAdView(UnifiedNativeAd unifiedNativeAd, UnifiedNativeAdView adView) {
-        ((TextView) adView.getHeadlineView()).setText(unifiedNativeAd.getHeadline());
-        ((TextView) adView.getBodyView()).setText(unifiedNativeAd.getBody());
-        ((TextView) adView.getCallToActionView()).setText(unifiedNativeAd.getCallToAction());
+        if(adView.getHeadlineView()==null){
+            adView.getHeadlineView().setVisibility(View.INVISIBLE);
+        } else {
+            ((TextView) adView.getHeadlineView()).setText(unifiedNativeAd.getHeadline());
+            adView.getHeadlineView().setVisibility(View.VISIBLE);
+        }
+        if(adView.getBodyView()==null){
+            adView.getBodyView().setVisibility(View.INVISIBLE);
+        } else {
+            ((TextView) adView.getBodyView()).setText(unifiedNativeAd.getBody());
+            adView.getBodyView().setVisibility(View.VISIBLE);
+        }
+        if(adView.getCallToActionView()==null){
+            adView.getCallToActionView().setVisibility(View.INVISIBLE);
+        } else {
+            ((TextView) adView.getCallToActionView()).setText(unifiedNativeAd.getCallToAction());
+            adView.getCallToActionView().setVisibility(View.VISIBLE);
+        }
         NativeAd.Image icon = unifiedNativeAd.getIcon();
         if (icon == null) {
             adView.getIconView().setVisibility(View.INVISIBLE);

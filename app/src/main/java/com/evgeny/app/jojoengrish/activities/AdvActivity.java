@@ -2,11 +2,7 @@ package com.evgeny.app.jojoengrish.activities;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 

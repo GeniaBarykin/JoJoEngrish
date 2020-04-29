@@ -17,7 +17,7 @@ public abstract class TagsTableFeeder {
     }
 
     public static void feed(DbHelper db) throws NotFoundException {
-        int id = db.getSoundId("Jotaro yare daze");
+        int id = db.getSoundId(Files.YARE_YARE_DAZE);
         db.postTag(id, "jotaro");
         db.postTag(id, "kujo");
         db.postTag(id, "yare");
@@ -26,7 +26,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "grief");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
-        id = db.getSoundId("Dio WRY (scared)");
+        id = db.getSoundId(Files.WRY_SCARED);
         db.postTag(id, "dio");
         db.postTag(id, "brando");
         db.postTag(id, "wryyyyyyy");
@@ -37,7 +37,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "fight");
         db.postTag(id, "scared");
         db.postTag(id, "confused");
-        id = db.getSoundId("Dio WRY (angry)");
+        id = db.getSoundId(Files.WRY_ANGRY);
         db.postTag(id, "dio");
         db.postTag(id, "brando");
         db.postTag(id, "wryyyyyyy");
@@ -47,7 +47,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "loudly");
         db.postTag(id, "fight");
         db.postTag(id, "angry");
-        id = db.getSoundId("Dio wry (quiet)");
+        id = db.getSoundId(Files.WRY_SCARED);
         db.postTag(id, "dio");
         db.postTag(id, "brando");
         db.postTag(id, "wryyyyyyy");
@@ -57,7 +57,17 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "quietly");
         db.postTag(id, "coffin");
         db.postTag(id, "menacing");
-        id = db.getSoundId("Bite the dust");
+        id = db.getSoundId(Files.BITE_THE_DUST);
+        db.postTag(id, "kira");
+        db.postTag(id, "yoshikage");
+        db.postTag(id, "killer");
+        db.postTag(id, "queen");
+        db.postTag(id, "bite");
+        db.postTag(id, "dust");
+        db.postTag(id, "reset");
+        db.postTag(id, "time");
+        db.postTag(id, "dusto");
+        id = db.getSoundId(Files.ROADROLLER);
         db.postTag(id, "kira");
         db.postTag(id, "yoshikage");
         db.postTag(id, "killer");
