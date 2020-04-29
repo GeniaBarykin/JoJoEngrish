@@ -35,6 +35,32 @@ public abstract class SoundsTableFeeder {
                 "The most stylish way to finish your opponent.");
         db.postSound(Files.ZAWARUDO, R.raw.dio_zawarudo, R.drawable.dio_zawarudo,
                 "It is time to stop.");
+        db.postSound(Files.MUDA_MUDA, R.raw.dio_muda_muda, R.drawable.dio_muda_muda,
+                "Useless, useless, USELESS!");
+        db.postSound(Files.STAND_POWER, R.raw.dio_stand_power, R.drawable.dio_stand_power,
+                "The ultimate power of a stand that controls time.");
+        db.postSound(Files.KONO_DIO_DA, R.raw.dio_kono_da, R.drawable.dio_kono_da,
+                "Do you want to know, who stole ur gf's first kiss? I was me! Dio!");
+        db.postSound(Files.JOTARO_UNDERSTAND, R.raw.jotaro_do_you_understand, R.drawable.jotaro_do_you_understand,
+                "Reply to the defeated enemy with his own line. Flex.");
+        db.postSound(Files.UNDERSTAND, R.raw.ruber_soul_understand, R.drawable.ruber_soul_understand,
+                "When you think you are going to win and want to brag with your english skills.");
+        db.postSound(Files.SPEEDWAGON, R.raw.speedwagon, R.drawable.speedwagon,
+                "It is hard to resist when they call you like this.");
+        db.postSound(Files.VERY_NICE, R.raw.joseph_very_nice, R.drawable.joseph_very_nice,
+                "Good job Ceasar-chan.");
+        db.postSound(Files.DIOOOO, R.raw.jonathan_dio, R.drawable.jonathan_dio,
+                "Hate intensifies.");
+        db.postSound(Files.OH_MY_GOD, R.raw.joseph_oh_my_god, R.drawable.joseph_oh_my_god,
+                "Old Joseph got a problem!");
+        db.postSound(Files.YES_OH_MY_GOD, R.raw.joseph_yes_oh_my_god, R.drawable.joseph_yes_oh_my_god,
+                "Flexing back on the defeated enemy.");
+        db.postSound(Files.OH_NO, R.raw.joseph_oh_no, R.drawable.joseph_oh_no,
+                "Something is wrong. I can feel it.");
+        db.postSound(Files.HOLY_SHIT, R.raw.joseph_holy_shit, R.drawable.joseph_holy_shit,
+                "The problem just got bigger.");
+        db.postSound(Files.SON_OF_A_BITCH, R.raw.joseph_son_of_a_bitch, R.drawable.joseph_son_of_a_bitch,
+                "The disappointment is immeasurable and the day is ruined.");
 
 
 
