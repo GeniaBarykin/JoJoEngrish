@@ -15,7 +15,11 @@ import com.evgeny.app.jojoengrish.api.exceptions.NotFoundException;
 import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
+    public static DbHelper getDbHelper() {
+        return dbHelper;
+    }
 
+    private static DbHelper dbHelper;
 
     private final String SQL_DELETE_SOUNDS =
             "DROP TABLE IF EXISTS " + SoundsTableFeeder.TABLE_NAME;
@@ -24,6 +28,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public DbHelper(@Nullable Context context) {
         super(context, SoundsTableFeeder.TABLE_NAME, null, 1);
+        dbHelper = this;
     }
 
     @Override

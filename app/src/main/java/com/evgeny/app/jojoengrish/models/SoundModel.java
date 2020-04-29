@@ -2,6 +2,8 @@ package com.evgeny.app.jojoengrish.models;
 
 import androidx.annotation.NonNull;
 
+import com.evgeny.app.jojoengrish.R;
+
 import java.util.ArrayList;
 
 public class SoundModel {
@@ -55,5 +57,11 @@ public class SoundModel {
     @Override
     public String toString() {
         return name;
+    }
+
+    public static SoundModel errorModel(){
+        return new SoundModel(-505, "Impossible error", 0, R.drawable.error,
+                "If you see this message, it means something went wrong with a database." +
+                        "Try to reset it via settings.");
     }
 }

@@ -33,6 +33,8 @@ public abstract class SoundsTableFeeder {
                 "When you are going to reset the timeline.");
         db.postSound(Files.ROADROLLER, R.raw.dio_roadroller, R.drawable.dio_roadroller,
                 "The most stylish way to finish your opponent.");
+        db.postSound(Files.ZAWARUDO, R.raw.dio_zawarudo, R.drawable.dio_zawarudo,
+                "It is time to stop.");
 
 
 

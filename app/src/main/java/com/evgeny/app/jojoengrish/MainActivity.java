@@ -1,11 +1,13 @@
 package com.evgeny.app.jojoengrish;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
+import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
@@ -26,6 +28,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -65,16 +68,16 @@ public class MainActivity extends AppCompatActivity {
 
         initializeAdv();
         initializeDb();
+
         initializeViews();
+        initialiseRecyclerView();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Player.getInstance().loadVolume(this);
-
-
-        initialiseRecyclerView();
     }
 
     private void initializeAdv(){
@@ -83,11 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initializeDb(){
-        db= new DbHelper(this);
-        if(db.countSounds()==0 && db.countSounds()<4){
-            SoundsTableFeeder.feed(db);
-        }
-
+        db = DbHelper.getDbHelper();
     }
 
     private void initialiseRecyclerView(){
@@ -97,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         loadNativeAds();
         recyclerItems.addAll(db.getSounds());
+        if(recyclerItems.size()==0){
+            recyclerItems.add(SoundModel.errorModel());
+        }
         mAdapter = new RecyclerViewAdapter(this,recyclerItems);
         recyclerView.setAdapter(mAdapter);
     }
@@ -251,4 +253,5 @@ public class MainActivity extends AppCompatActivity {
             recyclerItems.add(ad);
         }
     }
+
 }

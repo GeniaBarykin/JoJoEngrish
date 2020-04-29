@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,30 +76,38 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         int viewType = getItemViewType(position);
         switch (viewType) {
             case UNIFIED_NATIVE_AD_VIEW_TYPE:
-                UnifiedNativeAd unifiedNativeAd = (UnifiedNativeAd) dataset.get(position);
-                populateNativeAdView(unifiedNativeAd, ((UnifiedNativeAdViewHolder) holder).getAdView());
+                try {
+                    UnifiedNativeAd unifiedNativeAd = (UnifiedNativeAd) dataset.get(position);
+                    populateNativeAdView(unifiedNativeAd, ((UnifiedNativeAdViewHolder) holder).getAdView());
+                } catch (Exception e) {
+                    Toast.makeText(context, "Failed to load the adv", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case MENU_ITEM_VIEW_TYPE:
-                // - get element from your dataset at this position
-                // - replace the contents of the view with that element
-                final SoundModel model = (SoundModel) dataset.get(position);
-                holder.name.setText(model.getName());
-                holder.tags.setText(model.getDescription());
-                holder.picture.setImageResource(model.getPicture_adress());
-                holder.card.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (player.isPlaying()) {
-                            player.stop();
-                        } else {
-                            try {
-                                player.play(context, model.getSound_adress());
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                try {
+                    // - get element from your dataset at this position
+                    // - replace the contents of the view with that element
+                    final SoundModel model = (SoundModel) dataset.get(position);
+                    holder.name.setText(model.getName());
+                    holder.tags.setText(model.getDescription());
+                    holder.picture.setImageResource(model.getPicture_adress());
+                    holder.card.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (player.isPlaying()) {
+                                player.stop();
+                            } else {
+                                try {
+                                    player.play(context, model.getSound_adress());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                } catch (Exception e) {
+                    Toast.makeText(context, "Failed to load the sound", Toast.LENGTH_SHORT).show();
+                }
 
         }
 
@@ -107,24 +116,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private void populateNativeAdView(UnifiedNativeAd unifiedNativeAd, UnifiedNativeAdView adView) {
-        if(adView.getHeadlineView()==null){
-            adView.getHeadlineView().setVisibility(View.INVISIBLE);
-        } else {
-            ((TextView) adView.getHeadlineView()).setText(unifiedNativeAd.getHeadline());
-            adView.getHeadlineView().setVisibility(View.VISIBLE);
-        }
-        if(adView.getBodyView()==null){
-            adView.getBodyView().setVisibility(View.INVISIBLE);
-        } else {
-            ((TextView) adView.getBodyView()).setText(unifiedNativeAd.getBody());
-            adView.getBodyView().setVisibility(View.VISIBLE);
-        }
-        if(adView.getCallToActionView()==null){
-            adView.getCallToActionView().setVisibility(View.INVISIBLE);
-        } else {
-            ((TextView) adView.getCallToActionView()).setText(unifiedNativeAd.getCallToAction());
-            adView.getCallToActionView().setVisibility(View.VISIBLE);
-        }
+
+        ((TextView) adView.getHeadlineView()).setText(unifiedNativeAd.getHeadline());
+        ((TextView) adView.getBodyView()).setText(unifiedNativeAd.getBody());
+        ((TextView) adView.getCallToActionView()).setText(unifiedNativeAd.getCallToAction());
         NativeAd.Image icon = unifiedNativeAd.getIcon();
         if (icon == null) {
             adView.getIconView().setVisibility(View.INVISIBLE);
@@ -132,29 +127,29 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ((ImageView) adView.getIconView()).setImageDrawable(icon.getDrawable());
             adView.getIconView().setVisibility(View.VISIBLE);
         }
-        if(unifiedNativeAd.getPrice()==null){
+        if (unifiedNativeAd.getPrice() == null) {
             adView.getPriceView().setVisibility(View.INVISIBLE);
         } else {
             adView.getPriceView().setVisibility(View.VISIBLE);
-            ((TextView)adView.getPriceView()).setText(unifiedNativeAd.getPrice());
+            ((TextView) adView.getPriceView()).setText(unifiedNativeAd.getPrice());
         }
-        if(unifiedNativeAd.getStarRating()==null){
+        if (unifiedNativeAd.getStarRating() == null) {
             adView.getStarRatingView().setVisibility(View.INVISIBLE);
         } else {
             adView.getStarRatingView().setVisibility(View.VISIBLE);
-            ((RatingBar)adView.getStarRatingView()).setRating(unifiedNativeAd.getStarRating().floatValue());
+            ((RatingBar) adView.getStarRatingView()).setRating(unifiedNativeAd.getStarRating().floatValue());
         }
-        if(unifiedNativeAd.getStore()==null){
+        if (unifiedNativeAd.getStore() == null) {
             adView.getStoreView().setVisibility(View.INVISIBLE);
         } else {
             adView.getStoreView().setVisibility(View.VISIBLE);
-            ((TextView)adView.getStoreView()).setText(unifiedNativeAd.getStore());
+            ((TextView) adView.getStoreView()).setText(unifiedNativeAd.getStore());
         }
-        if(unifiedNativeAd.getAdvertiser()==null){
+        if (unifiedNativeAd.getAdvertiser() == null) {
             adView.getAdvertiserView().setVisibility(View.INVISIBLE);
         } else {
             adView.getAdvertiserView().setVisibility(View.VISIBLE);
-            ((TextView)adView.getAdvertiserView()).setText(unifiedNativeAd.getAdvertiser());
+            ((TextView) adView.getAdvertiserView()).setText(unifiedNativeAd.getAdvertiser());
         }
         MediaView mediaView = (MediaView) adView.findViewById(R.id.ad_media);
         adView.setMediaView(mediaView);
@@ -170,16 +165,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemViewType(int position) {
-        if(dataset.get(position) instanceof SoundModel){
+        if (dataset.get(position) instanceof SoundModel) {
             return MENU_ITEM_VIEW_TYPE;
         } else {
             return UNIFIED_NATIVE_AD_VIEW_TYPE;
         }
     }
 
-    public class UnifiedNativeAdViewHolder extends MyViewHolder{
+    public class UnifiedNativeAdViewHolder extends MyViewHolder {
         private UnifiedNativeAdView adView;
-        public UnifiedNativeAdView getAdView(){
+
+        public UnifiedNativeAdView getAdView() {
             return adView;
         }
 
@@ -196,7 +192,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
         }
     }
-
 
 
 }

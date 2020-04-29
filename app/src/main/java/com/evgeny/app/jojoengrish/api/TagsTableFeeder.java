@@ -68,15 +68,27 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "time");
         db.postTag(id, "dusto");
         id = db.getSoundId(Files.ROADROLLER);
-        db.postTag(id, "kira");
-        db.postTag(id, "yoshikage");
-        db.postTag(id, "killer");
-        db.postTag(id, "queen");
-        db.postTag(id, "bite");
-        db.postTag(id, "dust");
-        db.postTag(id, "reset");
+        db.postTag(id, "dio");
+        db.postTag(id, "brando");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
         db.postTag(id, "time");
-        db.postTag(id, "dusto");
+        db.postTag(id, "stop");
+        db.postTag(id, "road");
+        db.postTag(id, "roller");
+        db.postTag(id, "da");
+        id = db.getSoundId(Files.ZAWARUDO);
+        db.postTag(id, "dio");
+        db.postTag(id, "brando");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "time");
+        db.postTag(id, "stop");
+        db.postTag(id, "the");
+        db.postTag(id, "world");
+        db.postTag(id, "za");
+        db.postTag(id, "warudo");
+
 
 
 

@@ -6,6 +6,7 @@ public class Files {
     public static String WRY_ANGRY ="Dio WRY (angry)";
     public static String WRY_QUIET ="Dio wry (quiet)";
     public static String BITE_THE_DUST ="Bite the dust";
-    public static String ROADROLLER ="Roadroller";
+    public static String ROADROLLER ="Road roller da!";
+    public static String ZAWARUDO    ="ZA WARUDO!";
 
 }
