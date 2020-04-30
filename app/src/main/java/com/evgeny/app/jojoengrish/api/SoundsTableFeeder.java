@@ -35,6 +35,8 @@ public abstract class SoundsTableFeeder {
                 "Muhammad Avdol?!?!?!");
         db.postSound(Files.THANK_YOU, R.raw.kakyoin_thank_you, R.drawable.kakyoin_thank_you,
                 "Very polite cherry lover.");
+        db.postSound(Files.BRAVO, R.raw.polnareff_bravo, R.drawable.polnareff_bravo,
+                "Congratulations!");
         db.postSound(Files.BYE_JOJO, R.raw.dio_goodbye_jojo, R.drawable.dio_goodbye_jojo,
                 "See you later, alligator.");
         db.postSound(Files.WRY_ANGRY, R.raw.dio_wry, R.drawable.dio_wry,
@@ -89,6 +91,8 @@ public abstract class SoundsTableFeeder {
                 "Joseph's trump card.");
         db.postSound(Files.ORA_ORA, R.raw.jotaro_ora_ora, R.drawable.jotaro_ora_ora,
                 "Ora ora the shit out of you.");
+        db.postSound(Files.MUDA_MUDA_FIGHT, R.raw.dio_muda_fight, R.drawable.dio_muda_fight,
+                "Muda muda your face.");
 
 
 

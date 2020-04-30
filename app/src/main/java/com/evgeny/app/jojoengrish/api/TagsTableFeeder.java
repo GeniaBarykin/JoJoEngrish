@@ -353,6 +353,14 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "platinum");
         db.postTag(id, "ora");
         db.postTag(id, "battle");
+
+        id = db.getSoundId(Files.BRAVO);
+        db.postTag(id, "jean");
+        db.postTag(id, "pierre");
+        db.postTag(id, "polnaref");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "battle");
     }
 
 }

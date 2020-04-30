@@ -9,6 +9,7 @@ public abstract class Files {
     public static String ROADROLLER = "Road roller da!";
     public static String ZAWARUDO = "Za warudo";
     public static String MUDA_MUDA = "Muda muda";
+    public static String MUDA_MUDA_FIGHT = "Muda muda (agressive)";
     public static String STAND_POWER = "Stando powah";
     public static String KONO_DIO_DA = "Kono Dio da";
     public static String JOTARO_UNDERSTAND = "Do u understand?(Jotaro)";
@@ -35,5 +36,6 @@ public abstract class Files {
     public static String PEROLO = "Here I come";
     public static String RUN = "Run away";
     public static String ORA_ORA = "Ora ora";
+    public static String BRAVO = "Bravo";
 
 }
