@@ -77,6 +77,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "reset");
         db.postTag(id, "time");
         db.postTag(id, "dusto");
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
 
         id = db.getSoundId(Files.ROADROLLER);
         db.postTag(id, "dio");
@@ -113,6 +115,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "knife");
         db.postTag(id, "knives");
         db.postTag(id, "fight");
+
         id = db.getSoundId(Files.STAND_POWER);
         db.postTag(id, "dio");
         db.postTag(id, "brando");
@@ -361,6 +364,42 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "battle");
+
+        id = db.getSoundId(Files.KAKOYIN);
+        db.postTag(id, "kakyoin");
+        db.postTag(id, "noriaki");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "death");
+        db.postTag(id, "cherry");
+        db.postTag(id, "joseph");
+        db.postTag(id, "joestar");
+
+        id = db.getSoundId(Files.PRETTY);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "wow");
+        db.postTag(id, "pretty");
+        db.postTag(id, "okuyasu");
+        db.postTag(id, "nijimura");
+        db.postTag(id, "tomoko");
+        db.postTag(id, "higashikata");
+
+        id = db.getSoundId(Files.KILL_DA_HOE);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "koichi");
+        db.postTag(id, "hirose");
+        db.postTag(id, "echoes");
+        db.postTag(id, "bitch");
+        db.postTag(id, "beatch");
+        db.postTag(id, "beetch");
+        db.postTag(id, "kill");
+        db.postTag(id, "da");
+        db.postTag(id, "hoe");
+
+
+
     }
 
 }

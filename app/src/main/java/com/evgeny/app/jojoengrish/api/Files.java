@@ -37,5 +37,8 @@ public abstract class Files {
     public static String RUN = "Run away";
     public static String ORA_ORA = "Ora ora";
     public static String BRAVO = "Bravo";
+    public static String KAKOYIN = "Kakoyin death";
+    public static String PRETTY = "Wow pretty";
+    public static String KILL_DA_HOE = "Let's kill daho!";
 
 }
