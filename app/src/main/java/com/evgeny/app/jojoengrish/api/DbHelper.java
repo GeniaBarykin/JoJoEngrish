@@ -158,24 +158,6 @@ public class DbHelper extends SQLiteOpenHelper {
         return sounds;
     }
 
-//    public int getSoundAddress(int id) throws NotFoundException {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT " + SoundsTableFeeder.KEY_SOUND_ADDRESS + " FROM "
-//                + SoundsTableFeeder.TABLE_NAME
-//                + " WHERE " + SoundsTableFeeder.KEY_ID + " = '" + id + "'";
-//        Cursor data = db.rawQuery(query, null);
-//        if (data.moveToNext()) {
-//            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
-//
-//            data.close();
-//            return sound_adress;
-//        }
-//        data.close();
-//        db.close();
-//        throw new NotFoundException("Sound '" + id + "' was not found");
-//    }
-
-
     public long countSounds() {
         SQLiteDatabase db = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db, SoundsTableFeeder.TABLE_NAME);

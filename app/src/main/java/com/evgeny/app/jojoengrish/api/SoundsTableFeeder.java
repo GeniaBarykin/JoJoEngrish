@@ -23,10 +23,24 @@ public abstract class SoundsTableFeeder {
     public static void feed(DbHelper db){
         db.postSound(Files.YARE_YARE_DAZE, R.raw.jotaro_yare_daze, R.drawable.jotaro_yare_daze,
                 "When you are too tired of someone's stupidity and want a break.");
+        db.postSound(Files.NICE, R.raw.joseph_nice, R.drawable.joseph_nice,
+                "Sneaky Joseph takes a peek through the keyhole.");
         db.postSound(Files.WRY_SCARED, R.raw.dio_wry_scared, R.drawable.dio_wry_scared,
                 "Intense vampire noise.");
+        db.postSound(Files.NO_NO, R.raw.jotaro_no_no, R.drawable.jotaro_no_no,
+                "Will he punch you with his left arm? Maybe with his right?");
+        db.postSound(Files.YES_YES, R.raw.jotaro_yes_yes, R.drawable.jotaro_yes_yes,
+                "\" Honey, to you want to watch a movie with me?\"");
+        db.postSound(Files.YES_I_AM, R.raw.abdul_yes_i_am, R.drawable.abdul_yes_i_am,
+                "Muhammad Avdol?!?!?!");
+        db.postSound(Files.THANK_YOU, R.raw.kakyoin_thank_you, R.drawable.kakyoin_thank_you,
+                "Very polite cherry lover.");
+        db.postSound(Files.BYE_JOJO, R.raw.dio_goodbye_jojo, R.drawable.dio_goodbye_jojo,
+                "See you later, alligator.");
         db.postSound(Files.WRY_ANGRY, R.raw.dio_wry, R.drawable.dio_wry,
                 "Battle cry of a true warrior.");
+        db.postSound(Files.HELL_TO_YOU, R.raw.abdul_hell_to_you, R.drawable.abdul_hell_to_you,
+                "The iconic line.");
         db.postSound(Files.WRY_QUIET, R.raw.dio_wry_quiet, R.drawable.dio_wry_quiet,
                 "Menacing voice from a coffin.");
         db.postSound(Files.BITE_THE_DUST, R.raw.kira_bite_the_dust, R.drawable.kira_bite_the_dust,
@@ -65,6 +79,17 @@ public abstract class SoundsTableFeeder {
                 "Baron Zeppeli nails it.");
         db.postSound(Files.YOU_FOOL, R.raw.you_fool, R.drawable.you_fool,
                 "German science is the best in the world!.");
+        db.postSound(Files.SHIZA, R.raw.joseph_shiza, R.drawable.joseph_shiza,
+                "RIP, my friend.");
+        db.postSound(Files.LERO, R.raw.kakyoin_lero, R.drawable.kakyoin_lero,
+                "Bro, do not eat your cherry like that!");
+        db.postSound(Files.PEROLO, R.raw.alessi_perolo, R.drawable.alessi_perolo,
+                "Here is Johny!");
+        db.postSound(Files.RUN, R.raw.joseph_run, R.drawable.joseph_run,
+                "Joseph's trump card.");
+        db.postSound(Files.ORA_ORA, R.raw.jotaro_ora_ora, R.drawable.jotaro_ora_ora,
+                "Ora ora the shit out of you.");
+
 
 
 

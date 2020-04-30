@@ -23,5 +23,17 @@ public abstract class Files {
     public static String SON_OF_A_BITCH = "Son of a bitch";
     public static String HEY_BABY = "Hey baby";
     public static String YOU_FOOL = "You utter fool!";
+    public static String SHIZA = "SHIZAAA";
+    public static String HELL_TO_YOU = "Hell 2 u";
+    public static String BYE_JOJO = "Goodbye Jojo!";
+    public static String YES_I_AM = "Yes I am!";
+    public static String NICE = "Niceeee";
+    public static String YES_YES = "Yes yes... YES!";
+    public static String NO_NO = "No No No No";
+    public static String LERO = "Lero lero";
+    public static String THANK_YOU = "Thank you";
+    public static String PEROLO = "Here I come";
+    public static String RUN = "Run away";
+    public static String ORA_ORA = "Ora ora";
 
 }
