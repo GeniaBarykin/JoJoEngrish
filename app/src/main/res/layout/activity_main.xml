@@ -36,7 +36,7 @@
                 android:shadowDx="1"
                 android:shadowDy="2"
                 android:shadowRadius="7"
-                android:text=" audio quotes"
+                android:text="@string/header"
                 android:textColor="#E83174"
                 android:textColorHighlight="#020202"
                 android:textColorLink="#400808"

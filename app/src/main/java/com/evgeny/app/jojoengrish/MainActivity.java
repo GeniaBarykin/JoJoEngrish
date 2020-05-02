@@ -28,9 +28,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -48,13 +45,15 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private boolean showSearch;
+    private boolean showSearch, adsAreLoaded;
     private FloatingActionButton fab;
     private ConstraintLayout searchBar;
     private EditText searchText;
     private  ImageView searchImage;
     private Context context;
-    public static  int NUMBER_OF_ADS = 1;
+    public static  int NUMBER_OF_ADS = 5;
+    public static  int NUMBER_BETWEEN_ADS = 5;
+    public static  int LAST_SEEN = 0;
     private int minAdPosition = 4;
     AdLoader adLoader;
     private List<Object> recyclerItems = new ArrayList<>();
@@ -77,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(!adsAreLoaded){
+            loadNativeAds();
+        }
         Player.getInstance().loadVolume(this);
     }
 
@@ -122,56 +124,22 @@ public class MainActivity extends AppCompatActivity {
                     searchBar.bringToFront();
                     searchText = findViewById(R.id.searchEditText);
                     searchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
                         @Override
-                        public boolean onEditorAction(TextView v, int keyCode, KeyEvent event) {
-                            if (event!=null && event.getAction() == EditorInfo.IME_ACTION_SEARCH) {
+                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                            if ((actionId == EditorInfo.IME_ACTION_SEARCH)) {
+                                doSearch();
                                 hideKeyboard();
                                 return true;
                             }
                             return false;
                         }
                     });
-                    searchText.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            String text = searchText.getText().toString();
-                            recyclerItems = new ArrayList<>();
-                            List<SoundModel> sounds = SearchEngine.findSoundFiles(text,db);
-                            if(sounds.size()>minAdPosition){
-                                for (int i = 0; i < minAdPosition; i++) {
-                                    recyclerItems.add(sounds.get(i));
-                                }
-                            } else {
-                                recyclerItems.addAll(sounds);
-                            }
-                            recyclerItems.addAll(nativeAdList);
-                            if(sounds.size()>minAdPosition){
-                                for (int i = minAdPosition; i < sounds.size(); i++) {
-                                    recyclerItems.add(sounds.get(i));
-                                }
-                            }
-                            mAdapter = new RecyclerViewAdapter(context,recyclerItems
-                                    );
-                            recyclerView.setAdapter(mAdapter);
-                        }
-                    });
                 } else {
                     showSearch=false;
                     searchBar.setVisibility(View.GONE);
                     searchImage.setVisibility(View.GONE);
+                    doSearch();
                     hideKeyboard();
-                    recyclerView.setAdapter(mAdapter);
                 }
             }
         });
@@ -181,6 +149,33 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setSubtitle("");
         setSupportActionBar(toolbar);
     }
+
+    private void doSearch(){
+        String text = searchText.getText().toString();
+        if(!adsAreLoaded){
+            loadNativeAds();
+        }
+        recyclerItems = new ArrayList<>();
+        List<SoundModel> sounds = SearchEngine.findSoundFiles(text,db);
+        if(sounds.size()>minAdPosition){
+            for (int i = 0; i < sounds.size(); i++) {
+                recyclerItems.add(sounds.get(i));
+                if(nativeAdList.size()>0 && i%NUMBER_BETWEEN_ADS==0 && i>4) {
+                    recyclerItems.add(nativeAdList.get(LAST_SEEN));
+                    if(nativeAdList.size()>LAST_SEEN+1){
+                        LAST_SEEN++;
+                    } else {
+                        LAST_SEEN=0;
+                    }
+                }
+            }
+        } else {
+            recyclerItems.addAll(sounds);
+        }
+        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
+        recyclerView.setAdapter(mAdapter);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -241,6 +236,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }).build();
         adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
+        if(nativeAdList.size()>=NUMBER_OF_ADS){
+            adsAreLoaded=true;
+        }
     }
 
     private void insertAds(){

@@ -39,6 +39,13 @@ public abstract class Files {
     public static String BRAVO = "Bravo";
     public static String KAKOYIN = "Kakoyin death";
     public static String PRETTY = "Wow pretty";
-    public static String KILL_DA_HOE = "Let's kill daho!";
+    public static String KILL_DA_HOE = "Lets kill daho!";
+    public static String GO_AHEAD = "Go ahead, mr Joestar";
+    public static String ARRIVIDERCI = "Arrividerci";
+    public static String GIORNO_MUDA = "Muda muda (Giorno)";
+    public static String GIORNO_DREAM = "I have a dream";
+    public static String STICKY_FINGERS = "Sticky fingers";
+    public static String FAKE_PHONE = "Phone call";
+    public static String SONOCHIDO = "Sono Chi no Sadame";
 
 }

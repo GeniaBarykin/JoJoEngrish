@@ -2,12 +2,16 @@ package com.evgeny.app.jojoengrish.activities;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -29,6 +33,9 @@ public class AdvActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 imageView.setRotation((float) (Integer) animator.getAnimatedValue());
+                if((Integer) animator.getAnimatedValue()==720){
+                    imageView.setImageResource(R.drawable.loading_complete);
+                }
             }
         });
         animator.setDuration(STATIC_TIME_OUT);
@@ -37,6 +44,7 @@ public class AdvActivity extends Activity {
         adView = new InterstitialAd(this);
         adView.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         adView.loadAd(adRequest);
+
         if(adView.isLoading()) {
             adView.setAdListener(new AdListener() {
                 @Override
@@ -62,5 +70,10 @@ public class AdvActivity extends Activity {
             Toast.makeText(this,"Failed to show the adv",Toast.LENGTH_SHORT).show();
             finish();
         }
+    }
+
+
+    public void goBack(View view){
+        finish();
     }
 }

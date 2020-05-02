@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.api.DbHelper;
+import com.evgeny.app.jojoengrish.api.Files;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -59,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(Player.getInstance().isPlaying()){
                         Player.getInstance().stop();
                     }
-                    Player.getInstance().play(context,db.getSoundAddress("Dio wry (quiet)"));
+                    Player.getInstance().play(context,db.getSoundAddress(Files.WRY_QUIET));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -77,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
                 Player.getInstance().stop();
             }
             try {
-                Player.getInstance().play(context,db.getSoundAddress("Bite the dust"));
+                Player.getInstance().play(context,db.getSoundAddress(Files.BITE_THE_DUST));
             } catch (Exception e) {
                 e.printStackTrace();
             }

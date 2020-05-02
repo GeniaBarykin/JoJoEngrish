@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Audio quotes</string>
+    <string name="app_name">JoJo Soundboard +</string>
     <string name="action_info">Info</string>
     <string name="action_info_сontent_1">This application is just a database with pictures and
         quotes from the "JoJo Bizzare Adventure".
@@ -22,4 +22,5 @@
     <string name="interstitial_ad_unit_id">ca-app-pub-9425383241584535/9108199377</string>
     <string name="imageDescription">JoJo moment</string>
     <string name="button_adv">Support (Watch add)</string>
+    <string name="header">Soundboard +</string>
 </resources>

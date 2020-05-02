@@ -16,7 +16,7 @@
         <FrameLayout
             android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <LinearLayout
@@ -89,16 +89,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:layout_margin="16dp"                    >
-
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
                     <Button
                         android:id="@+id/support_button"
-                        android:layout_width="0dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="9"
-                        android:gravity="center"
                         android:onClick="viewAdv"
                         android:text="@string/button_adv" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -145,13 +149,11 @@
                 android:fontFamily="sans-serif-smallcaps"
                 android:gravity="bottom"
                 android:includeFontPadding="false"
-                android:outlineAmbientShadowColor="#151515"
-                android:outlineSpotShadowColor="#807878"
                 android:shadowColor="#302D2D"
                 android:shadowDx="1"
                 android:shadowDy="2"
                 android:shadowRadius="7"
-                android:text=" audio quotes"
+                android:text="@string/header"
                 android:textColor="#E83174"
                 android:textColorHighlight="#020202"
                 android:textColorLink="#400808"

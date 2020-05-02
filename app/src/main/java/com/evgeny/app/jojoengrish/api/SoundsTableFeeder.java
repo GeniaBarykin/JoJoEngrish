@@ -99,6 +99,20 @@ public abstract class SoundsTableFeeder {
                 "When you friends mom looks good.");
         db.postSound(Files.KILL_DA_HOE, R.raw.koichi_kill_da_hoe, R.drawable.koichi_kill_da_hoe,
                 "Beetch!");
+        db.postSound(Files.GO_AHEAD, R.raw.darby_go_ahead, R.drawable.darby_go_ahead,
+                "When you have all the cards to crush the opponent.");
+        db.postSound(Files.ARRIVIDERCI, R.raw.bruno_arrivederci, R.drawable.bruno_arrivederci,
+                "Have a good day in your afterlife!");
+        db.postSound(Files.GIORNO_MUDA, R.raw.giorno_muda, R.drawable.giorno_muda,
+                "Those kids grow so fast nowadays.");
+        db.postSound(Files.GIORNO_DREAM, R.raw.giorno_dream, R.drawable.giorno_dream,
+                "\"Giornos theme intensifies.\"");
+        db.postSound(Files.STICKY_FINGERS, R.raw.bruno_sticky_fingers, R.drawable.bruno_sticky_fingers,
+                "When you are in a toilet and want to unzip ur pants.");
+        db.postSound(Files.FAKE_PHONE, R.raw.diavolo_telephone, R.drawable.diavolo_telephone,
+                "Ringtone new meta.");
+        db.postSound(Files.SONOCHIDO, R.raw.sonochido, R.drawable.sonochido,
+                "They are bounded by fate. Google translate (c)");
 
 
 

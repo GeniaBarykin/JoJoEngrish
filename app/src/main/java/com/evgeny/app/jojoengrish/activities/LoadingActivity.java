@@ -28,6 +28,9 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 imageView.setRotation((float) (Integer) animator.getAnimatedValue());
+                if((Integer) animator.getAnimatedValue()==720){
+                    imageView.setImageResource(R.drawable.loading_complete);
+                }
             }
         });
         animator.setDuration(STATIC_TIME_OUT);
