@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
@@ -28,6 +29,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -89,6 +91,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeDb(){
         db = DbHelper.getDbHelper();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        String jsonString = settings.getString("dbVer", "0");
+        Integer db_ver = Integer.parseInt(jsonString);
+        if(db_ver< 1){
+            db.reset();
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("db", "1");
+            editor.apply();
+        }
     }
 
     private void initialiseRecyclerView(){

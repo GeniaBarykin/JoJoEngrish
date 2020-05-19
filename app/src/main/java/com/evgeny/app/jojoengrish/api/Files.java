@@ -47,5 +47,8 @@ public abstract class Files {
     public static String STICKY_FINGERS = "Sticky fingers";
     public static String FAKE_PHONE = "Phone call";
     public static String SONOCHIDO = "Sono Chi no Sadame";
+    public static String IREFUSE = "I refuse";
+    public static String HAYATO = "Hayato";
+    public static String CONTINUED = "To be continued";
 
 }

@@ -113,6 +113,12 @@ public abstract class SoundsTableFeeder {
                 "Ringtone new meta.");
         db.postSound(Files.SONOCHIDO, R.raw.sonochido, R.drawable.sonochido,
                 "They are bounded by fate. Google translate (c)");
+        db.postSound(Files.IREFUSE, R.raw.irefuse, R.drawable.irefuse,
+                "When your mom asks you for a dinner while you have a serious game.");
+        db.postSound(Files.HAYATO, R.raw.hayato, R.drawable.hayato,
+                "Who is your daddy?");
+        db.postSound(Files.CONTINUED, R.raw.to_be_continued, R.drawable.to_be_continued,
+                "At the most interesting moment!");
 
 
 

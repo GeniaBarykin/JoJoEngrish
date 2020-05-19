@@ -491,6 +491,22 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "sadame");
         db.postTag(id, "jojo");
 
+        id = db.getSoundId(Files.IREFUSE);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "rohan");
+        db.postTag(id, "kishibe");
+        db.postTag(id, "daga");
+        db.postTag(id, " kotowaru");
+
+        id = db.getSoundId(Files.HAYATO);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "hayato");
+        db.postTag(id, "kira");
+        db.postTag(id, "yoshikage");
+        db.postTag(id, "killer");
+        db.postTag(id, "queen");
 
 
     }
