@@ -182,6 +182,12 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             recyclerItems.addAll(sounds);
+            recyclerItems.add(nativeAdList.get(LAST_SEEN));
+            if(nativeAdList.size()>LAST_SEEN+1){
+                LAST_SEEN++;
+            } else {
+                LAST_SEEN=0;
+            }
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);

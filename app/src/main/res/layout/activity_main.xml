@@ -25,23 +25,12 @@
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/jojo" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-smallcaps"
-                android:gravity="bottom"
-                android:includeFontPadding="false"
-                android:shadowColor="#302D2D"
-                android:shadowDx="1"
-                android:shadowDy="2"
-                android:shadowRadius="7"
-                android:text="@string/header"
-                android:textColor="#E83174"
-                android:textColorHighlight="#020202"
-                android:textColorLink="#400808"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/soundboard" />
+
         </androidx.appcompat.widget.Toolbar>
 
 

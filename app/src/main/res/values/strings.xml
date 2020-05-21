@@ -21,6 +21,6 @@
     <string name="native_ad_Unit_Id">ca-app-pub-9425383241584535/1946327985</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-9425383241584535/9108199377</string>
     <string name="imageDescription">JoJo moment</string>
-    <string name="button_adv">Support (Watch adv)</string>
+    <string name="button_adv">Support (Watch AD)</string>
     <string name="header">Soundboard +</string>
 </resources>
