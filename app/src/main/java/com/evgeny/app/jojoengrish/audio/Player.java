@@ -62,6 +62,12 @@ public class Player {
             mp.setLooping(false);
             mp.setVolume(volume, volume);
             mp.start();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+
+                };
+            });
     }
 
     /**
@@ -69,15 +75,21 @@ public class Player {
      */
     public void stop() {
         mp.stop();
+        mp.release();
         playing=false;
     }
 
     public boolean isPlaying(){
-        if(playing) {
-            return mp.isPlaying();
-        } else {
-            return false;
+        try {
+            if (playing) {
+                return mp.isPlaying();
+            } else {
+                return false;
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+        return false;
     }
 
     /**
