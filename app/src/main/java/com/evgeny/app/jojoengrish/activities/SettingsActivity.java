@@ -55,14 +55,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                Player.getInstance().setVolume(Integer.parseInt(soundBar.getProgress() + ""),context);
                 try {
                     if(Player.getInstance().isPlaying()){
                         Player.getInstance().stop();
                     }
+                    String vol = soundBar.getProgress() + "";
+                    Player.getInstance().setVolume(Integer.parseInt(vol),context);
                     Player.getInstance().play(context,db.getSoundAddress(Files.WRY_QUIET));
                 } catch (Exception e) {
                     e.printStackTrace();
+
                 }
             }
         });

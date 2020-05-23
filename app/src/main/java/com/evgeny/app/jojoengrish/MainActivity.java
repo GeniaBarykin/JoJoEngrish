@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         if(db_ver< 1){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("db", "1");
+            editor.putString("dbVer", "1");
             editor.apply();
         }
     }
@@ -182,11 +182,13 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             recyclerItems.addAll(sounds);
-            recyclerItems.add(nativeAdList.get(LAST_SEEN));
-            if(nativeAdList.size()>LAST_SEEN+1){
-                LAST_SEEN++;
-            } else {
-                LAST_SEEN=0;
+            if(nativeAdList.size()>0) {
+                recyclerItems.add(nativeAdList.get(LAST_SEEN));
+                if (nativeAdList.size() > LAST_SEEN + 1) {
+                    LAST_SEEN++;
+                } else {
+                    LAST_SEEN = 0;
+                }
             }
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);

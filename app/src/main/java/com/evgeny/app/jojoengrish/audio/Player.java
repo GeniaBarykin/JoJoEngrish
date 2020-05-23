@@ -65,7 +65,6 @@ public class Player {
             mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 public void onCompletion(MediaPlayer mp) {
                     mp.release();
-
                 };
             });
     }
@@ -98,13 +97,10 @@ public class Player {
      * @param vol int
      */
     public static void setVolume(int vol, Context context) {
-        volume = (float) vol / 100f;
-        if(mp!=null) {
-            mp.setVolume(volume, volume);
+            volume =(float) vol /100f;
             SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("volume", vol + "");
             editor.apply();
-        }
     }
 }
