@@ -39,6 +39,13 @@ public class Player {
         return music;
     }
 
+    public static void restartPlayer(){
+        if(music.isPlaying()){
+            music.stop();
+        }
+        music = new Player();
+    }
+
     public void loadVolume(Context context){
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = settings.getString("volume", "50");

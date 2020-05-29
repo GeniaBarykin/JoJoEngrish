@@ -14,7 +14,7 @@ import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 
 public class LoadingActivity extends AppCompatActivity {
-    private static int STATIC_TIME_OUT = 3500;
+    private static int STATIC_TIME_OUT = 2500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

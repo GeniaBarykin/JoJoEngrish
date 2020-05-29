@@ -101,6 +101,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                     player.play(context, model.getSound_adress());
                                 } catch (Exception e) {
                                     e.printStackTrace();
+                                    Player.restartPlayer();
                                 }
                             }
                         }

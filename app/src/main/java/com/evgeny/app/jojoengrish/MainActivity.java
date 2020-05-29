@@ -14,6 +14,7 @@ import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.gms.ads.AdListener;
@@ -40,9 +41,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
     private DbHelper db;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchText;
     private  ImageView searchImage;
     private Context context;
-    public static  int NUMBER_OF_ADS = 5;
+    public static  int NUMBER_OF_ADS = 10;
     public static  int NUMBER_BETWEEN_ADS = 5;
     public static  int LAST_SEEN = 0;
     private int minAdPosition = 4;
@@ -64,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         context=this;
         setContentView(R.layout.activity_main);
 
@@ -72,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
         initialiseRecyclerView();
-
+        Player.restartPlayer();
     }
 
     @Override

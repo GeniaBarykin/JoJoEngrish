@@ -16,7 +16,9 @@ import com.evgeny.app.jojoengrish.audio.Player;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-public class SettingsActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class SettingsActivity extends AppCompatActivity  implements Serializable {
     private SeekBar soundBar;
     private Context context;
     private DbHelper db;

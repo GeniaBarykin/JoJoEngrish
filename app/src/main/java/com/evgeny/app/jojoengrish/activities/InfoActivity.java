@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.evgeny.app.jojoengrish.R;
 
-public class InfoActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class InfoActivity extends AppCompatActivity  implements Serializable {
 
 
     @Override
