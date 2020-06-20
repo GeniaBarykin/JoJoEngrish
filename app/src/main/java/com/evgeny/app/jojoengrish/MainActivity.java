@@ -1,6 +1,5 @@
 package com.evgeny.app.jojoengrish;
 
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,11 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
-import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
-import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.evgeny.app.jojoengrish.models.SoundModel;
@@ -27,6 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     AdLoader adLoader;
     private List<Object> recyclerItems = new ArrayList<>();
     private List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
+    private boolean order = false;
+    private String textToSearch = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         initializeAdv();
         initializeDb();
-
         initializeViews();
         initialiseRecyclerView();
         Player.restartPlayer();
@@ -102,10 +101,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
-        if(db_ver< 1){
+        if(db_ver< 2){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", "1");
+            editor.putString("dbVer", "2");
             editor.apply();
         }
     }
@@ -115,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerItems.clear();
         loadNativeAds();
         recyclerItems.addAll(db.getSounds());
         if(recyclerItems.size()==0){
@@ -162,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 }
             }
         });
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
@@ -170,37 +169,40 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     private void doSearch(){
-        String text = searchText.getText().toString();
+        textToSearch = searchText.getText().toString();
+        refillView();
+    }
+
+    private void refillView(){
         if(!adsAreLoaded){
             loadNativeAds();
         }
         recyclerItems = new ArrayList<>();
-        List<SoundModel> sounds = SearchEngine.findSoundFiles(text,db);
+        List<SoundModel> sounds = SearchEngine.findSoundFiles(textToSearch,db, order);
         if(sounds.size()>minAdPosition){
             for (int i = 0; i < sounds.size(); i++) {
                 recyclerItems.add(sounds.get(i));
                 if(nativeAdList.size()>0 && i%NUMBER_BETWEEN_ADS==0 && i>4) {
-                    recyclerItems.add(nativeAdList.get(LAST_SEEN));
-                    if(nativeAdList.size()>LAST_SEEN+1){
-                        LAST_SEEN++;
-                    } else {
-                        LAST_SEEN=0;
-                    }
+                    insertAdv();
                 }
             }
         } else {
             recyclerItems.addAll(sounds);
             if(nativeAdList.size()>0) {
-                recyclerItems.add(nativeAdList.get(LAST_SEEN));
-                if (nativeAdList.size() > LAST_SEEN + 1) {
-                    LAST_SEEN++;
-                } else {
-                    LAST_SEEN = 0;
-                }
+                insertAdv();
             }
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private void insertAdv(){
+        recyclerItems.add(nativeAdList.get(LAST_SEEN));
+        if (nativeAdList.size() > LAST_SEEN + 1) {
+            LAST_SEEN++;
+        } else {
+            LAST_SEEN = 0;
+        }
     }
 
 
@@ -249,17 +251,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
                 nativeAdList.add(unifiedNativeAd);
-                if(!adLoader.isLoading()){
-                    insertAds();
-                }
             }
         }).withAdListener(new AdListener(){
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
-                if(!adLoader.isLoading()){
-                    insertAds();
-                }
             }
         }).build();
         adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
@@ -268,15 +264,16 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
     }
 
-    private void insertAds(){
-        if(nativeAdList.size()<0){
-            return;
+    public void toggleSort(View view){
+        FloatingActionButton sorting = findViewById(R.id.abc);
+        if(order){
+            order=false;
+            sorting.setImageResource(R.drawable.icon_sort_cancel);
+        } else {
+            order=true;
+            sorting.setImageResource(R.drawable.icon_sort);
         }
-        int offset = (recyclerItems.size() / nativeAdList.size()+1);
-        int index = 0;
-        for(UnifiedNativeAd ad:nativeAdList){
-            recyclerItems.add(ad);
-        }
+        refillView();
     }
 
 }

@@ -151,12 +151,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
         }
-        for (SoundModel sound :
-                sounds) {
-                sound.setTags(getTags(sound.getID()));
-        }
         return sounds;
     }
+
+
 
     public long countSounds() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -208,7 +206,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public ArrayList<Integer> getIdByTag(String tagToFind) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT DISTINCT " + TagsTableFeeder.KEY_ID + " FROM " + TagsTableFeeder.TABLE_NAME
-                + " WHERE " + TagsTableFeeder.KEY_TAG + " = '" + tagToFind + "'";
+                + " WHERE " + TagsTableFeeder.KEY_TAG + " LIKE '%" + tagToFind + "%'";
         Cursor data = db.rawQuery(query, null);
         ArrayList<Integer> listID = new ArrayList<>();
         while (data.moveToNext()) {
@@ -217,6 +215,42 @@ public class DbHelper extends SQLiteOpenHelper {
         data.close();
         db.close();
         return listID;
+    }
+
+    public ArrayList<SoundModel> getSoundIDsByTagASC(String tagToFind) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query ="";
+        if(tagToFind.isEmpty()){
+            query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME
+            + " ORDER BY " + SoundsTableFeeder.KEY_NAME + " ASC";
+        } else {
+            query = "SELECT DISTINCT * FROM " + SoundsTableFeeder.TABLE_NAME
+                    + " INNER JOIN " + TagsTableFeeder.TABLE_NAME + " on "
+                    + SoundsTableFeeder.TABLE_NAME + "."+ SoundsTableFeeder.KEY_ID + " = "
+                    + TagsTableFeeder.TABLE_NAME + "." +TagsTableFeeder.KEY_ID
+                    + " WHERE " + TagsTableFeeder.KEY_TAG + " LIKE '%" + tagToFind + "%'"
+                    + " ORDER BY " + SoundsTableFeeder.KEY_NAME + " ASC";
+        }
+        Cursor data = db.rawQuery(query, null);
+        ArrayList<SoundModel> sounds = new ArrayList<>();
+        while (data.moveToNext()) {
+            int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_ID));
+            String name = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_NAME));
+            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
+            int picture_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_PICTURE_ADDRESS));
+            String description = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_DESCRIPTION));
+            sounds.add(new SoundModel(id, name, sound_adress, picture_adress, description));
+        }
+        data.close();
+        db.close();
+        if(countTags()==0){
+            try {
+                TagsTableFeeder.feed(this);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return sounds;
     }
 
     public long countTags() {

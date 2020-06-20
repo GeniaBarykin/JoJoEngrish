@@ -8,19 +8,10 @@ import java.util.ArrayList;
 
 public class SoundModel {
     private int ID;
-    private ArrayList<String> tags;
     private int sound_adress;
     private int picture_adress;
     private String name;
     private String description = "If u see this message, than smth is wrong. Pls, reset the database and restart the program.";
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
-    }
-
-    public ArrayList<String> getTags() {
-        return tags;
-    }
 
     public int getSound_adress() {
         return sound_adress;

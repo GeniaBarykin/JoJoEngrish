@@ -508,7 +508,69 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "killer");
         db.postTag(id, "queen");
 
+        id = db.getSoundId(Files.TIMESTOP);
+        db.postTag(id, "dio");
+        db.postTag(id, "brando");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "time");
+        db.postTag(id, "stop");
+        db.postTag(id, "fight");
+        db.postTag(id, "toki");
+        db.postTag(id, "wo");
+        db.postTag(id, "tomare");
 
+        id = db.getSoundId(Files.GOFLYING);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "narancia");
+        db.postTag(id, "ghirga");
+        db.postTag(id, "go");
+        db.postTag(id, "flying");
+        db.postTag(id, "volare");
+        db.postTag(id, "via");
+
+        id = db.getSoundId(Files.THEHANDSOUND);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "the");
+        db.postTag(id, "hand");
+        db.postTag(id, "sound");
+        db.postTag(id, "erase");
+        db.postTag(id, "okuyasu");
+        db.postTag(id, "nijimura");
+
+        id = db.getSoundId(Files.HEYHEY);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "rohan");
+        db.postTag(id, "kishibe");
+        db.postTag(id, "hey");
+        db.postTag(id, "oi");
+
+        id = db.getSoundId(Files.PILLAR);
+        db.postTag(id, "phantom");
+        db.postTag(id, "blood");
+        db.postTag(id, "pillar");
+        db.postTag(id, "men");
+        db.postTag(id, "music");
+        db.postTag(id, "ost");
+
+        id = db.getSoundId(Files.SEVEN);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "expiriece");
+        db.postTag(id, "requiem");
+        db.postTag(id, "wind");
+        db.postTag(id, "muda");
+        db.postTag(id, "giorno");
+        db.postTag(id, "giovanna");
+        db.postTag(id, "seven");
+        db.postTag(id, "page");
+        db.postTag(id, "7");
     }
 
 }

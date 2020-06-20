@@ -50,5 +50,11 @@ public abstract class Files {
     public static String IREFUSE = "I refuse";
     public static String HAYATO = "Hayato";
     public static String CONTINUED = "To be continued";
+    public static String TIMESTOP = "Time stop";
+    public static String GOFLYING = "Go flying";
+    public static String THEHANDSOUND = "The hand";
+    public static String PILLAR = "Pillar men ost";
+    public static String HEYHEY = "Oi Oi Oi";
+    public static String SEVEN = "7 page muda";
 
 }

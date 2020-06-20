@@ -119,6 +119,19 @@ public abstract class SoundsTableFeeder {
                 "Who is your daddy?");
         db.postSound(Files.CONTINUED, R.raw.to_be_continued, R.drawable.to_be_continued,
                 "At the most interesting moment!");
+        db.postSound(Files.TIMESTOP, R.raw.dio_tokiwo_tomare, R.drawable.dio_tokiwo_tomare,
+                "TOKI WO TOMARE!");
+        db.postSound(Files.GOFLYING, R.raw.narancia_volare_via, R.drawable.narancia_volare_via,
+                "VOLARE VIA! <Plane sounds on the background>");
+        db.postSound(Files.THEHANDSOUND, R.raw.okuyasu_hand, R.drawable.okuyasu_hand,
+                "<Sound of Erasing>");
+        db.postSound(Files.PILLAR, R.raw.pillar_men, R.drawable.pillar_men,
+                "The music of gods");
+        db.postSound(Files.HEYHEY, R.raw.rohan_hey_hey, R.drawable.rohan_hey_hey,
+                "Rohan's suspense intensifies.");
+        db.postSound(Files.SEVEN, R.raw.seven_page_muda, R.drawable.seven_page_muda,
+                "As you requested, my dear users <3");
+
 
 
 
