@@ -23,6 +23,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "yare");
+        db.postTag(id, "yare");
+        db.postTag(id, "daze");
         db.postTag(id, "daze");
         db.postTag(id, "good");
         db.postTag(id, "grief");
@@ -30,6 +32,8 @@ public abstract class TagsTableFeeder {
         id = db.getSoundId(Files.WRY_SCARED);
         db.postTag(id, "dio");
         db.postTag(id, "brando");
+        db.postTag(id, "wryyyyyyy");
+        db.postTag(id, "wryyyyyyy");
         db.postTag(id, "wryyyyyyy");
         db.postTag(id, "nazi");
         db.postTag(id, "phantom");
@@ -53,6 +57,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "fight");
         db.postTag(id, "angry");
         db.postTag(id, "wryyyyyyy");
+        db.postTag(id, "wryyyyyyy");
+        db.postTag(id, "wryyyyyyy");
 
         id = db.getSoundId(Files.WRY_QUIET);
         db.postTag(id, "dio");
@@ -66,6 +72,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "coffin");
         db.postTag(id, "menacing");
         db.postTag(id, "wryyyyyyy");
+        db.postTag(id, "wryyyyyyy");
+        db.postTag(id, "wryyyyyyy");
 
         id = db.getSoundId(Files.BITE_THE_DUST);
         db.postTag(id, "kira");
@@ -73,7 +81,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "killer");
         db.postTag(id, "queen");
         db.postTag(id, "bite");
+        db.postTag(id, "bite");
         db.postTag(id, "dust");
+        db.postTag(id, "dust");
+        db.postTag(id, "the");
         db.postTag(id, "reset");
         db.postTag(id, "time");
         db.postTag(id, "dusto");
@@ -88,6 +99,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "time");
         db.postTag(id, "stop");
         db.postTag(id, "road");
+        db.postTag(id, "road");
+        db.postTag(id, "roller");
         db.postTag(id, "roller");
         db.postTag(id, "da");
         db.postTag(id, "fight");
@@ -101,8 +114,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stop");
         db.postTag(id, "the");
         db.postTag(id, "world");
+        db.postTag(id, "world");
         db.postTag(id, "za");
         db.postTag(id, "fight");
+        db.postTag(id, "warudo");
         db.postTag(id, "warudo");
         db.postTag(id, "stand");
 
@@ -111,6 +126,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "brando");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
+        db.postTag(id, "muda");
         db.postTag(id, "muda");
         db.postTag(id, "knife");
         db.postTag(id, "knives");
@@ -127,10 +143,13 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "fight");
         db.postTag(id, "warudo");
         db.postTag(id, "stand");
+        db.postTag(id, "stand");
+        db.postTag(id, "power");
         db.postTag(id, "power");
         db.postTag(id, "powah");
 
         id = db.getSoundId(Files.KONO_DIO_DA);
+        db.postTag(id, "dio");
         db.postTag(id, "dio");
         db.postTag(id, "phantom");
         db.postTag(id, "blood");
@@ -138,6 +157,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "it");
         db.postTag(id, "was");
         db.postTag(id, "me");
+        db.postTag(id, "kono");
         db.postTag(id, "kono");
         db.postTag(id, "da");
 
@@ -149,6 +169,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "do");
         db.postTag(id, "you");
         db.postTag(id, "understand");
+        db.postTag(id, "understand");
 
         id = db.getSoundId(Files.UNDERSTAND);
         db.postTag(id, "rubber");
@@ -158,9 +179,13 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "do");
         db.postTag(id, "you");
         db.postTag(id, "understand");
+        db.postTag(id, "understand");
 
         id = db.getSoundId(Files.SPEEDWAGON);
         db.postTag(id, "speedwagon");
+        db.postTag(id, "speed");
+        db.postTag(id, "speed");
+        db.postTag(id, "wagon");
         db.postTag(id, "nazi");
         db.postTag(id, "soldier");
         db.postTag(id, "phantom");
@@ -173,6 +198,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "zeppeli");
         db.postTag(id, "chan");
         db.postTag(id, "very");
+        db.postTag(id, "very");
+        db.postTag(id, "nice");
         db.postTag(id, "nice");
         db.postTag(id, "nicu");
         db.postTag(id, "phantom");
@@ -184,6 +211,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "emotional");
         db.postTag(id, "angry");
         db.postTag(id, "dio");
+        db.postTag(id, "dio");
         db.postTag(id, "phantom");
         db.postTag(id, "blood");
 
@@ -192,7 +220,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "joestar");
         db.postTag(id, "emotional");
         db.postTag(id, "oh");
+        db.postTag(id, "oh");
         db.postTag(id, "my");
+        db.postTag(id, "my");
+        db.postTag(id, "god");
         db.postTag(id, "god");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
@@ -201,6 +232,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "joseph");
         db.postTag(id, "joestar");
         db.postTag(id, "oh");
+        db.postTag(id, "yes");
         db.postTag(id, "yes");
         db.postTag(id, "my");
         db.postTag(id, "god");
@@ -211,6 +243,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "emotional");
         db.postTag(id, "joseph");
         db.postTag(id, "no");
+        db.postTag(id, "no");
         db.postTag(id, "joestar");
         db.postTag(id, "oh");
         db.postTag(id, "stardust");
@@ -220,8 +253,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "emotional");
         db.postTag(id, "joseph");
         db.postTag(id, "holy");
+        db.postTag(id, "holy");
         db.postTag(id, "hor");
         db.postTag(id, "joestar");
+        db.postTag(id, "shit");
         db.postTag(id, "shit");
         db.postTag(id, "she");
         db.postTag(id, "stardust");
@@ -231,8 +266,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "emotional");
         db.postTag(id, "joseph");
         db.postTag(id, "son");
+        db.postTag(id, "son");
         db.postTag(id, "of");
         db.postTag(id, "joestar");
+        db.postTag(id, "bitch");
         db.postTag(id, "bitch");
         db.postTag(id, "be");
         db.postTag(id, "stardust");
@@ -245,6 +282,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "phantom");
         db.postTag(id, "blood");
         db.postTag(id, "hey");
+        db.postTag(id, "hey");
+        db.postTag(id, "baby");
         db.postTag(id, "baby");
 
         id = db.getSoundId(Files.YOU_FOOL);
@@ -253,6 +292,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "Braka");
         db.postTag(id, "Monoga");
         db.postTag(id, "you");
+        db.postTag(id, "you");
+        db.postTag(id, "fool");
         db.postTag(id, "fool");
         db.postTag(id, "german");
         db.postTag(id, "rudol");
@@ -265,6 +306,9 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "joseph");
         db.postTag(id, "joestar");
         db.postTag(id, "ceasar");
+        db.postTag(id, "ceasar");
+        db.postTag(id, "shiza");
+        db.postTag(id, "shiza");
         db.postTag(id, "zeppeli");
         db.postTag(id, "dead");
         db.postTag(id, "stone");
@@ -279,6 +323,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "abdol");
         db.postTag(id, "abdul");
         db.postTag(id, "hell");
+        db.postTag(id, "hell");
         db.postTag(id, "to");
         db.postTag(id, "2");
         db.postTag(id, "you");
@@ -291,13 +336,16 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "abdol");
         db.postTag(id, "abdul");
         db.postTag(id, "yes");
+        db.postTag(id, "yes");
         db.postTag(id, "I");
+        db.postTag(id, "am");
         db.postTag(id, "am");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
 
         id = db.getSoundId(Files.NICE);
         db.postTag(id, "phantom");
+        db.postTag(id, "nice");
         db.postTag(id, "blood");
         db.postTag(id, "joseph");
         db.postTag(id, "joestar");
@@ -312,6 +360,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "yes");
+        db.postTag(id, "yes");
 
         id = db.getSoundId(Files.NO_NO);
         db.postTag(id, "jotaro");
@@ -319,12 +368,14 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "no");
+        db.postTag(id, "no");
 
         id = db.getSoundId(Files.LERO);
         db.postTag(id, "kakyoin");
         db.postTag(id, "noriaki");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
+        db.postTag(id, "lero");
         db.postTag(id, "lero");
         db.postTag(id, "cherry");
 
@@ -335,6 +386,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "crusaders");
         db.postTag(id, "cherry");
         db.postTag(id, "thank");
+        db.postTag(id, "thank");
+        db.postTag(id, "you");
         db.postTag(id, "you");
 
         id = db.getSoundId(Files.PEROLO);
@@ -357,6 +410,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "joseph");
         db.postTag(id, "joestar");
         db.postTag(id, "run");
+        db.postTag(id, "run");
         db.postTag(id, "hotfoot");
         db.postTag(id, "nigerundayo");
         db.postTag(id, "smokey");
@@ -367,7 +421,9 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "star");
+        db.postTag(id, "star");
         db.postTag(id, "platinum");
+        db.postTag(id, "ora");
         db.postTag(id, "ora");
         db.postTag(id, "battle");
 
@@ -379,8 +435,10 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "crusaders");
         db.postTag(id, "battle");
         db.postTag(id, "bravo");
+        db.postTag(id, "bravo");
 
         id = db.getSoundId(Files.KAKOYIN);
+        db.postTag(id, "kakyoin");
         db.postTag(id, "kakyoin");
         db.postTag(id, "noriaki");
         db.postTag(id, "stardust");
@@ -393,6 +451,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "unbreakable");
         db.postTag(id, "diamond");
         db.postTag(id, "wow");
+        db.postTag(id, "pretty");
         db.postTag(id, "pretty");
         db.postTag(id, "okuyasu");
         db.postTag(id, "nijimura");
@@ -409,6 +468,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "beatch");
         db.postTag(id, "beetch");
         db.postTag(id, "kill");
+        db.postTag(id, "kill");
         db.postTag(id, "da");
         db.postTag(id, "hoe");
 
@@ -419,6 +479,9 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "darby");
         db.postTag(id, "j");
         db.postTag(id, ".");
+        db.postTag(id, "go");
+        db.postTag(id, "ahead");
+        db.postTag(id, "ahead");
         db.postTag(id, "daniel");
 
         id = db.getSoundId(Files.ARRIVIDERCI);
@@ -434,6 +497,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "ci");
         db.postTag(id, "chi");
         db.postTag(id, "arrividerci");
+        db.postTag(id, "arri");
 
         id = db.getSoundId(Files.GIORNO_MUDA);
         db.postTag(id, "vento");
@@ -443,6 +507,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "requiem");
         db.postTag(id, "wind");
         db.postTag(id, "muda");
+        db.postTag(id, "muda");
         db.postTag(id, "giorno");
         db.postTag(id, "giovanna");
 
@@ -451,6 +516,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "brando");
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
+        db.postTag(id, "muda");
         db.postTag(id, "muda");
         db.postTag(id, "fight");
 
@@ -462,7 +528,9 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "bruno");
         db.postTag(id, "bucciarati");
         db.postTag(id, "sticky");
+        db.postTag(id, "sticky");
         db.postTag(id, "stand");
+        db.postTag(id, "fingers");
         db.postTag(id, "fingers");
         db.postTag(id, "zipper");
 
@@ -471,6 +539,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "aureo");
         db.postTag(id, "golden");
         db.postTag(id, "wind");
+        db.postTag(id, "phone");
         db.postTag(id, "phone");
         db.postTag(id, "tele");
         db.postTag(id, "ring");
@@ -487,6 +556,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "oppening");
         db.postTag(id, "intro");
         db.postTag(id, "sono");
+        db.postTag(id, "sono");
         db.postTag(id, "chi");
         db.postTag(id, "sadame");
         db.postTag(id, "jojo");
@@ -497,11 +567,15 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "rohan");
         db.postTag(id, "kishibe");
         db.postTag(id, "daga");
-        db.postTag(id, " kotowaru");
+        db.postTag(id, "daga");
+        db.postTag(id, "kotowaru");
+        db.postTag(id, "refuse");
+        db.postTag(id, "refuse");
 
         id = db.getSoundId(Files.HAYATO);
         db.postTag(id, "unbreakable");
         db.postTag(id, "diamond");
+        db.postTag(id, "hayato");
         db.postTag(id, "hayato");
         db.postTag(id, "kira");
         db.postTag(id, "yoshikage");
@@ -514,6 +588,8 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "stardust");
         db.postTag(id, "crusaders");
         db.postTag(id, "time");
+        db.postTag(id, "time");
+        db.postTag(id, "stop");
         db.postTag(id, "stop");
         db.postTag(id, "fight");
         db.postTag(id, "toki");
@@ -530,12 +606,14 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "go");
         db.postTag(id, "flying");
         db.postTag(id, "volare");
+        db.postTag(id, "volare");
         db.postTag(id, "via");
 
         id = db.getSoundId(Files.THEHANDSOUND);
         db.postTag(id, "unbreakable");
         db.postTag(id, "diamond");
         db.postTag(id, "the");
+        db.postTag(id, "hand");
         db.postTag(id, "hand");
         db.postTag(id, "sound");
         db.postTag(id, "erase");
@@ -548,11 +626,13 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "rohan");
         db.postTag(id, "kishibe");
         db.postTag(id, "hey");
+        db.postTag(id, "hey");
         db.postTag(id, "oi");
 
         id = db.getSoundId(Files.PILLAR);
         db.postTag(id, "phantom");
         db.postTag(id, "blood");
+        db.postTag(id, "pillar");
         db.postTag(id, "pillar");
         db.postTag(id, "men");
         db.postTag(id, "music");
@@ -569,8 +649,113 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "giorno");
         db.postTag(id, "giovanna");
         db.postTag(id, "seven");
+        db.postTag(id, "seven");
         db.postTag(id, "page");
         db.postTag(id, "7");
+        db.postTag(id, "7");
+
+        //17.7.2020
+        id = db.getSoundId(Files.BOINGO_LAUGH);
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "laugh");
+        db.postTag(id, "laugh");
+        db.postTag(id, "boingo");
+        db.postTag(id, "boingo");
+
+        id = db.getSoundId(Files.KARS_LAUGH);
+        db.postTag(id, "battle");
+        db.postTag(id, "tendency");
+        db.postTag(id, "kars");
+        db.postTag(id, "kars");
+        db.postTag(id, "laugh");
+        db.postTag(id, "laugh");
+
+        id = db.getSoundId(Files.BUEN_GIORNO);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "giorno");
+        db.postTag(id, "giovanna");
+        db.postTag(id, "buen");
+        db.postTag(id, "buongiorno");
+
+        id = db.getSoundId(Files.STICKY_FIGHT);
+
+        id = db.getSoundId(Files.HELP_ME_OMG);
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "joseph");
+        db.postTag(id, "joestar");
+        db.postTag(id, "help");
+        db.postTag(id, "me");
+        db.postTag(id, "omg");
+        db.postTag(id, "oh");
+        db.postTag(id, "my");
+        db.postTag(id, "god");
+
+        id = db.getSoundId(Files.KONO_POWAH);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "jotaro");
+        db.postTag(id, "kujo");
+        db.postTag(id, "kono");
+        db.postTag(id, "power");
+        db.postTag(id, "powah");
+        db.postTag(id, "kono");
+        db.postTag(id, "power");
+        db.postTag(id, "powah");
+
+        id = db.getSoundId(Files.KARS_GUITAR);
+        db.postTag(id, "battle");
+        db.postTag(id, "tendency");
+        db.postTag(id, "kars");
+        db.postTag(id, "kars");
+        db.postTag(id, "guitar");
+        db.postTag(id, "guitar");
+
+        id = db.getSoundId(Files.PAS_PAS);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "sex");
+        db.postTag(id, "pistols");
+        db.postTag(id, "mista");
+        db.postTag(id, "pas");
+        db.postTag(id, "pas");
+        db.postTag(id, "pas");
+
+
+        id = db.getSoundId(Files.YEHA);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "sex");
+        db.postTag(id, "pistols");
+        db.postTag(id, "mista");
+        db.postTag(id, "ye");
+        db.postTag(id, "yeha");
+        db.postTag(id, "ye");
+        db.postTag(id, "yeha");
+
+        id = db.getSoundId(Files.STAR_WARUDO);
+        db.postTag(id, "unbreakable");
+        db.postTag(id, "diamond");
+        db.postTag(id, "jotaro");
+        db.postTag(id, "kujo");
+        db.postTag(id, "star");
+        db.postTag(id, "star");
+        db.postTag(id, "platinum");
+        db.postTag(id, "za");
+        db.postTag(id, "warudo");
+        db.postTag(id, "warudo");
+        db.postTag(id, "world");
+        db.postTag(id, "time");
+        db.postTag(id, "stop");
+
     }
 
 }

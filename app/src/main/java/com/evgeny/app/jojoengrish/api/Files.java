@@ -57,4 +57,18 @@ public abstract class Files {
     public static String HEYHEY = "Oi Oi Oi";
     public static String SEVEN = "7 page muda";
 
+    //17.7.2020
+    public static String BOINGO_LAUGH = "Boingo laughting";
+    public static String KARS_LAUGH = "Kars laughting";
+    public static String BUEN_GIORNO = "Buen Giorno";
+    public static String STICKY_FIGHT = "Sticky fingaaa";
+    public static String HELP_ME_OMG = "Help me OMG!";
+    public static String KONO_POWAH = "Kono powah";
+    public static String KARS_GUITAR = "Kars guitar";
+    public static String PAS_PAS = "Pas Pas Pas";
+    public static String YEHA = "Yeeehaa";
+    public static String STAR_WARUDO = "Za Warudo!";
+
+
+
 }

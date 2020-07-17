@@ -131,6 +131,27 @@ public abstract class SoundsTableFeeder {
                 "Rohan's suspense intensifies.");
         db.postSound(Files.SEVEN, R.raw.seven_page_muda, R.drawable.seven_page_muda,
                 "As you requested, my dear users <3");
+        //17.7.2020
+        db.postSound(Files.BOINGO_LAUGH, R.raw.boingo_laughting,R.drawable.boingo_laughting,
+                "Are you choking?");
+        db.postSound(Files.KARS_LAUGH, R.raw.kars_laughting,R.drawable.kars_laughting,
+                "As a true villain.");
+        db.postSound(Files.BUEN_GIORNO, R.raw.buen_giorno,R.drawable.buen_giorno,
+                "Oh, you are an Italian, I see.");
+        db.postSound(Files.STICKY_FIGHT, R.raw.bruno_sticky_fingaaas,R.drawable.bruno_sticky_fingaaas,
+                "Intense combat.");
+        db.postSound(Files.HELP_ME_OMG, R.raw.help_me_oh_my_god,R.drawable.help_me_oh_my_god,
+                "No homo.");
+        db.postSound(Files.KONO_POWAH, R.raw.jotaro_kono_powa,R.drawable.jotaro_kono_powa,
+                "Jotaro has a hard time.");
+        db.postSound(Files.KARS_GUITAR, R.raw.kars_guitar,R.drawable.kars_guitar,
+                "What a talent!");
+        db.postSound(Files.PAS_PAS, R.raw.sex_pas_pas,R.drawable.sex_pas_pas,
+                "The football team in action.");
+        db.postSound(Files.YEHA, R.raw.sex_yeehaa,R.drawable.sex_yeehaa,
+                "A cowboy saddles a bullet.");
+        db.postSound(Files.STAR_WARUDO, R.raw.star_zawarudo,R.drawable.star_zawarudo,
+                "Plagiarism from Star Platinum.");
 
 
 

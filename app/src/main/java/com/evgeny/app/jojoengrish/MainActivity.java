@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
-        if(db_ver< 2){
+        if(db_ver< 3){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", "2");
+            editor.putString("dbVer", "3");
             editor.apply();
         }
     }
@@ -178,7 +178,14 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             loadNativeAds();
         }
         recyclerItems = new ArrayList<>();
-        List<SoundModel> sounds = SearchEngine.findSoundFiles(textToSearch,db, order);
+        List<SoundModel> sounds;
+        if(!textToSearch.equals("pewdiepie")) {
+            sounds = SearchEngine.findSoundFiles(textToSearch,db, order);
+        } else {
+            sounds = new ArrayList<>();
+            sounds.add(new SoundModel(-5,"Useless", R.raw.pewdiepie_muda,
+                    R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!"));
+        }
         if(sounds.size()>minAdPosition){
             for (int i = 0; i < sounds.size(); i++) {
                 recyclerItems.add(sounds.get(i));
