@@ -1,6 +1,9 @@
 package com.evgeny.app.jojoengrish.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
+import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.models.GroupModel;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -29,12 +35,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     private Player player = Player.getInstance();
     private final int MENU_ITEM_VIEW_TYPE = 0;
+    private final int MENU_GROUP_VIEW_TYPE = 2;
     private final int UNIFIED_NATIVE_AD_VIEW_TYPE = 1;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name, tags;
+        TextView name, tags, groupName;
         ImageView picture;
-        LinearLayout card;
+        LinearLayout card, groupCard;
 
         public MyViewHolder(View v) {
             super(v);
@@ -42,7 +49,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tags = v.findViewById(R.id.tagsSoundPreviewTextView);
             picture = v.findViewById(R.id.pictureSoundPreviewImageView);
             card = v.findViewById(R.id.listCard);
-            ////
+            ////for groups
+            groupName = v.findViewById(R.id.groupName);
+            groupCard = v.findViewById(R.id.groupCard);
         }
     }
 
@@ -55,6 +64,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                            int viewType) {
         // create a new view
+        LayoutInflater inflater;
+        View view;
         switch (viewType) {
             case UNIFIED_NATIVE_AD_VIEW_TYPE:
                 View nativeExpressLayoutView = LayoutInflater.from(
@@ -62,9 +73,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         parent, false);
                 return new UnifiedNativeAdViewHolder(nativeExpressLayoutView);
             case MENU_ITEM_VIEW_TYPE:
+                inflater = LayoutInflater.from(context);
+                view = inflater.inflate(R.layout.recycler_sound_preview, parent, false);
+                return new MyViewHolder(view);
+            case MENU_GROUP_VIEW_TYPE:
             default:
-                LayoutInflater inflater = LayoutInflater.from(context);
-                View view = inflater.inflate(R.layout.recycler_sound_preview, parent, false);
+                inflater = LayoutInflater.from(context);
+                view = inflater.inflate(R.layout.recycler_group, parent, false);
                 return new MyViewHolder(view);
         }
     }
@@ -107,9 +122,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         }
                     });
                 } catch (Exception e) {
-                    Toast.makeText(context, "Failed to load the sound", Toast.LENGTH_SHORT).show();
+                    Log.d("Sound Error", "MENU_SOUND_ERROR");
                 }
-
+            case MENU_GROUP_VIEW_TYPE:
+                try {
+                    // - get element from your dataset at this position
+                    // - replace the contents of the view with that element
+                    final GroupModel model = (GroupModel) dataset.get(position);
+                    holder.groupName.setText(model.getName());
+                    holder.groupCard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dataset = new ArrayList<>();
+                            dataset.addAll(DbHelper.getDbHelper().getSoundsFromGroup(model.getName()));
+                            MainActivity.changeListAdapter(dataset);
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.d("Group Error", "MENU_GROUP_ERROR");
+                }
         }
 
 
@@ -168,6 +199,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public int getItemViewType(int position) {
         if (dataset.get(position) instanceof SoundModel) {
             return MENU_ITEM_VIEW_TYPE;
+        } else if (dataset.get(position) instanceof GroupModel) {
+            return MENU_GROUP_VIEW_TYPE;
         } else {
             return UNIFIED_NATIVE_AD_VIEW_TYPE;
         }

@@ -24,7 +24,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,25 +42,48 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity implements Serializable {
-    private DbHelper db;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private boolean showSearch, adsAreLoaded;
+    private static DbHelper db;
+    private static RecyclerView recyclerView;
+    private static RecyclerView.Adapter mAdapter;
+    private static RecyclerView.LayoutManager layoutManager;
+    private static boolean showSearch, adsAreLoaded;
     private FloatingActionButton fab;
     private ConstraintLayout searchBar;
     private EditText searchText;
     private  ImageView searchImage;
-    private Context context;
+    private static Context context;
     public static  int NUMBER_OF_ADS = 10;
     public static  int NUMBER_BETWEEN_ADS = 5;
     public static  int LAST_SEEN = 0;
-    private int minAdPosition = 4;
-    AdLoader adLoader;
-    private List<Object> recyclerItems = new ArrayList<>();
-    private List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
-    private boolean order = false;
-    private String textToSearch = "";
+    private static int minAdPosition = 4;
+    private static String ad_unit_id;
+    static AdLoader adLoader;
+    private static List<Object> recyclerItems = new ArrayList<>();
+    private static List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
+    private static boolean order = false;
+    private static String textToSearch = "";
+
+    public static void changeListAdapter(List<Object> sounds){
+        recyclerItems = new ArrayList<>();
+        if(!adsAreLoaded){
+            loadNativeAds();
+        }
+        if(recyclerItems.size()>minAdPosition){
+            for (int i = 0; i < sounds.size(); i++) {
+                recyclerItems.add(sounds.get(i));
+                if(nativeAdList.size()>0 && i%NUMBER_BETWEEN_ADS==0 && i>4) {
+                    insertAdv();
+                }
+            }
+        } else {
+            recyclerItems.addAll(sounds);
+            if(nativeAdList.size()>0) {
+                insertAdv();
+            }
+        }
+        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
+        recyclerView.setAdapter(mAdapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private void initializeAdv(){
         MobileAds.initialize(this,getString(R.string.addmob_app_id));
+        ad_unit_id = getString(R.string.native_ad_Unit_Id);
     }
 
 
@@ -116,10 +139,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         recyclerView.setLayoutManager(layoutManager);
         recyclerItems.clear();
         loadNativeAds();
-        recyclerItems.addAll(db.getSounds());
-        if(recyclerItems.size()==0){
-            recyclerItems.add(SoundModel.errorModel());
-        }
+        recyclerItems.addAll(db.getGroups());
         mAdapter = new RecyclerViewAdapter(this,recyclerItems);
         recyclerView.setAdapter(mAdapter);
     }
@@ -203,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         recyclerView.setAdapter(mAdapter);
     }
 
-    private void insertAdv(){
+    private static void insertAdv(){
         recyclerItems.add(nativeAdList.get(LAST_SEEN));
         if (nativeAdList.size() > LAST_SEEN + 1) {
             LAST_SEEN++;
@@ -252,8 +272,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    private void loadNativeAds(){
-        AdLoader.Builder builder = new AdLoader.Builder(this, getString(R.string.native_ad_Unit_Id));
+    private static void loadNativeAds(){
+        AdLoader.Builder builder = new AdLoader.Builder( context, ad_unit_id);
         adLoader = builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
             @Override
             public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {

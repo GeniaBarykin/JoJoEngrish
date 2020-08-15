@@ -29,10 +29,6 @@ public class SoundModel {
         return name;
     }
 
-    public int getID() {
-        return ID;
-    }
-
 
 
 
@@ -48,11 +44,5 @@ public class SoundModel {
     @Override
     public String toString() {
         return name;
-    }
-
-    public static SoundModel errorModel(){
-        return new SoundModel(-505, "Impossible error", 0, R.drawable.error,
-                "If you see this message, it means something went wrong with a database." +
-                        "Try to reset it via settings.");
     }
 }

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.evgeny.app.jojoengrish.models.GroupModel;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.api.exceptions.NotFoundException;
 
@@ -260,6 +261,75 @@ public class DbHelper extends SQLiteOpenHelper {
         return count;
     }
 
+    public boolean postGroup(String name, int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GroupsTableFeeder.KEY_NAME, name);
+        values.put(GroupsTableFeeder.KEY_SOUND_ID, id);
+        long newRowId = db.insert(GroupsTableFeeder.TABLE_NAME, null, values);
+        if (newRowId == -1) {
+            return false;
+        }
+        db.close();
+        return true;
+    }
+
+    public ArrayList<SoundModel> getSoundsFromGroup(String groupName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME
+                + " INNER JOIN " + GroupsTableFeeder.TABLE_NAME + " on "
+                + SoundsTableFeeder.TABLE_NAME + "."+ SoundsTableFeeder.KEY_ID + " = "
+                + GroupsTableFeeder.TABLE_NAME + "." +GroupsTableFeeder.KEY_SOUND_ID
+                + " WHERE " + GroupsTableFeeder.TABLE_NAME + "." + GroupsTableFeeder.KEY_NAME + " LIKE '%" + groupName + "%'"
+                + " ORDER BY " + SoundsTableFeeder.TABLE_NAME + "." + SoundsTableFeeder.KEY_NAME + " ASC";
+        Cursor data = db.rawQuery(query, null);
+        ArrayList<SoundModel> sounds = new ArrayList<>();
+        while (data.moveToNext()) {
+            int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_ID));
+            String name = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_NAME));
+            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
+            int picture_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_PICTURE_ADDRESS));
+            String description = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_DESCRIPTION));
+            sounds.add(new SoundModel(id, name, sound_adress, picture_adress, description));
+        }
+        data.close();
+        db.close();
+        if(countTags()==0){
+            try {
+                TagsTableFeeder.feed(this);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return sounds;
+    }
+
+    public ArrayList<GroupModel> getGroups(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT DISTINCT " + GroupsTableFeeder.KEY_NAME + " FROM " + GroupsTableFeeder.TABLE_NAME
+                + " ORDER BY " + SoundsTableFeeder.KEY_NAME + " ASC";
+        Cursor data = db.rawQuery(query, null);
+        ArrayList<String> groupNames = new ArrayList<>();
+        while (data.moveToNext()) {
+            String name = data.getString(data.getColumnIndex(GroupsTableFeeder.KEY_NAME));
+            groupNames.add(name);
+        }
+        data.close();
+        db.close();
+        if(countTags()==0){
+            try {
+                TagsTableFeeder.feed(this);
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        ArrayList<GroupModel> groups = new ArrayList<>();
+        for (String name :
+                groupNames) {
+            groups.add(new GroupModel(name,getSoundsFromGroup(name)));
+        }
+        return groups;
+    }
 
 
 
