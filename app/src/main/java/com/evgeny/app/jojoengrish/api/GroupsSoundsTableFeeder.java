@@ -84,6 +84,9 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.MISTA, id++);
         db.postGroupSound(Files.MISTA, id++);
         db.postGroupSound(Files.JOTARO, id++);
+        db.postGroupSound(Files.KAKYOIN, id++);
+        db.postGroupSound(Files.MUSIC, id);
+        db.postGroupSound(Files.GIORNO, id++);
 
     }
 }

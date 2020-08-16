@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private  ImageView searchImage;
     private static Context context;
     public static  int NUMBER_OF_ADS = 10;
-    public static  int NUMBER_BETWEEN_ADS = 4;
+    public static  int NUMBER_BETWEEN_ADS = 5;
     public static  int LAST_SEEN = 0;
     private static int minAdPosition = 4;
     private static String ad_unit_id;
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         if(db_ver< 4){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", "3");
+            editor.putString("dbVer", "4");
             editor.apply();
         }
     }

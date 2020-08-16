@@ -152,9 +152,10 @@ public abstract class SoundsTableFeeder {
                 "A cowboy saddles a bullet.");
         db.postSound(Files.STAR_WARUDO, R.raw.star_zawarudo,R.drawable.star_zawarudo,
                 "Plagiarism from Star Platinum.");
-
-
-
+        db.postSound(Files.EMERALDO_SPLASH, R.raw.emeraldo_splash,R.drawable.emeraldo_splash,
+                "And... he died.");
+        db.postSound(Files.GIORNO_THEME, R.raw.giorno_theme,R.drawable.giorno_theme,
+                "Epic comeback intensifies");
 
 
     }

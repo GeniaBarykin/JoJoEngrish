@@ -6,11 +6,11 @@
     </string>
     <string name="action_info_сontent_2">All rights on the pictures and audio belong to:
     </string>
-    <string name="action_info_сontent_3">I am just a student and a big fan of Hirohiko Araki.
-        I collected valuable pieces of art for you, fellow stand users, so use them wisely!
+    <string name="action_info_сontent_3">I am just a student and a big fan of Hirohiko Araki. This
+        app is only my hobby, I earn almost nothing from it.
     </string>
-    <string name="action_info_сontent_4">If it will be possible, I will try to update the database
-        and add some functionality, but for now, that is it. Feel free to report bugs!
+    <string name="action_info_сontent_4">One tap on the sound will play it. If sound is playing,
+        taping any sound will stop current from playing. Try to search pewdiepie for an easter egg.
     </string>
     <string name="action_settings">Settings</string>
     <string name="volume">Volume</string>

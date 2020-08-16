@@ -682,6 +682,18 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "buongiorno");
 
         id = db.getSoundId(Files.STICKY_FIGHT);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "bruno");
+        db.postTag(id, "bucciarati");
+        db.postTag(id, "sticky");
+        db.postTag(id, "sticky");
+        db.postTag(id, "stand");
+        db.postTag(id, "fingers");
+        db.postTag(id, "fingers");
+        db.postTag(id, "zipper");
 
         id = db.getSoundId(Files.HELP_ME_OMG);
         db.postTag(id, "stardust");
@@ -755,6 +767,29 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "world");
         db.postTag(id, "time");
         db.postTag(id, "stop");
+
+        id = db.getSoundId(Files.EMERALDO_SPLASH);
+        db.postTag(id, "kakyoin");
+        db.postTag(id, "noriaki");
+        db.postTag(id, "stardust");
+        db.postTag(id, "crusaders");
+        db.postTag(id, "stand");
+        db.postTag(id, "hierophant");
+        db.postTag(id, "green");
+
+        id = db.getSoundId(Files.BUEN_GIORNO);
+        db.postTag(id, "vento");
+        db.postTag(id, "aureo");
+        db.postTag(id, "golden");
+        db.postTag(id, "wind");
+        db.postTag(id, "giorno");
+        db.postTag(id, "giovanna");
+        db.postTag(id, "music");
+        db.postTag(id, "theme");
+        db.postTag(id, "comeback");
+
+
+
 
     }
 

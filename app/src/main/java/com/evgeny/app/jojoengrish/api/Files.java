@@ -85,6 +85,8 @@ public abstract class Files {
     public static String PAS_PAS = "Pas Pas Pas";
     public static String YEHA = "Yeeehaa";
     public static String STAR_WARUDO = "Za Warudo!";
+    public static String EMERALDO_SPLASH = "20m Emeraldo Splash";
+    public static String GIORNO_THEME = "Giorno theme";
 
 
 

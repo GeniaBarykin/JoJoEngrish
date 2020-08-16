@@ -142,33 +142,6 @@ public class DbHelper extends SQLiteOpenHelper {
         throw new NotFoundException(idToFind + " was not found");
     }
 
-    public ArrayList<SoundModel> getSounds() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME;
-        Cursor data = db.rawQuery(query, null);
-        ArrayList<SoundModel> sounds = new ArrayList<>();
-        while (data.moveToNext()) {
-            int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_ID));
-            String name = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_NAME));
-            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
-            int picture_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_PICTURE_ADDRESS));
-            String description = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_DESCRIPTION));
-            sounds.add(new SoundModel(id, name, sound_adress, picture_adress, description));
-        }
-        data.close();
-        db.close();
-        if(countTags()==0){
-            try {
-                TagsTableFeeder.feed(this);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return sounds;
-    }
-
-
-
     public long countSounds() {
         SQLiteDatabase db = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db, SoundsTableFeeder.TABLE_NAME);
@@ -187,20 +160,6 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         db.close();
         return true;
-    }
-
-    public ArrayList<String> getTags(int soundID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT "+ TagsTableFeeder.KEY_TAG + " FROM " + TagsTableFeeder.TABLE_NAME
-                + " WHERE " + TagsTableFeeder.KEY_ID + " = '" + soundID + "'";
-        Cursor data = db.rawQuery(query, null);
-        ArrayList<String> tags = new ArrayList<>();
-        while (data.moveToNext()) {
-            tags.add(data.getString(data.getColumnIndex(TagsTableFeeder.KEY_TAG)));
-        }
-        data.close();
-        db.close();
-        return tags;
     }
 
     public ArrayList<String> getAllTags() {
@@ -343,10 +302,6 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         data.close();
         db.close();
-        for (GroupModel group :
-                groups) {
-            group.addSounds(getSoundsFromGroup(group.getName()));
-        }
         return groups;
     }
 
