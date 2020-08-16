@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private void doSearch(){
         textToSearch = searchText.getText().toString();
+        searchText.setText("");
         searchIsActive = true;
         refillView();
     }
