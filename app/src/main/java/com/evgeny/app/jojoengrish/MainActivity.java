@@ -1,7 +1,6 @@
 package com.evgeny.app.jojoengrish;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private static boolean order = false;
     private static String textToSearch = "";
     private static ImageView imageViewSoundboard;
+    private static boolean canGoBack= false;
 
     public static void changeListAdapter(List<Object> sounds){
         recyclerItems = new ArrayList<>();
@@ -86,13 +86,29 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
-        imageViewSoundboard.setImageResource(R.drawable.soundboard_back);
-        imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showGroups();
-            }
-        });
+        setBackButton();
+    }
+
+    private static void setBackButton(){
+        if(canGoBack) {
+            canGoBack=false;
+            imageViewSoundboard.setImageResource(R.drawable.soundboard_back);
+            imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showGroups();
+                }
+            });
+        } else {
+            canGoBack=true;
+            imageViewSoundboard.setImageResource(R.drawable.soundboard);
+            imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "WRYYYY", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
@@ -134,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
+        db_ver=0;
         if(db_ver< 3){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
@@ -157,13 +174,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         recyclerItems.addAll(db.getGroups());
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
-        imageViewSoundboard.setImageResource(R.drawable.soundboard);
-        imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "WRYYYY", Toast.LENGTH_SHORT).show();
-            }
-        });
+        setBackButton();
     }
 
     private void initializeViews(){
@@ -244,6 +255,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
+        canGoBack=true;
+        setBackButton();
     }
 
     private static void insertAdv(){

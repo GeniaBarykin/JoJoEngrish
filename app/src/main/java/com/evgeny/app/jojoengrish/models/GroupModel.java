@@ -5,10 +5,16 @@ import java.util.ArrayList;
 public class GroupModel {
     private String name;
     private ArrayList<SoundModel> sounds;
+    private int picture_adress;
 
-    public GroupModel(String name, ArrayList<SoundModel> sounds) {
+    public GroupModel(String name, int picture_adress) {
         this.name = name;
-        this.sounds = sounds;
+        this.picture_adress = picture_adress;
+    }
+
+    public void addSounds(ArrayList<SoundModel> sounds){
+        this.sounds = new ArrayList<>();
+        this.sounds.addAll(sounds);
     }
 
     public String getName() {

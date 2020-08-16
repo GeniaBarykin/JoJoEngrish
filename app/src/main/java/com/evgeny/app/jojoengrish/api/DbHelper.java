@@ -26,6 +26,10 @@ public class DbHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + SoundsTableFeeder.TABLE_NAME;
     private final String SQL_DELETE_TAGS =
             "DROP TABLE IF EXISTS " + TagsTableFeeder.TABLE_NAME;
+    private final String SQL_DELETE_GROUPS =
+            "DROP TABLE IF EXISTS " + GroupsTableFeeder.TABLE_NAME;
+    private final String SQL_DELETE_GROUPS_SOUNDS =
+            "DROP TABLE IF EXISTS " + GroupsSoundsTableFeeder.TABLE_NAME;
 
     public DbHelper(@Nullable Context context) {
         super(context, SoundsTableFeeder.TABLE_NAME, null, 1);
@@ -36,12 +40,16 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SoundsTableFeeder.makeContract());
         db.execSQL(TagsTableFeeder.makeContract());
+        db.execSQL(GroupsTableFeeder.makeContract());
+        db.execSQL(GroupsSoundsTableFeeder.makeContract());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_SOUNDS);
         db.execSQL(SQL_DELETE_TAGS);
+        db.execSQL(SQL_DELETE_GROUPS);
+        db.execSQL(SQL_DELETE_GROUPS_SOUNDS);
         onCreate(db);
     }
 
@@ -73,12 +81,16 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = super.getWritableDatabase();
         db.execSQL(SQL_DELETE_SOUNDS);
         db.execSQL(SQL_DELETE_TAGS);
+        db.execSQL(SQL_DELETE_GROUPS);
+        db.execSQL(SQL_DELETE_GROUPS_SOUNDS);
         onCreate(db);
         SoundsTableFeeder.feed(this);
+        GroupsTableFeeder.feed(this);
+        GroupsSoundsTableFeeder.feed(this);
         try {
             TagsTableFeeder.feed(this);
         } catch (NotFoundException e) {
-            e.printStackTrace();
+            reset();
         }
         db.close();
     }
@@ -261,11 +273,24 @@ public class DbHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public boolean postGroup(String name, int id){
+    public boolean postGroupSound (String name, int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(GroupsSoundsTableFeeder.KEY_NAME, name);
+        values.put(GroupsSoundsTableFeeder.KEY_SOUND_ID, id);
+        long newRowId = db.insert(GroupsSoundsTableFeeder.TABLE_NAME, null, values);
+        if (newRowId == -1) {
+            return false;
+        }
+        db.close();
+        return true;
+    }
+
+    public boolean postGroup (String name, int picture){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(GroupsTableFeeder.KEY_NAME, name);
-        values.put(GroupsTableFeeder.KEY_SOUND_ID, id);
+        values.put(GroupsTableFeeder.KEY_PICTURE_ADDRESS, picture);
         long newRowId = db.insert(GroupsTableFeeder.TABLE_NAME, null, values);
         if (newRowId == -1) {
             return false;
@@ -277,10 +302,10 @@ public class DbHelper extends SQLiteOpenHelper {
     public ArrayList<SoundModel> getSoundsFromGroup(String groupName){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME
-                + " INNER JOIN " + GroupsTableFeeder.TABLE_NAME + " on "
+                + " INNER JOIN " + GroupsSoundsTableFeeder.TABLE_NAME + " on "
                 + SoundsTableFeeder.TABLE_NAME + "."+ SoundsTableFeeder.KEY_ID + " = "
-                + GroupsTableFeeder.TABLE_NAME + "." +GroupsTableFeeder.KEY_SOUND_ID
-                + " WHERE " + GroupsTableFeeder.TABLE_NAME + "." + GroupsTableFeeder.KEY_NAME + " LIKE '%" + groupName + "%'"
+                + GroupsSoundsTableFeeder.TABLE_NAME + "." + GroupsSoundsTableFeeder.KEY_SOUND_ID
+                + " WHERE " + GroupsSoundsTableFeeder.TABLE_NAME + "." + GroupsSoundsTableFeeder.KEY_NAME + " LIKE '%" + groupName + "%'"
                 + " ORDER BY " + SoundsTableFeeder.TABLE_NAME + "." + SoundsTableFeeder.KEY_NAME + " ASC";
         Cursor data = db.rawQuery(query, null);
         ArrayList<SoundModel> sounds = new ArrayList<>();
@@ -306,27 +331,21 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public ArrayList<GroupModel> getGroups(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT DISTINCT " + GroupsTableFeeder.KEY_NAME + " FROM " + GroupsTableFeeder.TABLE_NAME
-                + " ORDER BY " + SoundsTableFeeder.KEY_NAME + " ASC";
+        String query = "SELECT * FROM " + GroupsTableFeeder.TABLE_NAME
+                + " ORDER BY " + GroupsTableFeeder.KEY_NAME + " ASC";
         Cursor data = db.rawQuery(query, null);
-        ArrayList<String> groupNames = new ArrayList<>();
+
+        ArrayList<GroupModel> groups = new ArrayList<>();
         while (data.moveToNext()) {
             String name = data.getString(data.getColumnIndex(GroupsTableFeeder.KEY_NAME));
-            groupNames.add(name);
+            int picture = data.getInt(data.getColumnIndex(GroupsTableFeeder.KEY_PICTURE_ADDRESS));
+            groups.add(new GroupModel(name,picture));
         }
         data.close();
         db.close();
-        if(countTags()==0){
-            try {
-                TagsTableFeeder.feed(this);
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        ArrayList<GroupModel> groups = new ArrayList<>();
-        for (String name :
-                groupNames) {
-            groups.add(new GroupModel(name,getSoundsFromGroup(name)));
+        for (GroupModel group :
+                groups) {
+            group.addSounds(getSoundsFromGroup(group.getName()));
         }
         return groups;
     }

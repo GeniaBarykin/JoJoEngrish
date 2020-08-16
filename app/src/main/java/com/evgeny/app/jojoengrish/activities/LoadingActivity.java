@@ -20,7 +20,6 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-
         final ImageView imageView = findViewById(R.id.logoImage);
         final int angle = 0;
         final ValueAnimator animator = ValueAnimator.ofInt(angle, 720);
