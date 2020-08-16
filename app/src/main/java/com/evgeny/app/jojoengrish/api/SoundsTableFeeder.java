@@ -93,7 +93,7 @@ public abstract class SoundsTableFeeder {
                 "Ora ora the shit out of you.");
         db.postSound(Files.MUDA_MUDA_FIGHT, R.raw.dio_muda_fight, R.drawable.dio_muda_fight,
                 "Muda muda your face.");
-        db.postSound(Files.KAKOYIN, R.raw.joseph_kakoyin, R.drawable.joseph_kakoyin,
+        db.postSound(Files.KAKOYIN_DEATH, R.raw.joseph_kakoyin, R.drawable.joseph_kakoyin,
                 "He is freaking dead!");
         db.postSound(Files.PRETTY, R.raw.okuyasu_pretty, R.drawable.okuyasu_pretty,
                 "When you friends mom looks good.");

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class GroupModel {
     private String name;
     private ArrayList<SoundModel> sounds;
+
+    public int getPicture_adress() {
+        return picture_adress;
+    }
+
     private int picture_adress;
 
     public GroupModel(String name, int picture_adress) {

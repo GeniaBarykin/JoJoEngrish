@@ -40,18 +40,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, tags, groupName;
-        ImageView picture;
+        ImageView soundPicture, groupPicture;
         LinearLayout card, groupCard;
 
         public MyViewHolder(View v) {
             super(v);
             name = v.findViewById(R.id.nameSoundPreviewTextView);
             tags = v.findViewById(R.id.tagsSoundPreviewTextView);
-            picture = v.findViewById(R.id.pictureSoundPreviewImageView);
+            soundPicture = v.findViewById(R.id.pictureSoundPreviewImageView);
             card = v.findViewById(R.id.listCard);
             ////for groups
             groupName = v.findViewById(R.id.groupName);
             groupCard = v.findViewById(R.id.groupCard);
+            groupPicture=v.findViewById(R.id.imageViewGroupPicture);
         }
     }
 
@@ -105,7 +106,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     final SoundModel model = (SoundModel) dataset.get(position);
                     holder.name.setText(model.getName());
                     holder.tags.setText(model.getDescription());
-                    holder.picture.setImageResource(model.getPicture_adress());
+                    holder.soundPicture.setImageResource(model.getPicture_adress());
                     holder.card.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -122,7 +123,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         }
                     });
                 } catch (Exception e) {
-                    Log.d("Sound Error", "MENU_SOUND_ERROR");
+                    Log.d("Sound Error", e.getMessage());
                 }
             case MENU_GROUP_VIEW_TYPE:
                 try {
@@ -130,6 +131,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     // - replace the contents of the view with that element
                     final GroupModel model = (GroupModel) dataset.get(position);
                     holder.groupName.setText(model.getName());
+                    holder.groupPicture.setImageResource(model.getPicture_adress());
                     holder.groupCard.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -139,7 +141,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         }
                     });
                 } catch (Exception e) {
-                    Log.d("Group Error", "MENU_GROUP_ERROR");
+                    Log.d("Group Error", e.getMessage());
                 }
         }
 

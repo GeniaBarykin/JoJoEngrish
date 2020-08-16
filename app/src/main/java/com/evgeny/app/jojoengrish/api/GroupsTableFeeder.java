@@ -15,8 +15,21 @@ public class GroupsTableFeeder {
     }
 
     public static void feed(DbHelper db) {
-        db.postGroup("Jotaro", R.drawable.star_zawarudo);
-        db.postGroup("Joseph", R.drawable.joseph_nice);
-        db.postGroup("Dio", R.drawable.dio_kono_da);
+        db.postGroup(Files.JOTARO, R.drawable.jotaro_yare_daze);
+        db.postGroup(Files.JOSEPH, R.drawable.joseph_nice);
+        db.postGroup(Files.DIO, R.drawable.dio_kono_da);
+        db.postGroup(Files.GIORNO, R.drawable.buen_giorno);
+        db.postGroup(Files.ABDUL, R.drawable.abdul_yes_i_am);
+        db.postGroup(Files.KIRA, R.drawable.hayato);
+        db.postGroup(Files.KAKYOIN, R.drawable.kakyoin_thank_you);
+        db.postGroup(Files.ROHAN, R.drawable.rohan_hey_hey);
+        db.postGroup(Files.BRUNO, R.drawable.bruno_arrivederci);
+        db.postGroup(Files.MUSIC, R.drawable.pillar_men);
+        db.postGroup(Files.OTHER, R.drawable.speedwagon);
+        db.postGroup(Files.OKUYASU, R.drawable.okuyasu_hand);
+        db.postGroup(Files.MISTA, R.drawable.sex_yeehaa);
+
+
+
     }
 }

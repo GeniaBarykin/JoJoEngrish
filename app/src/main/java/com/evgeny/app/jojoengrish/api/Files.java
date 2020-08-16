@@ -1,6 +1,23 @@
 package com.evgeny.app.jojoengrish.api;
 
+import com.evgeny.app.jojoengrish.R;
+
 public abstract class Files {
+    //groups
+    public static String JOTARO = "Jotaro";
+    public static String DIO = "Dio";
+    public static String JOSEPH = "Joseph";
+    public static String GIORNO= "Giorno";
+    public static String KIRA= "Kira";
+    public static String ABDUL= "Abdul";
+    public static String KAKYOIN= "Kakyoin";
+    public static String ROHAN= "Rohan";
+    public static String BRUNO= "Bruno";
+    public static String MUSIC= "Music";
+    public static String OTHER= "Other";
+    public static String OKUYASU= "Okuyasu";
+    public static String MISTA= "Mista";
+    //sounds
     public static String YARE_YARE_DAZE = "Yare yare daze";
     public static String WRY_SCARED = "Dio WRY (scared)";
     public static String WRY_ANGRY = "Dio WRY (angry)";
@@ -37,7 +54,7 @@ public abstract class Files {
     public static String RUN = "Run away";
     public static String ORA_ORA = "Ora ora";
     public static String BRAVO = "Bravo";
-    public static String KAKOYIN = "Kakoyin death";
+    public static String KAKOYIN_DEATH = "Kakoyin death";
     public static String PRETTY = "Wow pretty";
     public static String KILL_DA_HOE = "Lets kill daho!";
     public static String GO_AHEAD = "Go ahead, mr Joestar";

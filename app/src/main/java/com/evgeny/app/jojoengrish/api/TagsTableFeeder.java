@@ -437,7 +437,7 @@ public abstract class TagsTableFeeder {
         db.postTag(id, "bravo");
         db.postTag(id, "bravo");
 
-        id = db.getSoundId(Files.KAKOYIN);
+        id = db.getSoundId(Files.KAKOYIN_DEATH);
         db.postTag(id, "kakyoin");
         db.postTag(id, "kakyoin");
         db.postTag(id, "noriaki");
