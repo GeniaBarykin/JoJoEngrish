@@ -1,6 +1,7 @@
 package com.evgeny.app.jojoengrish;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,6 +38,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private static List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
     private static boolean order = false;
     private static String textToSearch = "";
+    private static ImageView imageViewSoundboard;
 
     public static void changeListAdapter(List<Object> sounds){
         recyclerItems = new ArrayList<>();
@@ -83,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
+        imageViewSoundboard.setImageResource(R.drawable.soundboard_back);
+        imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showGroups();
+            }
+        });
     }
 
     @Override
@@ -139,12 +149,25 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         recyclerView.setLayoutManager(layoutManager);
         recyclerItems.clear();
         loadNativeAds();
+        showGroups();
+    }
+
+    private static void showGroups(){
+        recyclerItems = new ArrayList<>();
         recyclerItems.addAll(db.getGroups());
-        mAdapter = new RecyclerViewAdapter(this,recyclerItems);
+        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
+        imageViewSoundboard.setImageResource(R.drawable.soundboard);
+        imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "WRYYYY", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initializeViews(){
+        imageViewSoundboard = findViewById(R.id.imageViewSoundboard);
         searchBar = findViewById(R.id.searchConst);
         searchImage = findViewById(R.id.searchImage);
         showSearch=false;
@@ -302,5 +325,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         refillView();
     }
+
+
 
 }

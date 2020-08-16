@@ -26,7 +26,7 @@
                 app:srcCompat="@drawable/jojo" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageViewSoundboard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/soundboard" />
