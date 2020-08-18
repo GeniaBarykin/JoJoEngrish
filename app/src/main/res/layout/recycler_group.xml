@@ -32,11 +32,11 @@
             android:background="@color/colorPrimaryDark"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="11dp"/>
+            android:layout_height="12dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="18dp"
             android:background="#6CDAE3E0"
             android:orientation="vertical">
     <TextView
@@ -52,12 +52,12 @@
             android:gravity="center_vertical"
             android:textColor="#F44D4D"
             android:textColorLink="#F64646"
-            android:textSize="42sp"
+            android:textSize="43dp"
             android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="11dp"/>
+            android:layout_height="12dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
