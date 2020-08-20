@@ -1,8 +1,13 @@
 package com.evgeny.app.jojoengrish.api;
 
 import com.evgeny.app.jojoengrish.R;
+import com.evgeny.app.jojoengrish.models.SoundModel;
 
 public abstract class Files {
+    //egg
+
+    public static SoundModel PEWDIE = new SoundModel(-5,"Useless", R.raw.pewdiepie_muda,
+            R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!");
     //groups
     public static String JOTARO = "Jotaro";
     public static String DIO = "Dio";

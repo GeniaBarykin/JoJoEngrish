@@ -7,18 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.evgeny.app.jojoengrish.activities.InfoActivity;
+import com.evgeny.app.jojoengrish.activities.ListActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
-import com.evgeny.app.jojoengrish.models.SoundModel;
-import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,88 +31,24 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity implements Serializable {
-    private static DbHelper db;
-    private static RecyclerView recyclerView;
-    private static RecyclerView.Adapter mAdapter;
-    private static RecyclerView.LayoutManager layoutManager;
-    private static boolean showSearch, adsAreLoaded;
+    private DbHelper db;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private boolean showSearch, adsAreLoaded;
     private FloatingActionButton fab;
     private ConstraintLayout searchBar;
     private EditText searchText;
     private  ImageView searchImage;
     private static Context context;
-    public static  int NUMBER_OF_ADS = 10;
-    public static  int NUMBER_BETWEEN_ADS = 5;
-    public static  int LAST_SEEN = 0;
-    private static int minAdPosition = 4;
-    private static String ad_unit_id;
-    static AdLoader adLoader;
-    private static List<Object> recyclerItems = new ArrayList<>();
-    private static List<UnifiedNativeAd> nativeAdList = new ArrayList<>();
-    private static boolean order = false;
-    private static String textToSearch = "";
-    private static ImageView imageViewSoundboard;
-    private static boolean groupsAreOpened= true;
-    private static boolean searchIsActive= false;
-    private static FloatingActionButton sortingButton;
 
-    public static void changeListAdapter(List<Object> sounds){
-        recyclerItems = new ArrayList<>();
-        if(!adsAreLoaded){
-            loadNativeAds();
-        }
-        if(sounds.size()>minAdPosition){
-            for (int i = 0; i < sounds.size(); i++) {
-                recyclerItems.add(sounds.get(i));
-                if(nativeAdList.size()>0 && i%NUMBER_BETWEEN_ADS==0 && i>=NUMBER_BETWEEN_ADS) {
-                    insertAdv();
-                }
-            }
-        } else {
-            recyclerItems.addAll(sounds);
-            if(nativeAdList.size()>0) {
-                insertAdv();
-            }
-        }
-        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
-        recyclerView.setAdapter(mAdapter);
-        setBackButton();
-    }
+    private List<Object> recyclerItems = new ArrayList<>();
 
-    private static void setBackButton(){
-        if(groupsAreOpened) {
-            groupsAreOpened=false;
-            imageViewSoundboard.setImageResource(R.drawable.soundboard);
-            imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "WRYYYY", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            groupsAreOpened=true;
-            imageViewSoundboard.setImageResource(R.drawable.soundboard_back);
-            imageViewSoundboard.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    searchIsActive = false;
-                    showGroups();
-                }
-            });
-        }
-
-        if(!searchIsActive) {
-            sortingButton.setX(-250f);
-        } else {
-            sortingButton.setX(50f);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onStart();
         context=this;
         setContentView(R.layout.activity_main);
-
-        initializeAdv();
         initializeDb();
         initializeViews();
         initialiseRecyclerView();
@@ -142,15 +70,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onResume() {
         super.onResume();
-        if(!adsAreLoaded){
-            loadNativeAds();
-        }
         Player.getInstance().loadVolume(this);
-    }
 
-    private void initializeAdv(){
-        MobileAds.initialize(this,getString(R.string.addmob_app_id));
-        ad_unit_id = getString(R.string.native_ad_Unit_Id);
     }
 
 
@@ -174,21 +95,17 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerItems.clear();
-        loadNativeAds();
         showGroups();
     }
 
-    private static void showGroups(){
+    private void showGroups(){
         recyclerItems = new ArrayList<>();
         recyclerItems.addAll(db.getGroups());
         mAdapter = new RecyclerViewAdapter(context,recyclerItems);
         recyclerView.setAdapter(mAdapter);
-        setBackButton();
     }
 
     private void initializeViews(){
-        sortingButton = findViewById(R.id.abc);
-        imageViewSoundboard = findViewById(R.id.imageViewSoundboard);
         searchBar = findViewById(R.id.searchConst);
         searchImage = findViewById(R.id.searchImage);
         showSearch=false;
@@ -210,8 +127,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                         @Override
                         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                             if ((actionId == EditorInfo.IME_ACTION_SEARCH)) {
-                                doSearch();
                                 hideKeyboard();
+                                ///do search
+                                Intent i = new Intent(context, ListActivity.class);
+                                i.putExtra("search_word", searchText.getText().toString());
+                                startActivity(i);
                                 return true;
                             }
                             return false;
@@ -221,8 +141,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     showSearch=false;
                     searchBar.setVisibility(View.GONE);
                     searchImage.setVisibility(View.GONE);
-                    doSearch();
                     hideKeyboard();
+                    Intent i = new Intent(context, ListActivity.class);
+                    i.putExtra("search_word", searchText.getText().toString());
+                    startActivity(i);
                 }
             }
         });
@@ -232,53 +154,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         setSupportActionBar(toolbar);
     }
 
-    private void doSearch(){
-        textToSearch = searchText.getText().toString();
-        searchText.setText("");
-        searchIsActive = true;
-        refillView();
-    }
-
-    private void refillView(){
-        if(!adsAreLoaded){
-            loadNativeAds();
-        }
-        recyclerItems = new ArrayList<>();
-        List<SoundModel> sounds;
-        if(!textToSearch.equals("pewdiepie")) {
-            sounds = SearchEngine.findSoundFiles(textToSearch,db, order);
-        } else {
-            sounds = new ArrayList<>();
-            sounds.add(new SoundModel(-5,"Useless", R.raw.pewdiepie_muda,
-                    R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!"));
-        }
-        if(sounds.size()>minAdPosition){
-            for (int i = 0; i < sounds.size(); i++) {
-                recyclerItems.add(sounds.get(i));
-                if(nativeAdList.size()>0 && i%NUMBER_BETWEEN_ADS==0 && i>=NUMBER_BETWEEN_ADS) {
-                    insertAdv();
-                }
-            }
-        } else {
-            recyclerItems.addAll(sounds);
-            if(nativeAdList.size()>0) {
-                insertAdv();
-            }
-        }
-        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
-        recyclerView.setAdapter(mAdapter);
-        groupsAreOpened=false;
-        setBackButton();
-    }
-
-    private static void insertAdv(){
-        recyclerItems.add(nativeAdList.get(LAST_SEEN));
-        if (nativeAdList.size() > LAST_SEEN + 1) {
-            LAST_SEEN++;
-        } else {
-            LAST_SEEN = 0;
-        }
-    }
 
 
     @Override
@@ -320,37 +195,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    private static void loadNativeAds(){
-        AdLoader.Builder builder = new AdLoader.Builder( context, ad_unit_id);
-        adLoader = builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
-            @Override
-            public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
-                nativeAdList.add(unifiedNativeAd);
-            }
-        }).withAdListener(new AdListener(){
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-            }
-        }).build();
-        adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
-        if(nativeAdList.size()>=NUMBER_OF_ADS){
-            adsAreLoaded=true;
-        }
-    }
-
-    public void toggleSort(View view){
-        if(order){
-            order=false;
-            sortingButton.setImageResource(R.drawable.icon_sort_cancel);
-            sortingButton.bringToFront();
-        } else {
-            order=true;
-            sortingButton.setImageResource(R.drawable.icon_sort);
-            sortingButton.bringToFront();
-        }
-        refillView();
-    }
 
 
 

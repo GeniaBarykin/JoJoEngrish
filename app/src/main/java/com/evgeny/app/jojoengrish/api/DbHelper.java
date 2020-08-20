@@ -189,7 +189,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return listID;
     }
 
-    public ArrayList<SoundModel> getSoundIDsByTagASC(String tagToFind) {
+    public ArrayList<SoundModel> getSoundsByTagASC(String tagToFind) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query ="";
         if(tagToFind.isEmpty()){

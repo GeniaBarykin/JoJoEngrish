@@ -1,8 +1,7 @@
 package com.evgeny.app.jojoengrish.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
-import com.evgeny.app.jojoengrish.api.DbHelper;
+import com.evgeny.app.jojoengrish.activities.ListActivity;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.models.GroupModel;
 import com.evgeny.app.jojoengrish.models.SoundModel;
@@ -26,8 +24,6 @@ import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -135,9 +131,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     holder.groupCard.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            dataset = new ArrayList<>();
-                            dataset.addAll(DbHelper.getDbHelper().getSoundsFromGroup(model.getName()));
-                            MainActivity.changeListAdapter(dataset);
+                            Intent i = new Intent(context, ListActivity.class);
+                            i.putExtra("group_name", model.getName());
+                            context.startActivity(i);
                         }
                     });
                 } catch (Exception e) {
