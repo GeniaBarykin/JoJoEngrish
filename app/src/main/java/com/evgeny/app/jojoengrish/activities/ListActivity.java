@@ -21,6 +21,7 @@ import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.Files;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
 import com.google.android.gms.ads.AdListener;
@@ -69,6 +70,7 @@ public class ListActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onResume() {
         super.onResume();
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         Bundle extras = getIntent().getExtras();
         if(extras == null) {
             keyString= null;

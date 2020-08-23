@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.evgeny.app.jojoengrish.R;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 
 import java.io.Serializable;
 
@@ -19,7 +20,7 @@ public class InfoActivity extends AppCompatActivity  implements Serializable {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
     }
 
     public void goBack(View view){

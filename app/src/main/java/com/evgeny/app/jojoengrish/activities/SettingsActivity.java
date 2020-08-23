@@ -13,6 +13,7 @@ import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.Files;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -29,6 +30,7 @@ public class SettingsActivity extends AppCompatActivity  implements Serializable
         super.onCreate(savedInstanceState);
         context=this;
         db = new DbHelper(context);
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         initializeViews();
         initializeAds();
     }

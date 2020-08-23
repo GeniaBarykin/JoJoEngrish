@@ -12,6 +12,7 @@ import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 
 public class LoadingActivity extends AppCompatActivity {
     private static int STATIC_TIME_OUT = 2500;
@@ -20,6 +21,7 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         final ImageView imageView = findViewById(R.id.logoImage);
         final int angle = 0;
         final ValueAnimator animator = ValueAnimator.ofInt(angle, 720);

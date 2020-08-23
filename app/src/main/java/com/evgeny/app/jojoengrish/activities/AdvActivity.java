@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
+import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -25,7 +26,7 @@ public class AdvActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_adv);
-
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         final ImageView imageView = findViewById(R.id.logoImageAdv);
         final int angle = 0;
         final ValueAnimator animator = ValueAnimator.ofInt(angle, 720);
