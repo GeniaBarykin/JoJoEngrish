@@ -6,22 +6,35 @@ import com.evgeny.app.jojoengrish.models.SoundModel;
 public abstract class Files {
     //egg
 
-    public static SoundModel PEWDIE = new SoundModel(-5,"Useless", R.raw.pewdiepie_muda,
+    public static SoundModel PEWDIE = new SoundModel(-5, "Useless", R.raw.pewdiepie_muda,
             R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!");
     //groups
     public static String JOTARO = "Jotaro";
     public static String DIO = "Dio";
     public static String JOSEPH = "Joseph";
-    public static String GIORNO= "Giorno";
-    public static String KIRA= "Kira";
-    public static String ABDUL= "Abdul";
-    public static String KAKYOIN= "Kakyoin";
-    public static String ROHAN= "Rohan";
-    public static String BRUNO= "Bruno";
-    public static String MUSIC= "Music";
-    public static String OTHER= "Other";
-    public static String OKUYASU= "Okuyasu";
-    public static String MISTA= "Mista";
+    public static String GIORNO = "Giorno";
+    public static String KIRA = "Kira";
+    public static String AVDUL = "Avdul";
+    public static String KAKYOIN = "Kakyoin";
+    public static String ROHAN = "Rohan";
+    public static String BRUNO = "Bruno";
+    public static String MUSIC = "Music";
+    public static String OTHER = "Other";
+    public static String OKUYASU = "Okuyasu";
+    public static String MISTA = "Mista";
+    public static String POLNAREF = "Polnaref";
+    //11:9:2020
+    public static String HOLHORSE = "Holhorse";
+    public static String TRISH = "Trish";
+    public static String JOSUKE = "Josuke";
+    public static String NARANCHA = "Narancha";
+    public static String DIAVOLO = "Diavolo";
+    public static String ENGRISH = "Engrish";
+    public static String DARBY = "D'arby";
+    public static String SPEEDWAGON = "Speedwagon";
+    public static String JONATHAN = "Jonathan";
+    public static String ZEPELI = "Zeppeli";
+    public static String PILLARMEN = "Pillar men";
     //sounds
     public static String YARE_YARE_DAZE = "Yare yare daze";
     public static String WRY_SCARED = "Dio WRY (scared)";
@@ -36,7 +49,7 @@ public abstract class Files {
     public static String KONO_DIO_DA = "Kono Dio da";
     public static String JOTARO_UNDERSTAND = "Do u understand?(Jotaro)";
     public static String UNDERSTAND = "Do u understand?";
-    public static String SPEEDWAGON = "SpeedwagOOOn";
+    public static String SPEEDWAGON_NAZI = "SpeedwagOOOn";
     public static String VERY_NICE = "Very nice";
     public static String DIOOOO = "Diooooo";
     public static String OH_MY_GOD = "Oh my god";
@@ -92,7 +105,57 @@ public abstract class Files {
     public static String STAR_WARUDO = "Za Warudo!";
     public static String EMERALDO_SPLASH = "20m Emeraldo Splash";
     public static String GIORNO_THEME = "Giorno theme";
-
-
-
+    //11:9:2020
+    public static String AVDOL_TSK = "Tsk tsk";
+    public static String BAND_ENEMY = "Enemy spotted";
+    public static String BASEBALL = "Baseball!";
+    public static String BRUNO_LIAR = "Taste of a liar";
+    public static String CROSS_SPLIT = "Cross split attack";
+    public static String DARBY_CANT = "C-c-cant";
+    public static String DIA_ALREADY = "KC already!";
+    public static String DIA_DARE = "Dont you dare!";
+    public static String DIA_KC = "King Crimson!";
+    public static String DIA_KC_CALM = "King Crimson (calm)";
+    public static String DIA_RESUME = "Time resume";
+    public static String DIA_AWAY = "Stay away!";
+    public static String DIO_OHO = "Oh ho";
+    public static String PIL_CRY = "Esidisi crying";
+    public static String MEGA = "F-mega!";
+    public static String GIO_GOLD_EXP = "Gold experience!";
+    public static String GIO_REQUIEM = "This is requiem";
+    public static String JOSEPH_TEQUILA = "I brought tequila";
+    public static String JOSUKE_BASTARD = "Bastard";
+    public static String JOSUKE_GREAT = "Great";
+    public static String JOSUKE_OKUYASU = "O Okuyasu!";
+    public static String JOTARO_BURNING = "Burning sound";
+    public static String JOTARO_GROAN = "Groaning";
+    public static String JOTARO_SCUM = "You scum";
+    public static String JOTARO_SHUTUP = "Shut up";
+    public static String JOTARO_FINGER = "Star finga!";
+    public static String KAKYOIN_DEFLECT = "Emerald splash deflected";
+    public static String KIRA_ERECTION = "Erection";
+    public static String KIRA_JOIN = "May I join?";
+    public static String MISTA_FACE = "Mista possessed";
+    public static String OKAY = "Okey";
+    public static String NARANCIA_KILL = "Kill you!";
+    public static String OKU_STANDUSER = "Stand user for old";
+    public static String PERSI_BAIT = "Smth took the bait!";
+    public static String POLNAREFF_AVDOL = "Muhammad Avdol!";
+    public static String POLNAREFF_CHARIOT = "Silver chariot!";
+    public static String POLNAREFF_HOL_KILL = "I kill you!";
+    public static String POLNAREFF_HOL_LAUGH = "Polnareff & Holhorse";
+    public static String POLNAREFF_HOL_RUN = "Ok I run";
+    public static String POLNAREFF_NON = "Non non non";
+    public static String POLNAREFF_TRES_BIEN = "Tres bien";
+    public static String POLNAREFF_YEAH = "Yeah!";
+    public static String ROHAN_HD = "Heavens door!";
+    public static String ROHAN_IWON = "I won";
+    public static String SEC_CIO_GOOD = "Good good good";
+    public static String SHOKU = "Shoku";
+    public static String SPEEDWAGON_TIME = "Look the time";
+    public static String TAMAMI_OW = "Ow ow ow ow";
+    public static String BAND_TORTURE_DANCE = "Torture dance";
+    public static String TRISH_NOHURT = "No one will get hurt";
+    public static String ZEPPELI_LUCK = "Luck";
+    public static String ZEPPELI_PLUCK = "PLuck";
 }

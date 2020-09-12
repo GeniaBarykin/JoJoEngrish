@@ -61,7 +61,7 @@ public abstract class SoundsTableFeeder {
                 "Reply to the defeated enemy with his own line. Flex.");
         db.postSound(Files.UNDERSTAND, R.raw.ruber_soul_understand, R.drawable.ruber_soul_understand,
                 "When you think you are going to win and want to brag with your english skills.");
-        db.postSound(Files.SPEEDWAGON, R.raw.speedwagon, R.drawable.speedwagon,
+        db.postSound(Files.SPEEDWAGON_NAZI, R.raw.speedwagon, R.drawable.speedwagon,
                 "It is hard to resist when they call you like this.");
         db.postSound(Files.VERY_NICE, R.raw.joseph_very_nice, R.drawable.joseph_very_nice,
                 "Good job Ceasar-chan.");
@@ -156,8 +156,111 @@ public abstract class SoundsTableFeeder {
                 "And... he died.");
         db.postSound(Files.GIORNO_THEME, R.raw.giorno_theme,R.drawable.giorno_theme,
                 "Epic comeback intensifies");
-
-
+        //12.9.2020
+        db.postSound(Files.AVDOL_TSK, R.raw.avdol_tsk,R.drawable.avdol_tsk,
+                "Not so fast");
+        db.postSound(Files.BAND_ENEMY, R.raw.band_enemy,R.drawable.band_enemy,
+                "Wanna join?");
+        db.postSound(Files.BASEBALL, R.raw.baseball,R.drawable.baseball,
+                "Cybersport intensifies");
+        db.postSound(Files.BRUNO_LIAR, R.raw.bruno_liar,R.drawable.bruno_liar,
+                "Natural polygraph");
+        db.postSound(Files.CROSS_SPLIT, R.raw.cross_split_attack,R.drawable.cross_split_attack,
+                "You fell for it, fool!");
+        db.postSound(Files.DARBY_CANT, R.raw.darby_cant,R.drawable.darby_cant,
+                "Wanna call the lawyer, but cant");
+        db.postSound(Files.DIA_ALREADY, R.raw.diavolo_already,R.drawable.diavolo_already,
+                "That stand is so op!");
+        db.postSound(Files.DIA_DARE, R.raw.diavolo_dare,R.drawable.diavolo_dare,
+                "You dare talk to me with that tone of voice, boy?!");
+        db.postSound(Files.DIA_KC, R.raw.diavolo_king_crimson,R.drawable.diavolo_king_crimson,
+                "When you hear it, you are going to die");
+        db.postSound(Files.DIA_KC_CALM, R.raw.diavolo_king_crimson_calm,R.drawable.diavolo_king_crimson_calm,
+                "He is very proud of his stand");
+        db.postSound(Files.DIA_RESUME, R.raw.diavolo_resume,R.drawable.diavolo_resume,
+                "I feel like I know this line from someone else...");
+        db.postSound(Files.DIA_AWAY, R.raw.diavolo_stay_away,R.drawable.diavolo_stay_away,
+                "Now he is scared like a chicken");
+        db.postSound(Files.DIO_OHO, R.raw.dio_oh_ho,R.drawable.dio_oh_ho,
+                "When someone is approaching you");
+        db.postSound(Files.PIL_CRY, R.raw.eisidisi_cry,R.drawable.eisidisi_cry,
+                "Like a baby");
+        db.postSound(Files.MEGA, R.raw.f_mega,R.drawable.f_mega,
+                "Epic game. 10 out of 10");
+        db.postSound(Files.GIO_GOLD_EXP, R.raw.giorno_gold_expirience,R.drawable.giorno_gold_expirience,
+                "It is like rain, but experience");
+        db.postSound(Files.GIO_REQUIEM, R.raw.giorno_this_is_requiem,R.drawable.giorno_gold_expirience,
+                "The end of the villain.");
+        db.postSound(Files.JOSEPH_TEQUILA, R.raw.joseph_tequila,R.drawable.joseph_tequila,
+                "The master of disguise");
+        db.postSound(Files.JOSUKE_BASTARD, R.raw.josuke_bastard,R.drawable.josuke_bastard,
+                "Oh no. You should not talk about his hair in this way");
+        db.postSound(Files.JOSUKE_GREAT, R.raw.josuke_great,R.drawable.josuke_great,
+                "Very nice");
+        db.postSound(Files.JOSUKE_OKUYASU, R.raw.josuke_okuyasu,R.drawable.josuke_okuyasu,
+                "Worrying about the bro");
+        db.postSound(Files.JOTARO_BURNING, R.raw.jotaro_burning,R.drawable.jotaro_burning,
+                "Baby on fire!");
+        db.postSound(Files.JOTARO_GROAN, R.raw.jotaro_groaning,R.drawable.jotaro_groaning,
+                "The life is hard");
+        db.postSound(Files.JOTARO_SCUM, R.raw.jotaro_scum,R.drawable.jotaro_scum,
+                "And it is ok to ora ora you");
+        db.postSound(Files.JOTARO_SHUTUP, R.raw.jotaro_shut_up,R.drawable.jotaro_shut_up,
+                "The badass way to talk with your mother");
+        db.postSound(Files.JOTARO_FINGER, R.raw.jotaro_star_finger,R.drawable.jotaro_star_finger,
+                "Makes your wife happy");
+        db.postSound(Files.KAKYOIN_DEFLECT, R.raw.kakyoin_deflect,R.drawable.kakyoin_deflect,
+                "Impossibru!");
+        db.postSound(Files.KIRA_ERECTION, R.raw.kira_erection,R.drawable.kira_erection,
+                "The art is horny");
+        db.postSound(Files.KIRA_JOIN, R.raw.kira_join,R.drawable.kira_join,
+                "Johny Johny? Yes papa? Can I join? WTF?");
+        db.postSound(Files.MISTA_FACE, R.raw.mista_face,R.drawable.mista_face,
+                "When the gitl is inside you");
+        db.postSound(Files.OKAY, R.raw.mom_okey,R.drawable.mom_okey,
+                "She is so sweet");
+        db.postSound(Files.NARANCIA_KILL, R.raw.narancia_kill,R.drawable.narancia_kill,
+                "Dam he is angry");
+        db.postSound(Files.OKU_STANDUSER, R.raw.okuyasu_standuser,R.drawable.okuyasu_standuser,
+                "Can you hear me? S-t-a-n-d u-s-e-r!");
+        db.postSound(Files.PERSI_BAIT, R.raw.persi_bait,R.drawable.persi_bait,
+                "He did it! Or not?");
+        db.postSound(Files.POLNAREFF_AVDOL, R.raw.polnareff_avdol,R.drawable.polnareff_avdol,
+                "YES I AM!");
+        db.postSound(Files.POLNAREFF_CHARIOT, R.raw.polnareff_chariot,R.drawable.polnareff_chariot,
+                "Ready for a fight");
+        db.postSound(Files.POLNAREFF_HOL_KILL, R.raw.polnareff_holhorse_kill_you,R.drawable.polnareff_holhorse_kill_you,
+                "When you meet ur gf ex");
+        db.postSound(Files.POLNAREFF_HOL_LAUGH, R.raw.polnareff_holhorse_laughting,R.drawable.polnareff_holhorse_laughting,
+                "What a joke!");
+        db.postSound(Files.POLNAREFF_HOL_RUN, R.raw.polnareff_holhorse_run,R.drawable.polnareff_holhorse_run,
+                "Strategic retreat!");
+        db.postSound(Files.POLNAREFF_NON, R.raw.polnareff_non,R.drawable.polnareff_non,
+                "Not gonna happen");
+        db.postSound(Files.POLNAREFF_TRES_BIEN, R.raw.polnareff_tres_bien,R.drawable.polnareff_tres_bien,
+                "Oh, so you are french?");
+        db.postSound(Files.POLNAREFF_YEAH, R.raw.polnareff_yeah,R.drawable.polnareff_yeah,
+                "Bruh fist!");
+        db.postSound(Files.ROHAN_HD, R.raw.rohan_heavens_door,R.drawable.rohan_heavens_door,
+                "Reading is power!");
+        db.postSound(Files.ROHAN_IWON, R.raw.rohan_i_won,R.drawable.rohan_i_won,
+                "Actually no");
+        db.postSound(Files.SEC_CIO_GOOD, R.raw.secco_cioccolata_good,R.drawable.secco_cioccolata_good,
+                "You watch the anime and you parents come into the room on exactly this moment");
+        db.postSound(Files.SHOKU, R.raw.shoku,R.drawable.shoku,
+                "True man doesnt care");
+        db.postSound(Files.SPEEDWAGON_TIME, R.raw.speedwagon_look_time,R.drawable.speedwagon_look_time,
+                "Nice watch");
+        db.postSound(Files.TAMAMI_OW, R.raw.tamami_ow,R.drawable.tamami_ow,
+                "Not even overreaction");
+        db.postSound(Files.BAND_TORTURE_DANCE, R.raw.torture_dance,R.drawable.torture_dance,
+                "This is celebration");
+        db.postSound(Files.TRISH_NOHURT, R.raw.trish_no_hurt,R.drawable.trish_no_hurt,
+                "Finally has a stand!");
+        db.postSound(Files.ZEPPELI_LUCK, R.raw.zeppeli_luck,R.drawable.zeppeli_luck,
+                "Who needs luck?");
+        db.postSound(Files.ZEPPELI_PLUCK, R.raw.zeppeli_pluck,R.drawable.zeppeli_pluck,
+                "When you can have a pluck?");
     }
 
 }
