@@ -196,7 +196,6 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.KAKYOIN, id++);
         db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.MUSIC, id);
-        db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.GIORNO, id++);
         //11:9:2020
         db.postGroupSound(Files.STARDUST, id);
@@ -312,7 +311,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.OTHER, id++);
-        db.postGroupSound(Files.BATTLE, id);
+        db.postGroupSound(Files.PHANTOM, id);
         db.postGroupSound(Files.SPEEDWAGON, id++);
         db.postGroupSound(Files.DIAMOND, id);
         db.postGroupSound(Files.OTHER, id++);
@@ -322,10 +321,10 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.OTHER, id++);
         db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.TRISH, id++);
-        db.postGroupSound(Files.BATTLE, id);
+        db.postGroupSound(Files.PHANTOM, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.ZEPELI, id++);
-        db.postGroupSound(Files.BATTLE, id);
+        db.postGroupSound(Files.PHANTOM, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.ZEPELI, id++);
     }
