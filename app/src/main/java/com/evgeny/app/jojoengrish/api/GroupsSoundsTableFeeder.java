@@ -276,7 +276,6 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.NARANCHA, id++);
         db.postGroupSound(Files.DIAMOND, id);
-        db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.OKUYASU, id++);
         //21
         db.postGroupSound(Files.GOLD, id);
