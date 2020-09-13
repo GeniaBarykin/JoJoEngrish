@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
         //db_ver=0; //for test
-        if(db_ver< 4){
+        if(db_ver< 6){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", "4");
+            editor.putString("dbVer", "6");
             editor.apply();
         }
     }

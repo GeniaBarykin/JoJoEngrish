@@ -21,6 +21,7 @@ public abstract class SoundsTableFeeder {
     }
 
     public static void feed(DbHelper db){
+        //1
         db.postSound(Files.YARE_YARE_DAZE, R.raw.jotaro_yare_daze, R.drawable.jotaro_yare_daze,
                 "When you are too tired of someone's stupidity and want a break.");
         db.postSound(Files.NICE, R.raw.joseph_nice, R.drawable.joseph_nice,
@@ -31,6 +32,7 @@ public abstract class SoundsTableFeeder {
                 "Will he punch you with his left arm? Maybe with his right?");
         db.postSound(Files.YES_YES, R.raw.jotaro_yes_yes, R.drawable.jotaro_yes_yes,
                 "\" Honey, to you want to watch a movie with me?\"");
+        //2
         db.postSound(Files.YES_I_AM, R.raw.abdul_yes_i_am, R.drawable.abdul_yes_i_am,
                 "Muhammad Avdol?!?!?!");
         db.postSound(Files.THANK_YOU, R.raw.kakyoin_thank_you, R.drawable.kakyoin_thank_you,
@@ -41,6 +43,7 @@ public abstract class SoundsTableFeeder {
                 "See you later, alligator.");
         db.postSound(Files.WRY_ANGRY, R.raw.dio_wry, R.drawable.dio_wry,
                 "Battle cry of a true warrior.");
+        //3
         db.postSound(Files.HELL_TO_YOU, R.raw.abdul_hell_to_you, R.drawable.abdul_hell_to_you,
                 "The iconic line.");
         db.postSound(Files.WRY_QUIET, R.raw.dio_wry_quiet, R.drawable.dio_wry_quiet,
@@ -51,6 +54,7 @@ public abstract class SoundsTableFeeder {
                 "The most stylish way to finish your opponent.");
         db.postSound(Files.ZAWARUDO, R.raw.dio_zawarudo, R.drawable.dio_zawarudo,
                 "It is time to stop.");
+        //4
         db.postSound(Files.MUDA_MUDA, R.raw.dio_muda_muda, R.drawable.dio_muda_muda,
                 "Useless, useless, USELESS!");
         db.postSound(Files.STAND_POWER, R.raw.dio_stand_power, R.drawable.dio_stand_power,
@@ -61,6 +65,7 @@ public abstract class SoundsTableFeeder {
                 "Reply to the defeated enemy with his own line. Flex.");
         db.postSound(Files.UNDERSTAND, R.raw.ruber_soul_understand, R.drawable.ruber_soul_understand,
                 "When you think you are going to win and want to brag with your english skills.");
+        //5
         db.postSound(Files.SPEEDWAGON_NAZI, R.raw.speedwagon, R.drawable.speedwagon,
                 "It is hard to resist when they call you like this.");
         db.postSound(Files.VERY_NICE, R.raw.joseph_very_nice, R.drawable.joseph_very_nice,
@@ -71,6 +76,7 @@ public abstract class SoundsTableFeeder {
                 "Old Joseph got a problem!");
         db.postSound(Files.YES_OH_MY_GOD, R.raw.joseph_yes_oh_my_god, R.drawable.joseph_yes_oh_my_god,
                 "Flexing back on the defeated enemy.");
+        //6
         db.postSound(Files.OH_NO, R.raw.joseph_oh_no, R.drawable.joseph_oh_no,
                 "Something is wrong. I can feel it.");
         db.postSound(Files.HOLY_SHIT, R.raw.joseph_holy_shit, R.drawable.joseph_holy_shit,
@@ -81,6 +87,7 @@ public abstract class SoundsTableFeeder {
                 "Baron Zeppeli nails it.");
         db.postSound(Files.YOU_FOOL, R.raw.you_fool, R.drawable.you_fool,
                 "German science is the best in the world!.");
+        //7
         db.postSound(Files.SHIZA, R.raw.joseph_shiza, R.drawable.joseph_shiza,
                 "RIP, my friend.");
         db.postSound(Files.LERO, R.raw.kakyoin_lero, R.drawable.kakyoin_lero,
@@ -91,6 +98,7 @@ public abstract class SoundsTableFeeder {
                 "Joseph's trump card.");
         db.postSound(Files.ORA_ORA, R.raw.jotaro_ora_ora, R.drawable.jotaro_ora_ora,
                 "Ora ora the shit out of you.");
+        //8
         db.postSound(Files.MUDA_MUDA_FIGHT, R.raw.dio_muda_fight, R.drawable.dio_muda_fight,
                 "Muda muda your face.");
         db.postSound(Files.KAKOYIN_DEATH, R.raw.joseph_kakoyin, R.drawable.joseph_kakoyin,
@@ -101,6 +109,7 @@ public abstract class SoundsTableFeeder {
                 "Beetch!");
         db.postSound(Files.GO_AHEAD, R.raw.darby_go_ahead, R.drawable.darby_go_ahead,
                 "When you have all the cards to crush the opponent.");
+        //9
         db.postSound(Files.ARRIVIDERCI, R.raw.bruno_arrivederci, R.drawable.bruno_arrivederci,
                 "Have a good day in your afterlife!");
         db.postSound(Files.GIORNO_MUDA, R.raw.giorno_muda, R.drawable.giorno_muda,
@@ -111,6 +120,7 @@ public abstract class SoundsTableFeeder {
                 "When you are in a toilet and want to unzip ur pants.");
         db.postSound(Files.FAKE_PHONE, R.raw.diavolo_telephone, R.drawable.diavolo_telephone,
                 "Ringtone new meta.");
+        //10
         db.postSound(Files.SONOCHIDO, R.raw.sonochido, R.drawable.sonochido,
                 "They are bounded by fate. Google translate (c)");
         db.postSound(Files.IREFUSE, R.raw.irefuse, R.drawable.irefuse,
@@ -121,6 +131,7 @@ public abstract class SoundsTableFeeder {
                 "At the most interesting moment!");
         db.postSound(Files.TIMESTOP, R.raw.dio_tokiwo_tomare, R.drawable.dio_tokiwo_tomare,
                 "TOKI WO TOMARE!");
+        //11
         db.postSound(Files.GOFLYING, R.raw.narancia_volare_via, R.drawable.narancia_volare_via,
                 "VOLARE VIA! <Plane sounds on the background>");
         db.postSound(Files.THEHANDSOUND, R.raw.okuyasu_hand, R.drawable.okuyasu_hand,
@@ -131,7 +142,7 @@ public abstract class SoundsTableFeeder {
                 "Rohan's suspense intensifies.");
         db.postSound(Files.SEVEN, R.raw.seven_page_muda, R.drawable.seven_page_muda,
                 "As you requested, my dear users <3");
-        //17.7.2020
+        //12  17.7.2020
         db.postSound(Files.BOINGO_LAUGH, R.raw.boingo_laughting,R.drawable.boingo_laughting,
                 "Are you choking?");
         db.postSound(Files.KARS_LAUGH, R.raw.kars_laughting,R.drawable.kars_laughting,
@@ -142,6 +153,7 @@ public abstract class SoundsTableFeeder {
                 "Intense combat.");
         db.postSound(Files.HELP_ME_OMG, R.raw.help_me_oh_my_god,R.drawable.help_me_oh_my_god,
                 "No homo.");
+        //13
         db.postSound(Files.KONO_POWAH, R.raw.jotaro_kono_powa,R.drawable.jotaro_kono_powa,
                 "Jotaro has a hard time.");
         db.postSound(Files.KARS_GUITAR, R.raw.kars_guitar,R.drawable.kars_guitar,
@@ -152,17 +164,19 @@ public abstract class SoundsTableFeeder {
                 "A cowboy saddles a bullet.");
         db.postSound(Files.STAR_WARUDO, R.raw.star_zawarudo,R.drawable.star_zawarudo,
                 "Plagiarism from Star Platinum.");
+        //14
         db.postSound(Files.EMERALDO_SPLASH, R.raw.emeraldo_splash,R.drawable.emeraldo_splash,
                 "And... he died.");
         db.postSound(Files.GIORNO_THEME, R.raw.giorno_theme,R.drawable.giorno_theme,
                 "Epic comeback intensifies");
-        //12.9.2020
+        //11:9
         db.postSound(Files.AVDOL_TSK, R.raw.avdol_tsk,R.drawable.avdol_tsk,
                 "Not so fast");
         db.postSound(Files.BAND_ENEMY, R.raw.band_enemy,R.drawable.band_enemy,
                 "Wanna join?");
         db.postSound(Files.BASEBALL, R.raw.baseball,R.drawable.baseball,
                 "Cybersport intensifies");
+        //15
         db.postSound(Files.BRUNO_LIAR, R.raw.bruno_liar,R.drawable.bruno_liar,
                 "Natural polygraph");
         db.postSound(Files.CROSS_SPLIT, R.raw.cross_split_attack,R.drawable.cross_split_attack,
@@ -173,6 +187,7 @@ public abstract class SoundsTableFeeder {
                 "That stand is so op!");
         db.postSound(Files.DIA_DARE, R.raw.diavolo_dare,R.drawable.diavolo_dare,
                 "You dare talk to me with that tone of voice, boy?!");
+        //16
         db.postSound(Files.DIA_KC, R.raw.diavolo_king_crimson,R.drawable.diavolo_king_crimson,
                 "When you hear it, you are going to die");
         db.postSound(Files.DIA_KC_CALM, R.raw.diavolo_king_crimson_calm,R.drawable.diavolo_king_crimson_calm,
@@ -183,6 +198,7 @@ public abstract class SoundsTableFeeder {
                 "Now he is scared like a chicken");
         db.postSound(Files.DIO_OHO, R.raw.dio_oh_ho,R.drawable.dio_oh_ho,
                 "When someone is approaching you");
+        //17
         db.postSound(Files.PIL_CRY, R.raw.eisidisi_cry,R.drawable.eisidisi_cry,
                 "Like a baby");
         db.postSound(Files.MEGA, R.raw.f_mega,R.drawable.f_mega,
@@ -193,6 +209,7 @@ public abstract class SoundsTableFeeder {
                 "The end of the villain.");
         db.postSound(Files.JOSEPH_TEQUILA, R.raw.joseph_tequila,R.drawable.joseph_tequila,
                 "The master of disguise");
+        //18
         db.postSound(Files.JOSUKE_BASTARD, R.raw.josuke_bastard,R.drawable.josuke_bastard,
                 "Oh no. You should not talk about his hair in this way");
         db.postSound(Files.JOSUKE_GREAT, R.raw.josuke_great,R.drawable.josuke_great,
@@ -203,6 +220,7 @@ public abstract class SoundsTableFeeder {
                 "Baby on fire!");
         db.postSound(Files.JOTARO_GROAN, R.raw.jotaro_groaning,R.drawable.jotaro_groaning,
                 "The life is hard");
+        //19
         db.postSound(Files.JOTARO_SCUM, R.raw.jotaro_scum,R.drawable.jotaro_scum,
                 "And it is ok to ora ora you");
         db.postSound(Files.JOTARO_SHUTUP, R.raw.jotaro_shut_up,R.drawable.jotaro_shut_up,
@@ -213,6 +231,7 @@ public abstract class SoundsTableFeeder {
                 "Impossibru!");
         db.postSound(Files.KIRA_ERECTION, R.raw.kira_erection,R.drawable.kira_erection,
                 "The art is horny");
+        //20
         db.postSound(Files.KIRA_JOIN, R.raw.kira_join,R.drawable.kira_join,
                 "Johny Johny? Yes papa? Can I join? WTF?");
         db.postSound(Files.MISTA_FACE, R.raw.mista_face,R.drawable.mista_face,
@@ -223,6 +242,7 @@ public abstract class SoundsTableFeeder {
                 "Dam he is angry");
         db.postSound(Files.OKU_STANDUSER, R.raw.okuyasu_standuser,R.drawable.okuyasu_standuser,
                 "Can you hear me? S-t-a-n-d u-s-e-r!");
+        //21
         db.postSound(Files.PERSI_BAIT, R.raw.persi_bait,R.drawable.persi_bait,
                 "He did it! Or not?");
         db.postSound(Files.POLNAREFF_AVDOL, R.raw.polnareff_avdol,R.drawable.polnareff_avdol,
@@ -230,9 +250,10 @@ public abstract class SoundsTableFeeder {
         db.postSound(Files.POLNAREFF_CHARIOT, R.raw.polnareff_chariot,R.drawable.polnareff_chariot,
                 "Ready for a fight");
         db.postSound(Files.POLNAREFF_HOL_KILL, R.raw.polnareff_holhorse_kill_you,R.drawable.polnareff_holhorse_kill_you,
-                "When you meet ur gf ex");
+                "When you meet ur gf's ex");
         db.postSound(Files.POLNAREFF_HOL_LAUGH, R.raw.polnareff_holhorse_laughting,R.drawable.polnareff_holhorse_laughting,
                 "What a joke!");
+        //22
         db.postSound(Files.POLNAREFF_HOL_RUN, R.raw.polnareff_holhorse_run,R.drawable.polnareff_holhorse_run,
                 "Strategic retreat!");
         db.postSound(Files.POLNAREFF_NON, R.raw.polnareff_non,R.drawable.polnareff_non,
@@ -243,6 +264,7 @@ public abstract class SoundsTableFeeder {
                 "Bruh fist!");
         db.postSound(Files.ROHAN_HD, R.raw.rohan_heavens_door,R.drawable.rohan_heavens_door,
                 "Reading is power!");
+        //23
         db.postSound(Files.ROHAN_IWON, R.raw.rohan_i_won,R.drawable.rohan_i_won,
                 "Actually no");
         db.postSound(Files.SEC_CIO_GOOD, R.raw.secco_cioccolata_good,R.drawable.secco_cioccolata_good,
@@ -253,6 +275,7 @@ public abstract class SoundsTableFeeder {
                 "Nice watch");
         db.postSound(Files.TAMAMI_OW, R.raw.tamami_ow,R.drawable.tamami_ow,
                 "Not even overreaction");
+        //24
         db.postSound(Files.BAND_TORTURE_DANCE, R.raw.torture_dance,R.drawable.torture_dance,
                 "This is celebration");
         db.postSound(Files.TRISH_NOHURT, R.raw.trish_no_hurt,R.drawable.trish_no_hurt,

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -90,6 +91,7 @@ public class DbHelper extends SQLiteOpenHelper {
         try {
             TagsTableFeeder.feed(this);
         } catch (NotFoundException e) {
+            Log.d("Error:", e.getMessage());
             reset();
         }
         db.close();
@@ -121,25 +123,6 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         data.close();
         throw new NotFoundException("Sound '" + nameToFind + "' was not found");
-    }
-
-    public SoundModel getSound(int idToFind) throws NotFoundException {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + SoundsTableFeeder.TABLE_NAME
-                + " WHERE " + SoundsTableFeeder.KEY_ID + " = '" + idToFind + "'";
-        Cursor data = db.rawQuery(query, null);
-        if (data.moveToNext()) {
-            int id = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_ID));
-            String name = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_NAME));
-            int sound_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_SOUND_ADDRESS));
-            int picture_adress = data.getInt(data.getColumnIndex(SoundsTableFeeder.KEY_PICTURE_ADDRESS));
-            String description = data.getString(data.getColumnIndex(SoundsTableFeeder.KEY_DESCRIPTION));
-            data.close();
-            return new SoundModel(id, name, sound_adress, picture_adress, description);
-        }
-        data.close();
-        db.close();
-        throw new NotFoundException(idToFind + " was not found");
     }
 
     public long countSounds() {
