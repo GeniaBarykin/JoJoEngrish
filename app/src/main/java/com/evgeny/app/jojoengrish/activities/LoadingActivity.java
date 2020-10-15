@@ -30,9 +30,13 @@ public class LoadingActivity extends AppCompatActivity {
         if(db_ver< Files.CURRENT_VER) {
             new AlertDialog.Builder(this)
                     .setTitle("Database is loading")
-                    .setMessage("In order to make further launches faster database creates connections now.")
-                    .setPositiveButton("Ok I'll wait", null)
+                    .setMessage("In order to make further launches faster database creates connections now. It takes time. Just wait!")
                     .show();
+            SharedPreferences.Editor editor = settings.edit();
+            String toJson = Integer.toString(Files.CURRENT_VER);
+            editor.putString("dbVer", toJson);
+            editor.apply();
+            MainActivity.buildDB = true;
         }
         final ImageView imageView = findViewById(R.id.logoImage);
         final int angle = 0;

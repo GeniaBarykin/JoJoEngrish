@@ -49,9 +49,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private EditText searchText;
     private  ImageView searchImage;
     private static Context context;
-
     private List<Object> recyclerItems = new ArrayList<>();
-
+    public static boolean buildDB = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +79,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private void initializeDb(){
         db= new DbHelper(this);
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        String jsonString = settings.getString("dbVer", "0");
-        Integer db_ver = Integer.parseInt(jsonString);
-        int CURRENT_VER = Files.CURRENT_VER;
-        if(db_ver< CURRENT_VER){
+        db.countSounds();
+        if(buildDB){
             db.reset();
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", Integer.toString(CURRENT_VER));
-            editor.apply();
+            buildDB = true;
         }
         //db_ver=0; //for test
-
     }
 
     private void initialiseRecyclerView(){

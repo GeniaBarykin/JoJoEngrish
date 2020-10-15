@@ -5,7 +5,7 @@ import com.evgeny.app.jojoengrish.models.SoundModel;
 
 public abstract class Files {
     //egg
-    public static int CURRENT_VER = 10;
+    public static int CURRENT_VER = 11;
     public static SoundModel PEWDIE = new SoundModel(-5, "Useless", R.raw.pewdiepie_muda,
             R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!");
     //groups
