@@ -5,7 +5,7 @@ import com.evgeny.app.jojoengrish.models.SoundModel;
 
 public abstract class Files {
     //egg
-
+    public static int CURRENT_VER = 10;
     public static SoundModel PEWDIE = new SoundModel(-5, "Useless", R.raw.pewdiepie_muda,
             R.drawable.pewdiepie_muda, "U found a secret sound! Congrats!");
     //groups
@@ -24,18 +24,18 @@ public abstract class Files {
     public static String OTHER = "Other";
     public static String OKUYASU = "Okuyasu";
     public static String MISTA = "Mista";
-    public static String POLNAREF = "Polnaref";
+    public static String POLNAREFF = "Polnareff";
     public static String PHANTOM= "1st season";
 
     public static String BATTLE = "2st season";
     public static String STARDUST = "3rd season";
-    public static String DIAMOND = "4rth season";
+    public static String DIAMOND = "4th season";
     public static String GOLD = "5th season";
     public static String HOLHORSE = "Holhorse";
 
     public static String TRISH = "Trish";
     public static String JOSUKE = "Josuke";
-    public static String NARANCHA = "Narancha";
+    public static String NARANCIA = "Narancia";
     public static String DIAVOLO = "Diavolo";
     public static String ENGRISH = "Engrish";
 
@@ -44,6 +44,10 @@ public abstract class Files {
     public static String JONATHAN = "Jonathan";
     public static String ZEPELI = "Zeppeli";
     public static String PILLARMEN = "Pillar men";
+
+    public static String KOICHI = "Koichi";
+
+
     //sounds
     //1
     public static String YARE_YARE_DAZE = "Yare yare daze";
@@ -188,4 +192,14 @@ public abstract class Files {
     public static String TRISH_NOHURT = "No one will get hurt";
     public static String ZEPPELI_LUCK = "Luck";
     public static String ZEPPELI_PLUCK = "PLuck";
+    public static String DIO_COUNT = "Dio counting";
+    //24
+    public static String JONATHAN_OVERDRIVE = "Sunlight Overdrive";
+    public static String JOSUKE_DORA = "DORA DORA!";
+    public static String KIRA_DOORKNOB = "I have touched dk";
+    public static String KOICHI_ACT_T = "Act three";
+    public static String KOICHI_ACT_TF = "Act 3 freeze";
+    //25
+    public static String OKUYASU_PRESENTING = "My name is Okuyasu";
+    public static String HOLO = "Lets kill da ho";
 }

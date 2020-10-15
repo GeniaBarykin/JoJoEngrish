@@ -284,6 +284,24 @@ public abstract class SoundsTableFeeder {
                 "Who needs luck?");
         db.postSound(Files.ZEPPELI_PLUCK, R.raw.zeppeli_pluck,R.drawable.zeppeli_pluck,
                 "When you can have a pluck?");
+        db.postSound(Files.DIO_COUNT, R.raw.dio_counting,R.drawable.dio_counting,
+                "Welcome to the Sesame Street");
+        //25
+        db.postSound(Files.JONATHAN_OVERDRIVE, R.raw.jonathan_overdrive,R.drawable.jonathan_overdrive,
+                "Gentleman does a falcon punch");
+        db.postSound(Files.JOSUKE_DORA, R.raw.josuke_dora,R.drawable.josuke_dora,
+                "Healing punch of justice");
+        db.postSound(Files.KIRA_DOORKNOB, R.raw.kira_doorknob,R.drawable.kira_doorknob,
+                "COVID promotion here");
+        db.postSound(Files.KOICHI_ACT_T, R.raw.koichi_act_three,R.drawable.koichi_act_three,
+                "Summoning talking stand.");
+        db.postSound(Files.KOICHI_ACT_TF, R.raw.koichi_echo_freeze,R.drawable.koichi_echo_freeze,
+                "Oh my got, it is his first word!");
+        //26
+        db.postSound(Files.OKUYASU_PRESENTING, R.raw.okuyasu_presenting,R.drawable.okuyasu_presenting,
+                "What a nice guy!.");
+        db.postSound(Files.HOLO, R.raw.holo_killdaho,R.drawable.holo_killdaho,
+                "Nice quote selection");
     }
 
 }

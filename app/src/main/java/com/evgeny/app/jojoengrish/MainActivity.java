@@ -1,6 +1,7 @@
 package com.evgeny.app.jojoengrish;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,8 @@ import com.evgeny.app.jojoengrish.activities.ListActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
+import com.evgeny.app.jojoengrish.api.Files;
+import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private boolean showSearch, adsAreLoaded;
+    private boolean showSearch;
     private FloatingActionButton fab;
     private ConstraintLayout searchBar;
     private EditText searchText;
@@ -76,17 +79,19 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
 
     private void initializeDb(){
-        db = DbHelper.getDbHelper();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        db= new DbHelper(this);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
-        //db_ver=0; //for test
-        if(db_ver< 7){
+        int CURRENT_VER = Files.CURRENT_VER;
+        if(db_ver< CURRENT_VER){
             db.reset();
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("dbVer", "7");
+            editor.putString("dbVer", Integer.toString(CURRENT_VER));
             editor.apply();
         }
+        //db_ver=0; //for test
+
     }
 
     private void initialiseRecyclerView(){
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private void showGroups(){
         recyclerItems = new ArrayList<>();
         recyclerItems.addAll(db.getGroups());
-        mAdapter = new RecyclerViewAdapter(context,recyclerItems);
+        mAdapter = new RecyclerViewAdapter(context,recyclerItems, this);
         recyclerView.setAdapter(mAdapter);
     }
 

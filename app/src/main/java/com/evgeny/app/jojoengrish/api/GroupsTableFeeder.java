@@ -28,9 +28,9 @@ public class GroupsTableFeeder {
         db.postGroup(Files.MUSIC, R.drawable.giorno_theme);
 
         db.postGroup(Files.OTHER, R.drawable.shoku);
-        db.postGroup(Files.OKUYASU, R.drawable.okuyasu_hand);
+        db.postGroup(Files.OKUYASU, R.drawable.okuyasu_presenting);
         db.postGroup(Files.MISTA, R.drawable.mista_face);
-        db.postGroup(Files.POLNAREF, R.drawable.polnareff_holhorse_laughting);
+        db.postGroup(Files.POLNAREFF, R.drawable.polnareff_holhorse_laughting);
         db.postGroup(Files.PHANTOM, R.drawable.dio_kono_da);
 
         db.postGroup(Files.BATTLE, R.drawable.joseph_shiza);
@@ -41,7 +41,7 @@ public class GroupsTableFeeder {
 
         db.postGroup(Files.TRISH, R.drawable.trish_no_hurt);
         db.postGroup(Files.JOSUKE, R.drawable.josuke_bastard);
-        db.postGroup(Files.NARANCHA, R.drawable.narancia_volare_via);
+        db.postGroup(Files.NARANCIA, R.drawable.narancia_volare_via);
         db.postGroup(Files.DIAVOLO, R.drawable.diavolo_king_crimson_calm);
         db.postGroup(Files.ENGRISH, R.drawable.f_mega);
 
@@ -50,6 +50,10 @@ public class GroupsTableFeeder {
         db.postGroup(Files.JONATHAN, R.drawable.jonathan_dio);
         db.postGroup(Files.ZEPELI, R.drawable.zeppeli_hey_baby);
         db.postGroup(Files.PILLARMEN, R.drawable.pillar_men);
+
+        db.postGroup(Files.KOICHI, R.drawable.koichi_act_three);
+
+
 
 
 

@@ -42,7 +42,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.KAKYOIN, id++);
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.ENGRISH, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.PHANTOM, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.DIO, id++);
@@ -113,7 +113,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.KAKYOIN, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.BATTLE, id);
         db.postGroupSound(Files.JOSEPH, id++);
         db.postGroupSound(Files.STARDUST, id);
@@ -128,7 +128,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.OKUYASU, id++);
         db.postGroupSound(Files.DIAMOND, id);
-        db.postGroupSound(Files.OTHER, id++);
+        db.postGroupSound(Files.KOICHI, id++);
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.DARBY, id++);
         //9
@@ -156,7 +156,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.DIO, id++);
         //11
         db.postGroupSound(Files.GOLD, id);
-        db.postGroupSound(Files.NARANCHA, id++);
+        db.postGroupSound(Files.NARANCIA, id++);
         db.postGroupSound(Files.DIAMOND, id);
         db.postGroupSound(Files.OKUYASU, id++);
         db.postGroupSound(Files.BATTLE, id);
@@ -203,7 +203,7 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.MISTA, id);
         db.postGroupSound(Files.OTHER, id);
-        db.postGroupSound(Files.NARANCHA, id++);
+        db.postGroupSound(Files.NARANCIA, id++);
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.OTHER, id++);
@@ -274,32 +274,32 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.OTHER, id++);
         db.postGroupSound(Files.GOLD, id);
-        db.postGroupSound(Files.NARANCHA, id++);
+        db.postGroupSound(Files.NARANCIA, id++);
         db.postGroupSound(Files.DIAMOND, id);
         db.postGroupSound(Files.OKUYASU, id++);
         //21
         db.postGroupSound(Files.GOLD, id);
         db.postGroupSound(Files.OTHER, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.HOLHORSE, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.HOLHORSE, id);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         //22
         db.postGroupSound(Files.STARDUST, id);
         db.postGroupSound(Files.HOLHORSE, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.STARDUST, id);
-        db.postGroupSound(Files.POLNAREF, id++);
+        db.postGroupSound(Files.POLNAREFF, id++);
         db.postGroupSound(Files.DIAMOND, id);
         db.postGroupSound(Files.ROHAN, id++);
         //23
@@ -316,6 +316,8 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.OTHER, id++);
         //24
         db.postGroupSound(Files.GOLD, id);
+        db.postGroupSound(Files.MISTA, id);
+        db.postGroupSound(Files.NARANCIA, id);
         db.postGroupSound(Files.MUSIC, id);
         db.postGroupSound(Files.OTHER, id++);
         db.postGroupSound(Files.GOLD, id);
@@ -326,5 +328,22 @@ public class GroupsSoundsTableFeeder {
         db.postGroupSound(Files.PHANTOM, id);
         db.postGroupSound(Files.ENGRISH, id);
         db.postGroupSound(Files.ZEPELI, id++);
+        db.postGroupSound(Files.DIO, id);
+        db.postGroupSound(Files.STARDUST, id++);
+        //25
+        db.postGroupSound(Files.PHANTOM, id);
+        db.postGroupSound(Files.JONATHAN, id++);
+        db.postGroupSound(Files.DIAMOND, id);
+        db.postGroupSound(Files.JOSUKE, id++);
+        db.postGroupSound(Files.DIAMOND, id);
+        db.postGroupSound(Files.KIRA, id++);
+        db.postGroupSound(Files.DIAMOND, id);
+        db.postGroupSound(Files.KOICHI, id++);
+        db.postGroupSound(Files.DIAMOND, id);
+        db.postGroupSound(Files.KOICHI, id++);
+        //26
+        db.postGroupSound(Files.DIAMOND, id);
+        db.postGroupSound(Files.OKUYASU, id++);
+
     }
 }

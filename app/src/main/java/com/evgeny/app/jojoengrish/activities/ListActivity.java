@@ -2,6 +2,7 @@ package com.evgeny.app.jojoengrish.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PersistableBundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
 import com.evgeny.app.jojoengrish.api.Files;
+import com.evgeny.app.jojoengrish.audio.SoundSaver;
 import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.search_engine.SearchEngine;
@@ -31,13 +33,15 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements Serializable {
     private DbHelper db;
-
 
     public static  int NUMBER_OF_ADS = 10;
     public static  int NUMBER_BETWEEN_ADS = 5;
@@ -71,7 +75,10 @@ public class ListActivity extends AppCompatActivity implements Serializable {
     protected void onResume() {
         super.onResume();
         Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
+
         Bundle extras = getIntent().getExtras();
+
+        recyclerItems.clear();
         if(extras == null) {
             keyString= null;
         } else {
@@ -89,7 +96,6 @@ public class ListActivity extends AppCompatActivity implements Serializable {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerItems.clear();
         changeListAdapter(keyString);
         if(!adsAreLoaded) {
             loadNativeAds();
@@ -145,6 +151,8 @@ public class ListActivity extends AppCompatActivity implements Serializable {
                 }
             }
         });
+
+
     }
 
     public void changeListAdapter(String key_string){
@@ -160,7 +168,7 @@ public class ListActivity extends AppCompatActivity implements Serializable {
         }
         insertAds(sounds);
 
-        mAdapter = new RecyclerViewAdapter(this,recyclerItems);
+        mAdapter = new RecyclerViewAdapter(this,recyclerItems, this);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -223,7 +231,7 @@ public class ListActivity extends AppCompatActivity implements Serializable {
                 insertAdv();
             }
         }
-        mAdapter = new RecyclerViewAdapter(this,recyclerItems);
+        mAdapter = new RecyclerViewAdapter(this,recyclerItems, this);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -271,4 +279,6 @@ public class ListActivity extends AppCompatActivity implements Serializable {
     public void close(View view){
         finish();
     }
+
+
 }

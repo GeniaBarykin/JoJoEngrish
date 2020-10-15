@@ -1,5 +1,7 @@
 package com.evgeny.app.jojoengrish.adapters;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.evgeny.app.jojoengrish.R;
 import com.evgeny.app.jojoengrish.activities.ListActivity;
 import com.evgeny.app.jojoengrish.audio.Player;
+import com.evgeny.app.jojoengrish.audio.SoundSaver;
 import com.evgeny.app.jojoengrish.models.GroupModel;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.google.android.gms.ads.formats.MediaView;
@@ -29,10 +32,11 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private List<Object> dataset;
     private Context context;
+    private Activity activity;
     private Player player = Player.getInstance();
     private final int MENU_ITEM_VIEW_TYPE = 0;
-    private final int MENU_GROUP_VIEW_TYPE = 2;
     private final int UNIFIED_NATIVE_AD_VIEW_TYPE = 1;
+    private final int MENU_GROUP_VIEW_TYPE = 2;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, tags, groupName;
@@ -52,9 +56,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(Context context, List<Object> sounds) {
+    public RecyclerViewAdapter(Context context, List<Object> sounds, Activity activity) {
         this.context = context;
         this.dataset = sounds;
+        this.activity = activity;
     }
 
     @Override
@@ -84,7 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         int viewType = getItemViewType(position);
         switch (viewType) {
             case UNIFIED_NATIVE_AD_VIEW_TYPE:
@@ -103,6 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     holder.name.setText(model.getName());
                     holder.tags.setText(model.getDescription());
                     holder.soundPicture.setImageResource(model.getPicture_adress());
+                    boolean longClick = false;
                     holder.card.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -118,6 +124,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             }
                         }
                     });
+                    holder.card.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View view) {
+                            try {
+                                SoundSaver.verifyStoragePermissions(activity);
+                                SoundSaver.saveResourceToFile((SoundModel) model, context);
+                                new AlertDialog.Builder(context)
+                                        .setTitle("Sound download")
+                                        .setMessage("Sound was successfully downloaded!")
+                                        .setPositiveButton("Nice", null)
+                                        .show();
+                            } catch (Exception e){
+                                Log.d("Sound Download Error", e.getMessage());
+                            }
+                            return true;
+                        }
+                    });
+                    if(longClick){
+
+                    }
                 } catch (Exception e) {
                     Log.d("Sound Error", e.getMessage());
                 }
@@ -224,6 +250,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             adView.setAdvertiserView(adView.findViewById(R.id.ad_advertiser));
         }
     }
+
 
 
 }
