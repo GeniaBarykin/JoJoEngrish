@@ -1,5 +1,6 @@
 package com.evgeny.app.jojoengrish.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -85,10 +86,14 @@ public class SettingsActivity extends AppCompatActivity  implements Serializable
             }
             try {
                 Player.getInstance().play(context,db.getSoundAddress(Files.BITE_THE_DUST));
+                new AlertDialog.Builder(context)
+                        .setTitle("Sound download")
+                        .setMessage("The sound was successfully downloaded!")
+                        .setPositiveButton("Nice", null)
+                        .show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Toast.makeText(this,"Database has been rebuilt",Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this,"Failed to rebuild the database. Reinstall the app, pls.",Toast.LENGTH_SHORT).show();
         }

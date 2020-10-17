@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ValueAnimator;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.evgeny.app.jojoengrish.MainActivity;
 import com.evgeny.app.jojoengrish.R;
@@ -18,25 +22,24 @@ import com.evgeny.app.jojoengrish.crash_handler.DatabaseHandler;
 
 public class LoadingActivity extends AppCompatActivity {
     private static int STATIC_TIME_OUT = 2500;
-
+    private int EXTRA_TIME = 1000;
+    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(new DatabaseHandler(this));
         setContentView(R.layout.activity_loading);
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        context=this;
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         String jsonString = settings.getString("dbVer", "0");
         Integer db_ver = Integer.parseInt(jsonString);
+
         if(db_ver< Files.CURRENT_VER) {
-            new AlertDialog.Builder(this)
-                    .setTitle("Database is loading")
-                    .setMessage("In order to make further launches faster database creates connections now. It takes time. Just wait!")
-                    .show();
-            SharedPreferences.Editor editor = settings.edit();
-            String toJson = Integer.toString(Files.CURRENT_VER);
-            editor.putString("dbVer", toJson);
-            editor.apply();
+            STATIC_TIME_OUT +=EXTRA_TIME;
             MainActivity.buildDB = true;
+        } else {
+            LinearLayout loadScreen= findViewById(R.id.firstLoadScreen);
+            loadScreen.setVisibility(View.GONE);
         }
         final ImageView imageView = findViewById(R.id.logoImage);
         final int angle = 0;
@@ -60,5 +63,13 @@ public class LoadingActivity extends AppCompatActivity {
                 finish();
             }
         }, STATIC_TIME_OUT);
+    }
+
+    public static void applyDBChanges(){
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = settings.edit();
+        String toJson = Integer.toString(Files.CURRENT_VER);
+        editor.putString("dbVer", toJson);
+        editor.apply();
     }
 }

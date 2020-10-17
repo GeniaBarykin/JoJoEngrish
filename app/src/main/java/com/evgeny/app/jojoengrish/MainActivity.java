@@ -12,8 +12,6 @@ import com.evgeny.app.jojoengrish.activities.ListActivity;
 import com.evgeny.app.jojoengrish.activities.SettingsActivity;
 import com.evgeny.app.jojoengrish.adapters.RecyclerViewAdapter;
 import com.evgeny.app.jojoengrish.api.DbHelper;
-import com.evgeny.app.jojoengrish.api.Files;
-import com.evgeny.app.jojoengrish.api.SoundsTableFeeder;
 import com.evgeny.app.jojoengrish.audio.Player;
 import com.evgeny.app.jojoengrish.crash_handler.MyExceptionHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,7 +22,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
@@ -82,7 +79,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         db.countSounds();
         if(buildDB){
             db.reset();
-            buildDB = true;
+            buildDB = false;
+            startActivity(new Intent(MainActivity.this, InfoActivity.class));
         }
         //db_ver=0; //for test
     }

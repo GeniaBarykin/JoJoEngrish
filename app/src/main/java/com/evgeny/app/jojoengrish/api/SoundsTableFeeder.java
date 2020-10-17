@@ -206,7 +206,7 @@ public abstract class SoundsTableFeeder {
         db.postSound(Files.GIO_GOLD_EXP, R.raw.giorno_gold_expirience,R.drawable.giorno_gold_expirience,
                 "It is like rain, but experience");
         db.postSound(Files.GIO_REQUIEM, R.raw.giorno_this_is_requiem,R.drawable.giorno_gold_expirience,
-                "The end of the villain.");
+                "Requiem for a Dream.");
         db.postSound(Files.JOSEPH_TEQUILA, R.raw.joseph_tequila,R.drawable.joseph_tequila,
                 "The master of disguise");
         //18

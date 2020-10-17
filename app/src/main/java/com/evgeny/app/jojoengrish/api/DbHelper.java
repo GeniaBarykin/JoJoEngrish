@@ -13,6 +13,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.evgeny.app.jojoengrish.MainActivity;
+import com.evgeny.app.jojoengrish.activities.LoadingActivity;
 import com.evgeny.app.jojoengrish.models.GroupModel;
 import com.evgeny.app.jojoengrish.models.SoundModel;
 import com.evgeny.app.jojoengrish.api.exceptions.NotFoundException;
@@ -98,6 +99,7 @@ public class DbHelper extends SQLiteOpenHelper {
             reset();
         }
         db.close();
+        LoadingActivity.applyDBChanges();
     }
 
     public int getSoundAddress(String nameToFind) throws NotFoundException {

@@ -127,12 +127,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     holder.card.setOnLongClickListener(new View.OnLongClickListener() {
                         @Override
                         public boolean onLongClick(View view) {
-                            try {
+                            try{
                                 SoundSaver.verifyStoragePermissions(activity);
-                                SoundSaver.saveResourceToFile((SoundModel) model, context);
+                            } catch (Exception e){
+                                Log.d("Permission error", e.getMessage());
+                            }
+                            try {
+                                SoundModel sound =(SoundModel) model;
+                                SoundSaver.saveResourceToFile( sound, context);
                                 new AlertDialog.Builder(context)
                                         .setTitle("Sound download")
-                                        .setMessage("Sound was successfully downloaded!")
+                                        .setMessage("The sound \""+ sound.getName() +"\" was successfully downloaded!")
                                         .setPositiveButton("Nice", null)
                                         .show();
                             } catch (Exception e){

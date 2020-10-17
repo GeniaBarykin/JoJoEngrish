@@ -212,11 +212,11 @@ public class ListActivity extends AppCompatActivity implements Serializable {
         }
         recyclerItems = new ArrayList<>();
         List<SoundModel> sounds;
-        if(!textToSearch.equals("pewdiepie")) {
-            sounds = SearchEngine.findSoundFiles(textToSearch,db);
-        } else {
+        if(textToSearch == null || textToSearch.equals("pewdiepie")) {
             sounds = new ArrayList<>();
             sounds.add(Files.PEWDIE);
+        } else {
+            sounds = SearchEngine.findSoundFiles(textToSearch,db);
         }
         if(sounds.size()>minAdPosition){
             for (int i = 0; i < sounds.size(); i++) {
